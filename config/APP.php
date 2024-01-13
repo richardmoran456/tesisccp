@@ -1,5 +1,5 @@
 <?php
-const SERVERURL = "http://localhost/richard/";
+const SERVERURL = "http://localhost/ccp/";
 const COMPANY = "CCP Suites";
 const MONEDA = "$";
 
