@@ -133,6 +133,14 @@
           </a>
         </li>
 
+
+
+        <li class="nav-item">
+          <a href="<?php echo SERVERURL . "modulos" ?>" class="nav-link">
+            <p>Modulos</p>
+          </a>
+        </li>
+
         <li class="nav-item">
           <a href="<?php echo SERVERURL . "equipos" ?>" class="nav-link">
             <p>Equipos</p>
