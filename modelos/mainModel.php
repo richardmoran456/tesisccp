@@ -106,7 +106,7 @@ class mainModel
         }
     }
 
-/*--------- Funcion paginador de tablas ---------*/
+    /*--------- Funcion paginador de tablas ---------*/
     protected static function paginador_tablas($pagina, $Npaginas, $url, $botones)
     {
         $tabla = '<nav aria-label="Page navigation example"><ul class="pagination justify-content-center">';
@@ -147,5 +147,4 @@ class mainModel
         $tabla .= '</ul></nav>';
         return $tabla;
     }
-
 }

@@ -6,9 +6,10 @@ class vistasModelo
     /*--------- Modelo obtener vistas ---------*/
     protected static function obtener_vistas_modelo($vistas)
     {
-        $listaBlanca = ["home", "usuarios", "solicitudes", "tareas", "huespedes", "pisos", "habitaciones", "notificaciones", "perfil"];
+        $listaBlanca = ["home", "usuarios", "solicitudes", "tareas", "huespedes", "pisos", "habitaciones", "notificaciones", "perfil", "departamentos", "puestos", "eventos", "empleados", "alas", "equipos", "modulos"];
         if (in_array($vistas, $listaBlanca)) {
             if (is_file("./vistas/paginas/" . $vistas . "-view.php")) {
+
                 $contenido = "./vistas/paginas/" . $vistas . "-view.php";
             } else {
                 $contenido = "404";
