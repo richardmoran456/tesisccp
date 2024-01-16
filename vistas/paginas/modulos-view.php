@@ -78,7 +78,7 @@
                     $tabla .= "<td>$fecha_formateada</td>";
                     $tabla .= '
                     <td>
-                      <a href="' . SERVERURL . 'modulo-update/' . $mainModel::encryption($fila['modulo_id']) . '">
+                      <a href="' . SERVERURL . 'modulo-update/' . $mainModel::encryption($fila['modulo_id']) . '/">
                         <i class="fas fa-sync-alt"></i>
                       <a/>
                     </td>';

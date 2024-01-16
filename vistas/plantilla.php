@@ -24,8 +24,12 @@
 
     require_once "./vistas/paginas/" . $vistas . "-view.php";
   } else {
+    $pagina = explode("/", $_GET['views']);
 
+    // require_once "./controladores/loginControlador.php";
+    // 	$lc = new loginControlador();
   ?>
+
     <div class="wrapper">
 
       <!-- Navbar -->
@@ -57,7 +61,8 @@
   <?php
   }
   ?>
-  <?php include "tema/script.php" ?>
+
 </body>
+<?php include "tema/script.php" ?>
 
 </html>
