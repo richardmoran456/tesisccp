@@ -32,100 +32,8 @@
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-        <!-- <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Starter Pages
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
-                </a>
-              </li>
-            </ul>
-          </li>
 
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-circle"></i>
-              <p>
-                Level 1
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Level 2</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Level 2
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Level 3</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Level 3</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Level 3</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Level 2</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li> -->
 
-        <!-- menu app -->
-        <li class="nav-item">
-          <a href="<?php echo SERVERURL . "usuarios" ?>" class="nav-link">
-            <p>Usuarios</p>
-          </a>
-        </li>
 
         <li class="nav-item">
           <a href="<?php echo SERVERURL . "eventos" ?>" class="nav-link">
@@ -135,67 +43,111 @@
 
 
 
-        <li class="nav-item">
-          <a href="<?php echo SERVERURL . "modulos" ?>" class="nav-link">
-            <p>Modulos</p>
-          </a>
-        </li>
+
+
 
         <li class="nav-item">
-          <a href="<?php echo SERVERURL . "equipos" ?>" class="nav-link">
-            <p>Equipos</p>
+          <a href="#" class="nav-link">
+            <p>
+              Gestión de usuarios
+              <i class="right fas fa-angle-left"></i>
+            </p>
           </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="<?php echo SERVERURL . "usuarios" ?>" class="nav-link">
+                <p>Usuarios</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="<?php echo SERVERURL . "modulos" ?>" class="nav-link">
+                <p>Modulos</p>
+              </a>
+            </li>
+          </ul>
         </li>
 
-        <li class="nav-item">
-          <a href="<?php echo SERVERURL . "alas" ?>" class="nav-link">
-            <p>Alas</p>
-          </a>
-        </li>
+
+
+
+
+
+
 
         <li class="nav-item">
-          <a href="<?php echo SERVERURL . "empleados" ?>" class="nav-link">
-            <p>Empleados</p>
+          <a href="#" class="nav-link">
+            <p>
+              Gestión de RRHH
+              <i class="right fas fa-angle-left"></i>
+            </p>
           </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="<?php echo SERVERURL . "empleados" ?>" class="nav-link">
+                <p>Empleados</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo SERVERURL . "puestos" ?>" class="nav-link">
+                <p>Puestos</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="<?php echo SERVERURL . "departamentos" ?>" class="nav-link">
+                <p>Departamentos</p>
+              </a>
+            </li>
+          </ul>
         </li>
 
-        <li class="nav-item">
-          <a href="<?php echo SERVERURL . "departamentos" ?>" class="nav-link">
-            <p>Departamentos</p>
-          </a>
-        </li>
 
         <li class="nav-item">
-          <a href="<?php echo SERVERURL . "puestos" ?>" class="nav-link">
-            <p>Puestos</p>
+          <a href="#" class="nav-link">
+            <p>
+              Gestión de solicitudes
+              <i class="right fas fa-angle-left"></i>
+            </p>
           </a>
-        </li>
-
-        <li class="nav-item">
-          <a href="<?php echo SERVERURL . "solicitudes" ?>" class="nav-link">
-            <p>Solicitudes</p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="<?php echo SERVERURL . "tareas" ?>" class="nav-link">
-            <p>Tareas</p>
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a href="<?php echo SERVERURL . "huespedes" ?>" class="nav-link">
-            <p>Huéspedes</p>
-          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="<?php echo SERVERURL . "solicitudes" ?>" class="nav-link">
+                <p>Solicitudes</p>
+              </a>
+            </li>
+          </ul>
         </li>
 
         <li class="nav-item">
           <a href="#" class="nav-link">
             <p>
-              Hotel
+              Gestión de tareas
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
           <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="<?php echo SERVERURL . "tareas" ?>" class="nav-link">
+                <p>Tareas</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <p>
+              Instalaciones
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="<?php echo SERVERURL . "alas" ?>" class="nav-link">
+                <p>Alas</p>
+              </a>
+            </li>
             <li class="nav-item">
               <a href="<?php echo SERVERURL . "pisos" ?>" class="nav-link">
                 <p>Pisos</p>
@@ -204,6 +156,11 @@
             <li class="nav-item">
               <a href="<?php echo SERVERURL . "habitaciones" ?>" class="nav-link">
                 <p>Habitaciones</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo SERVERURL . "equipos" ?>" class="nav-link">
+                <p>Equipos</p>
               </a>
             </li>
 
