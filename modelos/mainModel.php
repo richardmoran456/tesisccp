@@ -23,7 +23,7 @@ class mainModel
     }
 
     // Encriptar cadenas
-    public function encryption($string)
+    public static function encryption($string)
     {
         $output = false;
         $key = hash('sha256', SECRET_KEY);

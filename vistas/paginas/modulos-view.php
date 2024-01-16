@@ -45,12 +45,16 @@
                 </div>
               </div> -->
             <!-- /.card-header -->
-            <div class="card-body table-responsive ">
-              <table class="table table-hover text-nowrap" id="example1">
+            <!-- INICIO::tabla de listamod modulos -->
+            <div class="card-body table-responsive">
+              <table class="table table-hover text-nowrap table-sm" id="example1">
                 <thead>
                   <tr>
-                    <th>Tipo de modulo</th>
+                    <th>#</th>
+                    <th>Tipo de módulo</th>
                     <th>Creado</th>
+                    <th>Acciones</th>
+                    <th></th>
 
                   </tr>
                 </thead>
@@ -59,17 +63,38 @@
                   <?php
                   require_once "./controladores/moduloControlador.php";
                   $ins_modulo = new moduloControlador();
-
+                  $mainModel = new mainModel();
 
                   $lista =  $ins_modulo->listar_modulo_controlador();
                   $tabla = "";
+                  $contador = 0;
                   foreach ($lista as $fila) {
+                    $contador = $contador + 1;
                     $tabla .= "<tr>";
-
+                    $tabla .= "<td>$contador</td>";
                     $tabla .= "<td>$fila[nombre]</td>";
                     setlocale(LC_TIME, "es_VE");
                     $fecha_formateada = date("d M, Y H:i A", strtotime($fila['created_at']));
                     $tabla .= "<td>$fecha_formateada</td>";
+                    $tabla .= '
+                    <td>
+                      <a href="' . SERVERURL . 'modulo-update/' . $mainModel::encryption($fila['modulo_id']) . '">
+                        <i class="fas fa-sync-alt"></i>
+                      <a/>
+                    </td>';
+
+                    $tabla .= '
+                    <td>
+                      <form class="FormularioAjax" action="' . SERVERURL . 'ajax/moduloAjax.php" method="POST" data-form="delete" autocomplete="off">
+                        <input type="hidden" name="modulo_id_del" value="' . mainModel::encryption($fila['modulo_id']) . '">
+
+                        <button type="submit" class="btn btn-warning">
+                          <i class="far fa-trash-alt"></i>
+                        </button>
+                      </form>
+                    </td>
+                    ';
+
 
                     $tabla .= "</tr>";
                   }
@@ -78,9 +103,12 @@
                   ?>
 
 
+
+
                 </tbody>
               </table>
             </div>
+            <!-- FIN::tabla de listamod modulos -->
             <!-- /.card-body -->
           </div>
           <!-- /.card -->

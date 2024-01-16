@@ -21,7 +21,7 @@ class moduloModelo extends mainModel
     /*--------- Eliminar ---------*/
     protected static function eliminar_modulo($id)
     {
-        $sql = mainModel::conectar()->prepare("DELETE FROM modelos WHERE modelo_id=:ID");
+        $sql = mainModel::conectar()->prepare("DELETE FROM modulos WHERE modulo_id=:ID");
         $sql->bindParam(":ID", $id);
         $sql->execute();
 
@@ -48,7 +48,7 @@ class moduloModelo extends mainModel
     protected static function listar_modulo()
     {
 
-        $sql = mainModel::conectar()->prepare("SELECT * FROM modulos");
+        $sql = mainModel::conectar()->prepare("SELECT * FROM modulos ORDER BY modulo_id ASC");
         $sql->execute();
 
         // Fetcheamos los resultados como un array asociativo

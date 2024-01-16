@@ -70,6 +70,68 @@ class moduloControlador extends moduloModelo
 	public function listar_modulo_controlador()
 	{
 		$modulos = moduloModelo::listar_modulo();
+
+		$tabla = "";
+
+		$tabla .= '
+		
+		  <tbody>';
+		foreach ($modulos as $fila) {
+			$fecha_formateada = date("d M, Y H:i A", strtotime($fila['created_at']));
+
+			$tabla .= '<tr>
+			<td>' . $fila['nombre'] . '</td> 
+			<td>' . $fecha_formateada . '</td> 
+			<td>
+				<a href="' . SERVERURL . 'modulo-update/' . mainModel::encryption($fila['modulo_id']) . '">
+					<i class="fas fa-sync-alt"></i>
+				</a>
+			</td>
+			<td>
+				<form class="FormularioAjax" action="' . SERVERURL . 'ajax/moduloAjax.php" method="POST" data-form="delete" autocomplete="off">
+					<input type="hidden" name="modulo_id_del" value="' . mainModel::encryption($fila['modulo_id']) . '">
+					<button type="submit" class="btn btn-warning">
+					<i class="far fa-trash-alt"></i>
+					</button>
+				</form>
+			</td>
+			 </tr>';
+		}
+
+		$tabla .= ' </tbody>';
 		return $modulos;
+	}
+
+	/*--------- Controlador eliminar módulo ---------*/
+	public function eliminar_modulo_controlador()
+	{
+		/** Recibiendo ID de la vista */
+		$id = mainModel::decryption($_POST['modulo_id_del']);
+		$id = mainModel::limpiar_cadena($id);
+
+		/** Comprobar si tiene los permisos */
+
+
+
+		/** Eliminar */
+
+		$eliminar_modulo = moduloModelo::eliminar_modulo($id);
+
+		if ($eliminar_modulo->rowCount() == 1) {
+			$alerta = [
+				"Alerta" => "recargar",
+				"Titulo" => "Módelo eliminado",
+				"Texto" => "El módelo ha sido eliminado del sistema exitosamente",
+				"Tipo" => "success"
+			];
+		} else {
+			$alerta = [
+				"Alerta" => "simple",
+				"Titulo" => "Ocurrió un error inesperado",
+				"Texto" => "No hemos podido eliminar el módulo, por favor intente nuevamente",
+				"Tipo" => "error"
+			];
+		}
+		echo json_encode($alerta);
 	}
 }
