@@ -22,12 +22,12 @@
   <div class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-6 mb-4">
+        <div class="col-12 mb-4">
           <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">Agregar módulo</button>
         </div>
       </div>
       <div class="row">
-        <div class="col-8">
+        <div class="col-12">
           <div class="card">
             <!-- <div class="card-header">
                 <h3 class="card-title">Responsive Hover Table</h3>
@@ -45,20 +45,38 @@
                 </div>
               </div> -->
             <!-- /.card-header -->
-            <div class="card-body table-responsive p-0">
-              <table class="table table-hover text-nowrap">
+            <div class="card-body table-responsive ">
+              <table class="table table-hover text-nowrap" id="example1">
                 <thead>
                   <tr>
-
                     <th>Tipo de modulo</th>
+                    <th>Creado</th>
 
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
 
-                    <td>John Doe</td>
-                  </tr>
+                  <?php
+                  require_once "./controladores/moduloControlador.php";
+                  $ins_modulo = new moduloControlador();
+
+
+                  $lista =  $ins_modulo->listar_modulo_controlador();
+                  $tabla = "";
+                  foreach ($lista as $fila) {
+                    $tabla .= "<tr>";
+
+                    $tabla .= "<td>$fila[nombre]</td>";
+                    setlocale(LC_TIME, "es_VE");
+                    $fecha_formateada = date("d M, Y H:i A", strtotime($fila['created_at']));
+                    $tabla .= "<td>$fecha_formateada</td>";
+
+                    $tabla .= "</tr>";
+                  }
+
+                  echo $tabla;
+                  ?>
+
 
                 </tbody>
               </table>

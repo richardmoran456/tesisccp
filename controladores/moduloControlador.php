@@ -65,4 +65,11 @@ class moduloControlador extends moduloModelo
 		echo json_encode($alerta);
 	}
 	/* Fin controlador */
+
+	/*--------- Controlador listar modelo ---------*/
+	public function listar_modulo_controlador()
+	{
+		$modulos = moduloModelo::listar_modulo();
+		return $modulos;
+	}
 }

@@ -4,7 +4,7 @@ require_once "../config/APP.php";
 
 
 
-if (isset($_POST['nombre_modulo_form'])) {
+if (isset($_POST['nombre_modulo_form']) || isset($_POST['list_form'])) {
     /*--------- Instancia al controlador ---------*/
     require_once "../controladores/moduloControlador.php";
     $instancia_modulo = new moduloControlador();

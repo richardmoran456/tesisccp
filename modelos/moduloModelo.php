@@ -43,6 +43,22 @@ class moduloModelo extends mainModel
         return $sql;
     }
 
+
+    /*--------- Listar ---------*/
+    protected static function listar_modulo()
+    {
+
+        $sql = mainModel::conectar()->prepare("SELECT * FROM modulos");
+        $sql->execute();
+
+        // Fetcheamos los resultados como un array asociativo
+        $resultados = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+        return $resultados; // Devolvemos el array de resultados
+    }
+
+
+
     /*--------- Actualizar ---------*/
     protected static function actualizar_departameno_modelo($datos)
     {
