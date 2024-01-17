@@ -5,35 +5,36 @@ require_once "mainModel.php";
 
 class departamentoModelo extends mainModel
 {
-    /*--------- Modelo agregar departamento ---------*/
+    /*--------- Agregar ---------*/
     protected static function agregar_departamento($datos)
     {
-        $sql = mainModel::conectar()->prepare(
-            "INSERT INTRO departamentos(departamento_id,nombre,abreviatura,created_at) VALUES(:Nombre,:Abreviatura,:Created_at)"
-        );
-        $sql->bindParam(":Nombre", $datos['DNI']);
-        $sql->bindParam(":Abreviatura", $datos['DNI']);
-        $sql->bindParam(":Created_at", $datos['DNI']);
+
+        $sql = mainModel::conectar()->prepare("INSERT INTO departamentos(nombre,abreviatura ,created_at) VALUES (:Nombre,:Abre,:Created_at)");
+        $createdAt = date('Y-m-d H:i:s');
+        $sql->bindParam(":Nombre", $datos['nombre']);
+        $sql->bindParam(":Abre", $datos['abreviatura']);
+        $sql->bindParam(":Created_at", $createdAt);
         $sql->execute();
 
         return $sql;
     }
-    /*--------- Modelo eliminar departamento ---------*/
-    protected static function eliminar_departamento_modelo($id)
+
+    /*--------- Eliminar ---------*/
+    protected static function eliminar_departamento($id)
     {
         $sql = mainModel::conectar()->prepare("DELETE FROM departamentos WHERE departamento_id=:ID");
-
         $sql->bindParam(":ID", $id);
         $sql->execute();
 
         return $sql;
     }
 
-    /*--------- Modelo datos departametos ---------*/
-    protected static function datos_departametos_modelo($tipo, $id)
+    /*--------- Datos ---------*/
+
+    protected static function datos_departamento($tipo, $id)
     {
         if ($tipo == "Unico") {
-            $sql = mainModel::conectar()->prepare("SELECT * FROM departamentos WHERE departamentos_id=:ID");
+            $sql = mainModel::conectar()->prepare("SELECT * FROM departamentos WHERE departamento_id=:ID");
             $sql->bindParam(":ID", $id);
         } elseif ($tipo == "Conteo") {
             $sql = mainModel::conectar()->prepare("SELECT departamento_id FROM departamentos WHERE departamento_id!='1'");
@@ -44,17 +45,32 @@ class departamentoModelo extends mainModel
     }
 
 
-
-    /*--------- Modelo actualizar usuario ---------*/
-    protected static function actualizar_departameno_modelo($datos)
+    /*--------- Listar ---------*/
+    protected static function listar_departamento()
     {
 
-        $sql = mainModel::conectar()->prepare("UPDATE departamentos SET nombre=:DNI,abreviatura=:DNI,modified_at:DNI WHERE departamento_id=:DNI");
+        $sql = mainModel::conectar()->prepare("SELECT * FROM departamentos ORDER BY departamento_id ASC");
+        $sql->execute();
+
+        // Fetcheamos los resultados como un array asociativo
+        $resultados = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+        return $resultados; // Devolvemos el array de resultados
+    }
 
 
-        $sql->bindParam(":Nombre", $datos['DNI']);
-        $sql->bindParam(":Abreviatura", $datos['DNI']);
-        $sql->bindParam(":Modified_at", $datos['DNI']);
+
+    /*--------- Actualizar ---------*/
+    protected static function actualizar_departamento($datos)
+    {
+
+        $sql = mainModel::conectar()->prepare("UPDATE departamentos SET nombre=:Nombre,abreviatura=:ABR WHERE departamento_id=:ID");
+
+
+        $sql->bindParam(":Nombre", $datos['nombre']);
+        $sql->bindParam(":ABR", $datos['abr']);
+        $sql->bindParam(":ID", $datos['id']);
+
         $sql->execute();
 
         return $sql;
