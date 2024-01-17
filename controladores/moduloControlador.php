@@ -134,4 +134,45 @@ class moduloControlador extends moduloModelo
 		}
 		echo json_encode($alerta);
 	}
+
+	/*--------- Controlador datos modulo ---------*/
+	public function datos_modulo_controlador($tipo, $id)
+	{
+		$tipo = mainModel::limpiar_cadena($tipo);
+
+		$id = mainModel::decryption($id);
+		$id = mainModel::limpiar_cadena($id);
+
+		return moduloModelo::datos_modulo($tipo, $id);
+	}
+
+	/*--------- Controlador actualizar modulo ---------*/
+	public function actualizar_modulo_controlador()
+	{
+		$id = mainModel::decryption($_POST['modulo_id_up']);
+		$id = mainModel::limpiar_cadena($id);
+		$nombre = mainModel::limpiar_cadena($_POST['nombre_modulo_up']);
+
+		$datos_modulo_up = [
+			"nombre" => $nombre,
+			"id" => $id
+		];
+
+		if (moduloModelo::actualizar_modulo($datos_modulo_up)) {
+			$alerta = [
+				"Alerta" => "recargar",
+				"Titulo" => "Datos actualizados",
+				"Texto" => "Los datos han sido actualizados con exito",
+				"Tipo" => "success"
+			];
+		} else {
+			$alerta = [
+				"Alerta" => "simple",
+				"Titulo" => "Ocurrió un error inesperado",
+				"Texto" => "No hemos podido actualizar los datos, por favor intente nuevamente",
+				"Tipo" => "error"
+			];
+		}
+		echo json_encode($alerta);
+	}
 }

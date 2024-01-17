@@ -1,3 +1,14 @@
+<?php
+require_once "./controladores/moduloControlador.php";
+$instancia_modulo = new moduloControlador();
+
+$datos_modulo = $instancia_modulo->datos_modulo_controlador("Unico", $pagina[1]);
+
+if ($datos_modulo->rowCount() == 1) {
+    $campos = $datos_modulo->fetch();
+}
+?>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -23,61 +34,36 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <?php var_dump($pagina[1]); ?>
-                            <h5 class="card-title">Card title</h5>
 
-                            <p class="card-text">
-                                Some quick example text to build on the card title and make up the bulk of the card's
-                                content.
-                            </p>
-
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
-                        </div>
-                    </div>
 
                     <div class="card card-primary card-outline">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
+                            <h5 class="card-title">Formulario de actualización</h5>
 
                             <p class="card-text">
-                                Some quick example text to build on the card title and make up the bulk of the card's
-                                content.
+                                La Actualización del módulo es referencial, las funciones del mismo deben desarrollarse individualmente..
                             </p>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
+
+
+
+                            <form class="FormularioAjax" action="<?php echo SERVERURL; ?>ajax/moduloAjax.php" method="POST" data-form="update" autocomplete="off">
+                                <input type="hidden" name="modulo_id_up" value="<?php echo $pagina[1]; ?>">
+                                <div class="form-group">
+                                    <label for="nombre_modulo_up">Describe el módulo</label>
+                                    <input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}" class="form-control" id="nombre_modulo_up" placeholder="Describe el módulo" maxlength="35" required="" name="nombre_modulo_up" value="<?php echo $campos['nombre']; ?>">
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Registrar módulo</button>
+                            </form>
+
+                            <div class="mt-4">
+                                <a href="<?php echo SERVERURL . "modulos" ?>">Volver a módulos</a>
+                            </div>
+
                         </div>
                     </div><!-- /.card -->
                 </div>
-                <!-- /.col-md-6 -->
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="m-0">Featured</h5>
-                        </div>
-                        <div class="card-body">
-                            <h6 class="card-title">Special title treatment</h6>
 
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-
-                    <div class="card card-primary card-outline">
-                        <div class="card-header">
-                            <h5 class="m-0">Featured</h5>
-                        </div>
-                        <div class="card-body">
-                            <h6 class="card-title">Special title treatment</h6>
-
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.col-md-6 -->
             </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->

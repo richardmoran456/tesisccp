@@ -30,13 +30,13 @@ class moduloModelo extends mainModel
 
     /*--------- Datos ---------*/
 
-    protected static function datos_modelo($tipo, $id)
+    protected static function datos_modulo($tipo, $id)
     {
         if ($tipo == "Unico") {
-            $sql = mainModel::conectar()->prepare("SELECT * FROM modelos WHERE modelo_id=:ID");
+            $sql = mainModel::conectar()->prepare("SELECT * FROM modulos WHERE modulo_id=:ID");
             $sql->bindParam(":ID", $id);
         } elseif ($tipo == "Conteo") {
-            $sql = mainModel::conectar()->prepare("SELECT modelo_id FROM modelos WHERE modelo_id!='1'");
+            $sql = mainModel::conectar()->prepare("SELECT modelo_id FROM modelo WHERE modelo_id!='1'");
         }
 
         $sql->execute();
@@ -60,13 +60,14 @@ class moduloModelo extends mainModel
 
 
     /*--------- Actualizar ---------*/
-    protected static function actualizar_departameno_modelo($datos)
+    protected static function actualizar_modulo($datos)
     {
 
-        $sql = mainModel::conectar()->prepare("UPDATE modelos SET nombre=:Nombre WHERE modelo_id=:DNI");
+        $sql = mainModel::conectar()->prepare("UPDATE modulos SET nombre=:Nombre WHERE modulo_id=:ID");
 
 
-        $sql->bindParam(":Nombre", $datos['DNI']);
+        $sql->bindParam(":Nombre", $datos['nombre']);
+        $sql->bindParam(":ID", $datos['id']);
         $sql->execute();
 
         return $sql;

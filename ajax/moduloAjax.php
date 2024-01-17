@@ -4,7 +4,7 @@ require_once "../config/APP.php";
 
 
 
-if (isset($_POST['nombre_modulo_form']) || isset($_POST['list_form']) || isset($_POST['modulo_id_del'])) {
+if (isset($_POST['nombre_modulo_form']) || isset($_POST['list_form']) || isset($_POST['modulo_id_del']) || isset($_POST['modulo_id_up'])) {
     /*--------- Instancia al controlador ---------*/
     require_once "../controladores/moduloControlador.php";
     $instancia_modulo = new moduloControlador();
@@ -22,7 +22,7 @@ if (isset($_POST['nombre_modulo_form']) || isset($_POST['list_form']) || isset($
 
     /*--------- Actualizar un usuario ---------*/
     if (isset($_POST['modulo_id_up'])) {
-        echo $instancia_modulo->actualizar_usuario_controlador();
+        echo $instancia_modulo->actualizar_modulo_controlador();
     }
 } else {
     echo "aqui";
