@@ -20,7 +20,7 @@ if ($datos_modulo->rowCount() == 1) {
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "home" ?>">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "modulos" ?>">Modulos</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "modulos" ?>">Módulos</a></li>
                         <li class="breadcrumb-item active">Actualizar módulo</li>
                     </ol>
                 </div><!-- /.col -->

@@ -62,7 +62,7 @@
 
             <li class="nav-item">
               <a href="<?php echo SERVERURL . "modulos" ?>" class="nav-link">
-                <p>Modulos</p>
+                <p>Modulos BASE</p>
               </a>
             </li>
           </ul>
