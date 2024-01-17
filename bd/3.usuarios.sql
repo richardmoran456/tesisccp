@@ -1,6 +1,7 @@
 CREATE TABLE
     IF NOT EXISTS usuarios (
         usuario_id int unsigned NOT NULL AUTO_INCREMENT,
+        nombre_completo VARCHAR(140) NOT NULL,
         username VARCHAR(140) NOT NULL,
         passwd VARCHAR(140) NOT NULL,
         fk_departamento int unsigned NOT NULL,

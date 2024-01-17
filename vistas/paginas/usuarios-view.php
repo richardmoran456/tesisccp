@@ -5,7 +5,6 @@
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1 class="m-0">Usuarios del sistema</h1>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam dicta id perspiciatis adipisci sint tenetur possimus consectetur facilis vero dolor? Accusantium optio laudantium vel natus magnam repudiandae repellat. Maiores, quas?</p>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -18,12 +17,13 @@
   </div>
   <!-- /.content-header -->
 
+
   <!-- Main content -->
   <div class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-6 mb-4">
-          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">Nuevo Usuario</button>
+        <div class="col-12 mb-4">
+          <a href="<?php echo SERVERURL . "usuario-create" ?>" class="btn btn-default">Agregar usuario</a>
         </div>
       </div>
       <div class="row">
@@ -45,79 +45,81 @@
                 </div>
               </div> -->
             <!-- /.card-header -->
-            <div class="card-body table-responsive p-0">
-              <table class="table table-hover text-nowrap">
+            <!-- INICIO::tabla de listamod modulos -->
+            <div class="card-body table-responsive">
+              <table class="table table-hover text-nowrap table-sm" id="example1">
                 <thead>
                   <tr>
-                    <th>ID</th>
-                    <th>User</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                    <th>Reason</th>
+                    <th>#</th>
+                    <th>Username</th>
+                    <th>Departamento</th>
+                    <th>Creado</th>
+                    <th>Acciones</th>
+                    <th></th>
+
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>183</td>
-                    <td>John Doe</td>
-                    <td>11-7-2014</td>
-                    <td><span class="tag tag-success">Approved</span></td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  </tr>
-                  <tr>
-                    <td>219</td>
-                    <td>Alexander Pierce</td>
-                    <td>11-7-2014</td>
-                    <td><span class="tag tag-warning">Pending</span></td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  </tr>
-                  <tr>
-                    <td>657</td>
-                    <td>Bob Doe</td>
-                    <td>11-7-2014</td>
-                    <td><span class="tag tag-primary">Approved</span></td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  </tr>
-                  <tr>
-                    <td>175</td>
-                    <td>Mike Doe</td>
-                    <td>11-7-2014</td>
-                    <td><span class="tag tag-danger">Denied</span></td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  </tr>
+
+                  <?php
+                  require_once "./controladores/usuarioControlador.php";
+                  $ins_controlador = new usuarioControlador();
+                  $mainModel = new mainModel();
+
+                  $lista =  $ins_controlador->listar_usuario_controlador();
+                  $tabla = "";
+                  $contador = 0;
+                  foreach ($lista as $fila) {
+                    $contador = $contador + 1;
+                    $tabla .= "<tr>";
+                    $tabla .= "<td>$contador</td>";
+                    $tabla .= "<td>$fila[username]</td>";
+                    $tabla .= "<td>$fila[departamento]</td>";
+                    setlocale(LC_TIME, "es_VE");
+                    $fecha_formateada = date("d M, Y H:i A", strtotime($fila['created_at']));
+                    $tabla .= "<td>$fecha_formateada</td>";
+                    $tabla .= '
+                    <td>
+                      <a href="' . SERVERURL . 'usuario-update/' . $mainModel::encryption($fila['usuario_id']) . '/">
+                        <i class="fas fa-sync-alt"></i>
+                      <a/>
+                    </td>';
+
+                    $tabla .= '
+                    <td>
+                      <form class="FormularioAjax" action="' . SERVERURL . 'ajax/usuarioAjax.php" method="POST" data-form="delete" autocomplete="off">
+                        <input type="hidden" name="usuario_id_del" value="' . mainModel::encryption($fila['usuario_id']) . '">
+
+                        <button type="submit" class="btn btn-warning">
+                          <i class="far fa-trash-alt"></i>
+                        </button>
+                      </form>
+                    </td>
+                    ';
+
+
+                    $tabla .= "</tr>";
+                  }
+
+                  echo $tabla;
+                  ?>
+
+
+
+
                 </tbody>
               </table>
             </div>
+            <!-- FIN::tabla de listamod modulos -->
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
         </div>
+
       </div>
       <!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
 
   <!-- /.content -->
-</div>
-
-
-<!-- modal  -->
-<div class="modal fade" id="modal-default">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Crear usuario</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>One fine body&hellip;</p>
-      </div>
-      <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
 </div>
