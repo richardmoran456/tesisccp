@@ -111,7 +111,7 @@ class moduloControlador extends moduloModelo
 
 		/** Comprobar si tiene los permisos */
 
-
+		## TODO No permitir si al menos un usuario tiene asignado un registro
 
 		/** Eliminar */
 
