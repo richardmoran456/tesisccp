@@ -59,6 +59,19 @@ class puestoModelo extends mainModel
         return $resultados; // Devolvemos el array de resultados
     }
 
+    protected static function listar_puesto_combo()
+    {
+
+        $sql = mainModel::conectar()->prepare("SELECT p.puesto_id, p.nombre, d.abreviatura, d.nombre AS departamento FROM puestos AS p INNER JOIN departamentos AS d ON d.departamento_id = p.fk_departamento");
+
+        $sql->execute();
+
+        // Fetcheamos los resultados como un array asociativo
+        $resultados = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+        return $resultados; // Devolvemos el array de resultados
+    }
+
 
 
     /*--------- Actualizar ---------*/
