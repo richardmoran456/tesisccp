@@ -1,2 +1,6 @@
 Plugins usados
 Formatear codigo php https://marketplace.visualstudio.com/items?itemName=kokororin.vscode-phpfmt
+
+
+
+### Roles de usuario
