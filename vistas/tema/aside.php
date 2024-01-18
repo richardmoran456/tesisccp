@@ -13,7 +13,7 @@
         <img src="<?php echo SERVERURL; ?>vistas/assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="<?php echo SERVERURL . "perfil" ?>" class="d-block">Nombre</a>
+        <a href="<?php echo SERVERURL . "perfil" ?>" class="d-block"><?php echo $_SESSION['nombre_spm']; ?></a>
       </div>
     </div>
 

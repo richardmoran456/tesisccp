@@ -45,6 +45,7 @@ if ($datos_modulo->rowCount() == 1) {
                             </p>
 
 
+
                             <form class="FormularioAjax" action="<?php echo SERVERURL; ?>ajax/usuarioAjax.php" method="POST" data-form="update" autocomplete="off">
                                 <input type="hidden" name="usuario_id_up" value="<?php echo $pagina[1]; ?>">
 
@@ -57,6 +58,9 @@ if ($datos_modulo->rowCount() == 1) {
                                     <label for="username_usuario_up">Username </label>
                                     <input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}" class="form-control" id="username_usuario_up" placeholder="Ingresa el nombre" maxlength="35" required="" name="username_usuario_up" value="<?php echo $campos['username']; ?>">
                                 </div>
+
+
+
 
                                 <div class="form-group">
                                     <label for="fk_departamento_up">Departamento </label>

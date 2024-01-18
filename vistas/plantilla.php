@@ -21,13 +21,19 @@
   $vistas = $IV->obtener_vistas_controlador();
 
   if ($vistas == "login" || $vistas == "404") {
-
     require_once "./vistas/paginas/" . $vistas . "-view.php";
   } else {
+    session_start(['name' => 'SPM']);
+
     $pagina = explode("/", $_GET['views']);
 
-    // require_once "./controladores/loginControlador.php";
-    // 	$lc = new loginControlador();
+    require_once "./controladores/loginControlador.php";
+    $lc = new loginControlador();
+
+    if (!isset($_SESSION['token_spm']) || !isset($_SESSION['usuario_spm']) || !isset($_SESSION['id_spm'])) {
+      echo $lc->forzar_cierre_sesion_controlador();
+      exit();
+    }
   ?>
 
     <div class="wrapper">
@@ -59,10 +65,11 @@
 
     </div>
   <?php
+    include "tema/logout.php";
   }
   ?>
-
+  <?php include "tema/script.php" ?>
 </body>
-<?php include "tema/script.php" ?>
+
 
 </html>

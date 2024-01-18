@@ -122,6 +122,7 @@ class usuarioControlador extends usuarioModelo
 		$id = mainModel::decryption($id);
 		$id = mainModel::limpiar_cadena($id);
 
+
 		return usuarioModelo::datos_usuario($tipo, $id);
 	}
 
