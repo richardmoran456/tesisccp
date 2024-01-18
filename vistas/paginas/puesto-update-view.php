@@ -64,7 +64,7 @@ if ($datos_modulo->rowCount() == 1) {
                                         $departamento_id_bd = $campos['fk_departamento'];
 
                                         foreach ($lista as $fila) {
-                                            $opc .= "<option value='$fila[departamento_id]' " . ($fila['departamento_id'] == $departamento_id_bd ? "selected" : "") . ">
+                                            $opc .= "<option value='$fila[departamento_id]' "($fila['departamento_id'] == $departamento_id_bd ? "selected" : "") . ">
                                             $fila[nombre]
                                           </option>";
                                         }

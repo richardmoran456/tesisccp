@@ -65,10 +65,12 @@
 
     </div>
   <?php
+
     include "tema/logout.php";
   }
   ?>
   <?php include "tema/script.php" ?>
+
 </body>
 
 
