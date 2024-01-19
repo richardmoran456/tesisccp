@@ -17,68 +17,107 @@
   </div>
   <!-- /.content-header -->
 
+
   <!-- Main content -->
   <div class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-
-              <p class="card-text">
-                Some quick example text to build on the card title and make up the bulk of the card's
-                content.
-              </p>
-
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div>
-
-          <div class="card card-primary card-outline">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-
-              <p class="card-text">
-                Some quick example text to build on the card title and make up the bulk of the card's
-                content.
-              </p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div><!-- /.card -->
+        <div class="col-12 mb-4">
+          <a href="<?php echo SERVERURL . "ala-create" ?>" class="btn btn-default">Agregar Ala</a>
         </div>
-        <!-- /.col-md-6 -->
-        <div class="col-lg-6">
+      </div>
+      <div class="row">
+        <div class="col-12">
           <div class="card">
-            <div class="card-header">
-              <h5 class="m-0">Featured</h5>
-            </div>
-            <div class="card-body">
-              <h6 class="card-title">Special title treatment</h6>
+            <!-- <div class="card-header">
+                <h3 class="card-title">Responsive Hover Table</h3>
 
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+            <!-- /.card-header -->
+            <!-- INICIO::tabla de listamod modulos -->
+            <div class="card-body table-responsive">
+              <table class="table table-hover text-nowrap table-sm" id="example1">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Creado</th>
+                    <th>Acciones</th>
+                    <th></th>
+
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <?php
+                  require_once "./controladores/alaControlador.php";
+                  $ins_controlador = new alaControlador();
+                  $mainModel = new mainModel();
+
+                  $lista =  $ins_controlador->listar_ala_controlador();
+                  $tabla = "";
+                  $contador = 0;
+                  foreach ($lista as $fila) {
+                    $contador = $contador + 1;
+                    $tabla .= "<tr>";
+                    $tabla .= "<td>$contador</td>";
+                    $tabla .= "<td>$fila[nombre]</td>";
+                    setlocale(LC_TIME, "es_VE");
+                    $fecha_formateada = date("d M, Y H:i A", strtotime($fila['created_at']));
+                    $tabla .= "<td>$fecha_formateada</td>";
+                    $tabla .= '
+                    <td>
+                      <a href="' . SERVERURL . 'ala-update/' . $mainModel::encryption($fila['ala_id']) . '/">
+                        <i class="fas fa-sync-alt"></i>
+                      <a/>
+                    </td>';
+
+                    $tabla .= '
+                    <td>
+                      <form class="FormularioAjax" action="' . SERVERURL . 'ajax/alaAjax.php" method="POST" data-form="delete" autocomplete="off">
+                        <input type="hidden" name="ala_id_del" value="' . mainModel::encryption($fila['ala_id']) . '">
+
+                        <button type="submit" class="btn btn-warning">
+                          <i class="far fa-trash-alt"></i>
+                        </button>
+                      </form>
+                    </td>
+                    ';
+
+
+                    $tabla .= "</tr>";
+                  }
+
+                  echo $tabla;
+                  ?>
+
+
+
+
+                </tbody>
+              </table>
             </div>
+            <!-- FIN::tabla de listamod modulos -->
+            <!-- /.card-body -->
           </div>
-
-          <div class="card card-primary card-outline">
-            <div class="card-header">
-              <h5 class="m-0">Featured</h5>
-            </div>
-            <div class="card-body">
-              <h6 class="card-title">Special title treatment</h6>
-
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
+          <!-- /.card -->
         </div>
-        <!-- /.col-md-6 -->
+
       </div>
       <!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
+
   <!-- /.content -->
 </div>
