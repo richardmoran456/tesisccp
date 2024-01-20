@@ -13,7 +13,7 @@ class equipoModelo extends mainModel
         $createdAt = date('Y-m-d H:i:s');
         $sql->bindParam(":Nombre", $datos['modelo']);
         $sql->bindParam(":nserial", $datos['nserial']);
-        $sql->bindParam(":Estado", $datos['estado']);
+        $sql->bindParam(":Estado", $datos['estado_equipo']);
         $sql->bindParam(":Descripcion_equipo", $datos['descripcion_equipo']);
         $sql->bindParam(":Tipo_equipo", $datos['tipo_equipo']);
         $sql->bindParam(":Created_at", $createdAt);
