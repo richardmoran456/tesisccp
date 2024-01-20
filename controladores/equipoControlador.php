@@ -15,12 +15,13 @@ class equipoControlador extends equipoModelo
 		$modelo = mainModel::limpiar_cadena($_POST['modelo_equipo_reg']);
 		$nserial = mainModel::limpiar_cadena($_POST['nserial_equipo_reg']);
 		$estado = mainModel::limpiar_cadena($_POST['estado_equipo_reg']);
-		$tipo_equipo = mainModel::limpiar_cadena($_POST['tipo_equipo_reg']);
 		$descripcion_equipo = mainModel::limpiar_cadena($_POST['descripcion_equipo_reg']);
+		$tipo_equipo = mainModel::limpiar_cadena($_POST['tipo_equipo_reg']);
+
 
 
 		/*== comprobar campos vacios ==*/
-		if ($modelo == "" || $nserial == "" || $estado == "" || $tipo_equipo == "" || $descripcion_equipo == "") {
+		if ($modelo == "" || $nserial == "" || $estado == "" || $descripcion_equipo == "" || $tipo_equipo == "") {
 			$alerta = [
 				"Alerta" => "simple",
 				"Titulo" => "Ocurrió un error inesperado",

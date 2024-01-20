@@ -37,8 +37,8 @@
 
                             <form class="FormularioAjax" action="<?php echo SERVERURL; ?>ajax/equipoAjax.php" method="POST" data-form="save" autocomplete="off">
                                 <div class="form-group">
-                                    <label for="Modelo_equipo_reg">Modelo del Equipo</label>
-                                    <input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}" class="form-control" id="Modelo_equipo_reg" placeholder="Ingresa el modelo" maxlength="35" required="" name="modelo_equipo_reg">
+                                    <label for="modelo_equipo_reg">Modelo del Equipo</label>
+                                    <input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}" class="form-control" id="modelo_equipo_reg" placeholder="Ingresa el modelo" maxlength="35" required="" name="modelo_equipo_reg">
                                 </div>
                                 <div class="form-group">
                                     <label for="nserial_equipo_reg">Serial</label>

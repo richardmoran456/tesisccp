@@ -2,7 +2,7 @@
 $peticionAjax = true;
 require_once "../config/APP.php";
 
-var_dump($_POST);
+
 
 if (isset($_POST['modelo_equipo_reg']) ||  isset($_POST['equipo_id_del']) || isset($_POST['equipo_id_up'])) {
     /*--------- Instancia al controlador ---------*/
