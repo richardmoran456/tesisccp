@@ -38,7 +38,7 @@ if ($datos_modulo->rowCount() == 1) {
 
                     <div class="card card-primary card-outline">
                         <div class="card-body">
-                            <h5 class="card-title">Formulario de actualización</h5>
+                            <h5 class="card-title">Formulario de actualización de Equipos</h5>
 
                             <p class="card-text">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi inventore laborum magni modi perferendis officiis minima perspiciatis culpa pariatur similique commodi facere quis voluptates, consectetur ratione nihil? Asperiores, illum ex!
