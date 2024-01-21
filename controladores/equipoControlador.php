@@ -31,28 +31,6 @@ class equipoControlador extends equipoModelo
 			echo json_encode($alerta);
 			exit();
 		}
-		/*== Verificando integridad de los datos ==*/
-		if (mainModel::verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}", $modelo)) {
-			$alerta = [
-				"Alerta" => "simple",
-				"Titulo" => "Ocurrió un error inesperado",
-				"Texto" => "El MODELO no coincide con el formato solicitado",
-				"Tipo" => "error"
-			];
-			echo json_encode($alerta);
-			exit();
-		}
-
-		if (mainModel::verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,10}", $nserial)) {
-			$alerta = [
-				"Alerta" => "simple",
-				"Titulo" => "Ocurrió un error inesperado",
-				"Texto" => "El Numero del Serial no coincide con el formato solicitado",
-				"Tipo" => "error"
-			];
-			echo json_encode($alerta);
-			exit();
-		}
 
 
 		/*== Enviar datos a la BD ==*/

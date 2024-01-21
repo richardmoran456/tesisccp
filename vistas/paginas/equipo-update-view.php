@@ -51,11 +51,11 @@ if ($datos_modulo->rowCount() == 1) {
 
                                 <div class="form-group">
                                     <label for="modelo_equipo_up">Modelo del Equipo</label>
-                                    <input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}" class="form-control" id="modelo_equipo_up" placeholder="Ingresa el modelo" maxlength="35" required="" name="modelo_equipo_up">
+                                    <input type="text"  class="form-control" id="modelo_equipo_up" placeholder="Ingresa el modelo" maxlength="35" required="" name="modelo_equipo_up">
                                 </div>
                                 <div class="form-group">
                                     <label for="nserial_equipo_up">Serial</label>
-                                    <input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,10}" class="form-control" id="nserial_equipo_up" placeholder="Ingrese el serial del equipo" maxlength="10" required="" name="nserial_equipo_up">
+                                    <input type="text"  class="form-control" id="nserial_equipo_up" placeholder="Ingrese el serial del equipo" maxlength="10" required="" name="nserial_equipo_up">
                                 </div>
                                 <div class="form-group">
                                     <label for="estado_equipo_up">Estado</label>
