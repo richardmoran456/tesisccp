@@ -137,6 +137,8 @@ class equipoControlador extends equipoModelo
 			"id" => $id
 		];
 
+
+
 		if (equipoModelo::actualizar_equipo($datos_equipo_up)) {
 			$alerta = [
 				"Alerta" => "recargar",
