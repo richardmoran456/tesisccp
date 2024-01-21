@@ -21,11 +21,13 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
+
             <div class="row">
                 <div class="col-12 mb-4">
                     <a href="<?php echo SERVERURL . "solicitud-create" ?>" class="btn btn-default">Agregar Solicitud</a>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -113,18 +115,18 @@
 
                                         $tabla .= '
                                         <td class="project-actions text-right">
-                                            <a class="btn btn-primary btn-sm" href="#">
+                                            <a class="btn btn-primary btn-sm" href="' . SERVERURL . 'solicitud/' . $mainModel::encryption($fila['solicitud_id']) . '/">
                                                 <i class="fas fa-folder"></i> Ver
                                             </a>';
 
                                         // Mostrar el boton de cancelar solo si
-                                        echo $_SESSION['privilegio_spm'];
+
                                         // el departamento es mantenimiento o gerencia
                                         if ($_SESSION['privilegio_spm'] === 5 or  $_SESSION['privilegio_spm'] === 4) {
 
                                             // Si esta cerrado ocultar el boton
 
-                                            if ($fila['estatus_solicitud'] != 'cerrado') {
+                                            if ($fila['estatus_solicitud'] ===  'abierto') {
                                                 $tabla .= '
                                                 <form class="FormularioAjax" action="' . SERVERURL . 'ajax/solicitudAjax.php" method="POST" data-form="update" autocomplete="off">
                                                 <input type="hidden" name="solicitud_id_del" value="' . mainModel::encryption($fila['solicitud_id']) . '">

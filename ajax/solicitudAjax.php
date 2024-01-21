@@ -4,7 +4,7 @@ require_once "../config/APP.php";
 
 
 
-if (isset($_POST['titulo_solicitud_reg']) ||  isset($_POST['solicitud_id_del']) || isset($_POST['solicitud_id_up'])) {
+if (isset($_POST['titulo_solicitud_reg']) ||  isset($_POST['solicitud_id_del']) || isset($_POST['solicitud_id_up']) || isset($_POST['historial_reg'])) {
     /*--------- Instancia al controlador ---------*/
     require_once "../controladores/solicitudControlador.php";
     $instancia_controlador = new solicitudControlador();
@@ -28,6 +28,11 @@ if (isset($_POST['titulo_solicitud_reg']) ||  isset($_POST['solicitud_id_del']) 
     /*--------- Actualizar ---------*/
     if (isset($_POST['solicitud_id_up'])) {
         echo $instancia_controlador->cambio_status_solicitud_controlador();
+    }
+
+    /*--------- crear historial de la solicitud ---------*/
+    if (isset($_POST['historial_reg'])) {
+        echo $instancia_controlador->agregar_historial_controlador();
     }
 } else {
     echo "aqui";

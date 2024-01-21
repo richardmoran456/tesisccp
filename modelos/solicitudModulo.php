@@ -79,25 +79,41 @@ class solicitudModulo extends mainModel
         return $sql;
     }
 
-    /*--------- Eliminar ---------*/
-    protected static function eliminar_puesto($id)
-    {
-        $sql = mainModel::conectar()->prepare("DELETE FROM puestos WHERE puesto_id=:ID");
-        $sql->bindParam(":ID", $id);
-        $sql->execute();
 
+    /*--------- Datos ---------*/
+    protected static function datos_historial($id)
+    {
+        $sql = mainModel::conectar()->prepare("SELECT
+        h.historial_solicitud_id,
+        h.descripcion_solicitud,
+        h.fk_usuario,
+        h.fk_solicitud,
+        h.created_at,
+        u.nombre_completo AS creador,
+        d.nombre AS departamento
+    FROM
+        historial_solicitudes AS h
+    INNER JOIN usuarios AS u
+    ON
+        u.usuario_id = h.fk_usuario
+    INNER JOIN departamentos AS d
+    ON
+        u.fk_departamento = d.departamento_id
+    WHERE
+        h.fk_solicitud = :ID ORDER BY h.historial_solicitud_id DESC");
+        $sql->bindParam(":ID", $id);
+
+        $sql->execute();
         return $sql;
     }
 
-    /*--------- Datos ---------*/
-
-    protected static function datos_puesto($tipo, $id)
+    protected static function datos_solicitud($tipo, $id)
     {
         if ($tipo == "Unico") {
-            $sql = mainModel::conectar()->prepare("SELECT * FROM puestos WHERE puesto_id=:ID");
+            $sql = mainModel::conectar()->prepare("SELECT s.estatus_solicitud, s.created_at, s.solicitud_id, s.titulo_solicitud, s.fk_creado, s.fk_departamento_origen, u.nombre_completo AS creador, d.nombre AS nombre_departamento FROM solicitudes AS s INNER JOIN departamentos AS d ON s.fk_departamento_origen = d.departamento_id INNER JOIN usuarios AS u ON u.usuario_id = s.fk_creado WHERE solicitud_id=:ID");
             $sql->bindParam(":ID", $id);
         } elseif ($tipo == "Conteo") {
-            $sql = mainModel::conectar()->prepare("SELECT puesto_id FROM puestos WHERE puesto_id!='1'");
+            $sql = mainModel::conectar()->prepare("SELECT solicitud_id FROM solicitudes WHERE solicitud_id!='1'");
         }
 
         $sql->execute();
@@ -120,38 +136,6 @@ class solicitudModulo extends mainModel
 
         return $resultados; // Devolvemos el array de resultados
     }
-
-    protected static function listar_puesto_combo()
-    {
-
-        $sql = mainModel::conectar()->prepare("SELECT p.puesto_id, p.nombre, d.abreviatura, d.nombre AS departamento FROM puestos AS p INNER JOIN departamentos AS d ON d.departamento_id = p.fk_departamento");
-
-        $sql->execute();
-
-        // Fetcheamos los resultados como un array asociativo
-        $resultados = $sql->fetchAll(PDO::FETCH_ASSOC);
-
-        return $resultados; // Devolvemos el array de resultados
-    }
-
-
-
-    /*--------- Actualizar ---------*/
-    protected static function actualizar_puesto($datos)
-    {
-
-        $sql = mainModel::conectar()->prepare("UPDATE puestos SET nombre=:Nombre,fk_departamento=:FKD WHERE puesto_id=:ID");
-
-
-        $sql->bindParam(":Nombre", $datos['nombre']);
-        $sql->bindParam(":FKD", $datos['fk_departamento']);
-        $sql->bindParam(":ID", $datos['id']);
-
-        $sql->execute();
-
-        return $sql;
-    }
-
 
     /*--------- Cancelar solicitud ---------*/
     protected static function cancelar_solicitud($datos)

@@ -50,7 +50,7 @@ class solicitudControlador extends solicitudModulo
 
 
 		$data_historial = [
-			'descripcion_solicitud' => $_SESSION['nombre_spm'] . ' ha creado la solicitud',
+			'descripcion_solicitud' =>  'Se ha creado la solicitud',
 			'fk_usuario' => $_SESSION['id_spm'],
 			'fk_solicitud' => $solicitud_id
 		];
@@ -81,6 +81,52 @@ class solicitudControlador extends solicitudModulo
 	}
 	/* Fin controlador */
 
+	public function agregar_historial_controlador()
+	{
+		$historial_reg = mainModel::limpiar_cadena($_POST['historial_reg']);
+		$solicitud_id = mainModel::limpiar_cadena($_POST['fk_solicitud']);
+
+
+		if ($historial_reg == "") {
+			$alerta = [
+				"Alerta" => "simple",
+				"Titulo" => "Ocurrió un error inesperado",
+				"Texto" => "No has enviado nada",
+				"Tipo" => "error"
+			];
+			echo json_encode($alerta);
+			exit();
+		}
+
+		session_start(['name' => 'SPM']);
+
+		$data_historial = [
+			'descripcion_solicitud' => $historial_reg,
+			'fk_usuario' => $_SESSION['id_spm'],
+			'fk_solicitud' => $solicitud_id
+		];
+
+		$registrar_historial = solicitudModulo::agregar_historial_solicitud($data_historial);
+
+		if ($registrar_historial->rowCount() == 1) {
+			$alerta = [
+				"Alerta" => "recargar",
+				"Titulo" => "Mensaje registrado",
+				"Texto" => "Los datos han sido registrados con exito",
+				"Tipo" => "success"
+			];
+		} else {
+			$alerta = [
+				"Alerta" => "simple",
+				"Titulo" => "Ocurrió un error inesperado",
+				"Texto" => "No hemos podido registrar el mensaje",
+				"Tipo" => "error"
+			];
+		}
+
+		echo json_encode($alerta);
+	}
+
 	/*--------- Controlador listar modelo ---------*/
 	public function listar_solicitud_controlador()
 	{
@@ -88,92 +134,21 @@ class solicitudControlador extends solicitudModulo
 		return $datos;
 	}
 
-	/*--------- Controlador eliminar módulo ---------*/
-	public function eliminar_puesto_controlador()
-	{
-		/** Recibiendo ID de la vista */
-		$id = mainModel::decryption($_POST['puesto_id_del']);
-		$id = mainModel::limpiar_cadena($id);
-
-		/** Comprobar si tiene los permisos */
-
-
-
-		/** Eliminar */
-
-		$eliminar_registro = puestoModelo::eliminar_puesto($id);
-
-		if ($eliminar_registro->rowCount() == 1) {
-			$alerta = [
-				"Alerta" => "recargar",
-				"Titulo" => "puesto eliminado",
-				"Texto" => "El puesto ha sido eliminado del sistema exitosamente",
-				"Tipo" => "success"
-			];
-		} else {
-			$alerta = [
-				"Alerta" => "simple",
-				"Titulo" => "Ocurrió un error inesperado",
-				"Texto" => "No hemos podido eliminar el puesto, por favor intente nuevamente",
-				"Tipo" => "error"
-			];
-		}
-		echo json_encode($alerta);
-	}
-
 	/*--------- Controlador datos  ---------*/
-	public function datos_puesto_controlador($tipo, $id)
+	public function datos_solicitud_controlador($tipo, $id)
 	{
 		$tipo = mainModel::limpiar_cadena($tipo);
 		$id = mainModel::decryption($id);
 		$id = mainModel::limpiar_cadena($id);
 
-		return puestoModelo::datos_puesto($tipo, $id);
+		return solicitudModulo::datos_solicitud($tipo, $id);
 	}
 
-
-	/*--------- Controlador carga combo  ---------*/
-	public function datos_puesto_combo_controlador()
+	public function historial_solicitud_controlador($id)
 	{
-		$data = puestoModelo::listar_puesto_combo();
+		$data = solicitudModulo::datos_historial($id);
 		return $data;
 	}
-
-
-
-	/*--------- Controlador actualizar  ---------*/
-	public function actualizar_puesto_controlador()
-	{
-		$id = mainModel::decryption($_POST['puesto_id_up']);
-		$id = mainModel::limpiar_cadena($id);
-		$nombre = mainModel::limpiar_cadena($_POST['nombre_puesto_up']);
-		$fk_departamento = mainModel::limpiar_cadena($_POST['fk_departamento_up']);
-
-		$datos_puesto_up = [
-			"nombre" => $nombre,
-			"fk_departamento" => $fk_departamento,
-			"id" => $id
-		];
-
-		if (puestoModelo::actualizar_puesto($datos_puesto_up)) {
-			$alerta = [
-				"Alerta" => "recargar",
-				"Titulo" => "Datos actualizados",
-				"Texto" => "Los datos han sido actualizados con exito",
-				"Tipo" => "success"
-			];
-		} else {
-			$alerta = [
-				"Alerta" => "simple",
-				"Titulo" => "Ocurrió un error inesperado",
-				"Texto" => "No hemos podido actualizar los datos, por favor intente nuevamente",
-				"Tipo" => "error"
-			];
-		}
-		echo json_encode($alerta);
-	}
-
-
 
 	/*--------- Controlador cambiarStatus módulo ---------*/
 	public function cambio_status_solicitud_controlador()
