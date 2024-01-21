@@ -29,7 +29,7 @@ class equipoModelo extends mainModel
         $sql->bindParam(":Estado", $datos['estado_equipo']);
         $sql->bindParam(":Descripcion_equipo", $datos['descripcion_equipo']);
         $sql->bindParam(":Tipo_equipo", $datos['tipo_equipo']);
-        $sql->bindParam(":Created_at", $createdAt);
+        $sql->bindParam(":Created_at", $createdAt); 
         $sql->execute();
 
         return $sql;

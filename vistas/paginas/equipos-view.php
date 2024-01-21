@@ -78,8 +78,8 @@
                     $tabla .= "<td>$fila[modelo]</td>";
                     $tabla .= "<td>$fila[nserial]</td>";
                     $tabla .= "<td>$fila[estado]</td>";
-                    $tabla .= "<td>$fila[descripcion]</td>";
-                    $tabla .= "<td>$fila[tipo]</td>";
+                    $tabla .= "<td>$fila[descripcion_equipo]</td>";
+                    $tabla .= "<td>$fila[tipo_equipo]</td>";
                     setlocale(LC_TIME, "es_VE");
                     $fecha_formateada = date("d M, Y H:i A", strtotime($fila['created_at']));
                     $tabla .= "<td>$fecha_formateada</td>";
