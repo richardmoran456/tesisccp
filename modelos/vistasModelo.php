@@ -7,7 +7,9 @@ class vistasModelo
     protected static function obtener_vistas_modelo($vistas)
     {
 
-        $listaBlanca = ["home", "usuarios", "usuario-create", "usuario-update", "solicitudes", "solicitud-create", "solicitud", "solicitud-update", "tareas", "tarea", "tarea-create", "huespedes", "pisos", "habitaciones", "notificaciones", "perfil", "departamentos", "departamento-create", "departamento-update", "puestos", "puesto-create", "puesto-update", "eventos", "empleados", "empleado-create", "empleado-update", "alas", "ala-create", "ala-update", "equipos","equipo-create", "equipo-update", "modulos", "modulo-update"];
+
+        $listaBlanca = ["home", "usuarios", "usuario-create", "usuario-update", "solicitudes", "solicitud-create", "solicitud", "solicitud-update", "tareas", "tarea", "tarea-create", "huespedes","huesped-create","huesped-update", "pisos", "habitaciones", "notificaciones", "perfil", "departamentos", "departamento-create", "departamento-update", "puestos", "puesto-create", "puesto-update", "eventos", "empleados", "empleado-create", "empleado-update", "alas", "ala-create", "ala-update", "equipos","equipo-create", "equipo-update", "modulos", "modulo-update"];
+
 
         if (in_array($vistas, $listaBlanca)) {
             if (is_file("./vistas/paginas/" . $vistas . "-view.php")) {
