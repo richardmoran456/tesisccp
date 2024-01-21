@@ -68,7 +68,22 @@
           </ul>
         </li>
 
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <p>
+              Gestión de Recepcion
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="<?php echo SERVERURL . "huespedes" ?>" class="nav-link">
+                <p>Huespedes</p>
+              </a>
+            </li>
 
+          </ul>
+        </li>
 
 
 
