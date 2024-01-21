@@ -56,6 +56,7 @@
                     <th>Estado</th>
                     <th>Descripcion</th>
                     <th>Tipo</th>
+                    <th>Fecha</th>
                     <th>Acciones</th>
                     <th></th>
 
