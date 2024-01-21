@@ -123,10 +123,10 @@ class equipoControlador extends equipoModelo
 		$id = mainModel::decryption($_POST['equipo_id_up']);
 		$id = mainModel::limpiar_cadena($id);
 		$modelo = mainModel::limpiar_cadena($_POST['modelo_equipo_up']);
-		$nserial = mainModel::limpiar_cadena($_POST['nserial_equipo_reg']);
-		$estado = mainModel::limpiar_cadena($_POST['estado_equipo_reg']);
-		$tipo_equipo = mainModel::limpiar_cadena($_POST['tipo_equipo_reg']);
-		$descripcion_equipo = mainModel::limpiar_cadena($_POST['descripcion_equipo_reg']);
+		$nserial = mainModel::limpiar_cadena($_POST['nserial_equipo_up']);
+		$estado = mainModel::limpiar_cadena($_POST['estado_equipo_up']);
+		$tipo_equipo = mainModel::limpiar_cadena($_POST['tipo_equipo_up']);
+		$descripcion_equipo = mainModel::limpiar_cadena($_POST['descripcion_equipo_up']);
 
 		$datos_equipo_up = [
 			"modelo" => $modelo,
