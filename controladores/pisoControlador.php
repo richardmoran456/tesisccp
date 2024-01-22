@@ -4,16 +4,19 @@ if ($peticionAjax) {
 	require_once "../modelos/pisoModelo.php";
 } else {
 	require_once "./modelos/pisoModelo.php";
-}
+
 
 class pisoControlador extends pisoModelo
 {
+	
+	
 	/*--------- Controlador agregar modelo ---------*/
 	public function agregar_piso_controlador()
 	{
+        var_dump($_POST);
 
 		$nombre = mainModel::limpiar_cadena($_POST['nombre_piso_reg']);
-		$fk_ala = mainModel::limpiar_cadena($_POST['fk_departamento_reg']);
+		$fk_ala = mainModel::limpiar_cadena($_POST['fk_ala_reg']);
 
 		/*== comprobar campos vacios ==*/
 		if ($nombre == "" || $fk_ala == "") {
@@ -54,7 +57,7 @@ class pisoControlador extends pisoModelo
 		if ($agregar_piso->rowCount() == 1) {
 			$alerta = [
 				"Alerta" => "limpiar",
-				"Titulo" => "Puesto registrado",
+				"Titulo" => "Piso registrado",
 				"Texto" => "Los datos del piso han sido registrados con exito",
 				"Tipo" => "success"
 			];
@@ -117,7 +120,7 @@ class pisoControlador extends pisoModelo
 		$id = mainModel::decryption($id);
 		$id = mainModel::limpiar_cadena($id);
 
-		return puestoModelo::datos_piso($tipo, $id);
+		return pisoModelo::datos_piso($tipo, $id);
 	}
 
 
@@ -161,4 +164,6 @@ class pisoControlador extends pisoModelo
 		}
 		echo json_encode($alerta);
 	}
+}
+
 }

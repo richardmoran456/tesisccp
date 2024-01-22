@@ -22,7 +22,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 mb-4">
-          <a href="<?php echo SERVERURL . "puesto-create" ?>" class="btn btn-default">Agregar piso</a>
+          <a href="<?php echo SERVERURL . "piso-create" ?>" class="btn btn-default">Agregar piso</a>
         </div>
       </div>
       <div class="row">
