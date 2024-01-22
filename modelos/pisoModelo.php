@@ -31,7 +31,7 @@ class pisoModelo extends mainModel
 
     /*--------- Datos ---------*/
 
-    protected static function datos_puesto($tipo, $id)
+    protected static function datos_piso($tipo, $id)
     {
         if ($tipo == "Unico") {
             $sql = mainModel::conectar()->prepare("SELECT * FROM pisos WHERE piso_id=:ID");
