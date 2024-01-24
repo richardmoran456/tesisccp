@@ -1,7 +1,7 @@
 
 <?php
 
-require_once "mainModel.php"; 
+require_once "mainModel.php";
 
 class pisoModelo extends mainModel
 {
@@ -49,7 +49,7 @@ class pisoModelo extends mainModel
     protected static function listar_piso()
     {
 
-        $sql = mainModel::conectar()->prepare("SELECT pisos.piso_id,pisos.nombre,pisos.created_at,alas.ala_id,alas.nombre as ala
+        $sql = mainModel::conectar()->prepare("SELECT pisos.piso_id,pisos.nombre as piso,pisos.created_at,alas.ala_id,alas.nombre as ala
          FROM pisos INNER JOIN alas ON pisos.fk_ala = alas.ala_id ORDER BY piso_id ASC");
         $sql->execute();
 

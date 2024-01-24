@@ -1,19 +1,18 @@
 <?php
 
-if ($peticionAjax) { 
+if ($peticionAjax) {
 	require_once "../modelos/pisoModelo.php";
 } else {
 	require_once "./modelos/pisoModelo.php";
-
+}
 
 class pisoControlador extends pisoModelo
 {
-	
-	
+
+
 	/*--------- Controlador agregar modelo ---------*/
 	public function agregar_piso_controlador()
 	{
-        var_dump($_POST);
 
 		$nombre = mainModel::limpiar_cadena($_POST['nombre_piso_reg']);
 		$fk_ala = mainModel::limpiar_cadena($_POST['fk_ala_reg']);
@@ -29,17 +28,7 @@ class pisoControlador extends pisoModelo
 			echo json_encode($alerta);
 			exit();
 		}
-		/*== Verificando integridad de los datos ==*/
-		if (mainModel::verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}", $nombre)) {
-			$alerta = [
-				"Alerta" => "simple",
-				"Titulo" => "Ocurrió un error inesperado",
-				"Texto" => "El NOMBRE no coincide con el formato solicitado",
-				"Tipo" => "error"
-			];
-			echo json_encode($alerta);
-			exit();
-		}
+
 
 
 
@@ -164,6 +153,4 @@ class pisoControlador extends pisoModelo
 		}
 		echo json_encode($alerta);
 	}
-}
-
 }

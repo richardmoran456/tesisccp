@@ -1,6 +1,6 @@
 <?php
 $peticionAjax = true;
-require_once "../config/APP.php"; 
+require_once "../config/APP.php";
 
 
 
