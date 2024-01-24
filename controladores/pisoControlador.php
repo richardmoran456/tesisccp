@@ -141,7 +141,7 @@ class pisoControlador extends pisoModelo
 		$nombre = mainModel::limpiar_cadena($_POST['nombre_piso_up']);
 		$fk_ala = mainModel::limpiar_cadena($_POST['fk_ala_up']);
 
-		$datos_puesto_up = [
+		$datos_piso_up = [
 			"nombre" => $nombre,
 			"fk_ala" => $fk_ala,
 			"id" => $id
