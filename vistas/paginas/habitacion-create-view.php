@@ -38,27 +38,20 @@
 
 
 
-                            <form class="FormularioAjax" action="<?php echo SERVERURL; ?>ajax/habitacionAjax.php"
-                                method="POST" data-form="save" autocomplete="off">
+                            <form class="FormularioAjax" action="<?php echo SERVERURL; ?>ajax/habitacionAjax.php" method="POST" data-form="save" autocomplete="off">
                                 <div class="form-group">
                                     <label for="habitacion_reg">habitacion habitacion</label>
-                                    <input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}" class="form-control"
-                                        id="habitacion_reg" placeholder="Ingresa el nombre" maxlength="35" required=""
-                                        name="habitacion_reg">
+                                    <input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}" class="form-control" id="habitacion_reg" placeholder="Ingresa el nombre" maxlength="35" required="" name="habitacion_reg">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="identificador_habitacion_reg">identificador</label>
-                                    <input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,10}" class="form-control"
-                                        id="identificador_habitacion_reg" placeholder="Ingresa identificacion"
-                                        maxlength="10" required="" name="identificador_habitacion_reg">
+                                    <input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,10}" class="form-control" id="identificador_habitacion_reg" placeholder="Ingresa identificacion" maxlength="10" required="" name="identificador_habitacion_reg">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="tipo_habitacion_reg">Tipo de habitacion</label>
-                                    <input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,10}" class="form-control"
-                                        id="tipo_habitacion_reg" placeholder="Ingresa el tipo de habitacion"
-                                        maxlength="10" required="" name="tipo_habitacion_reg">
+                                    <input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,10}" class="form-control" id="tipo_habitacion_reg" placeholder="Ingresa el tipo de habitacion" maxlength="10" required="" name="tipo_habitacion_reg">
                                 </div>
 
                                 <div class="form-group">
@@ -67,10 +60,19 @@
                                         <?php
                                         require_once "./controladores/alaControlador.php";
                                         $controlador = new alaControlador();
-                                        $alas = $controlador->get_alas();
+                                        $alas = $controlador->listar_ala_controlador();
+                                        $con = 0;
                                         foreach ($alas as $ala) {
-                                            echo "<option value='{$ala['id']}'>{$ala['ubicacion']}</option>";
+                                            $con = $con + 1;
+                                            if ($con > 0) {
+
+                                                echo "<option value='{$ala['id']}'>{$ala['nombre']}</option>";
+                                            } else {
+                                                echo $opc .= '<option value="">Ala no disponible</option>';
+                                            }
                                         }
+
+                                        // Tome el condicional del ejemplo para mostrar algo en caso de que no exista un ala registrado
                                         ?>
                                     </select>
                                 </div>

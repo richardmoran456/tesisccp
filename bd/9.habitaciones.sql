@@ -10,11 +10,12 @@
 -- La tabla utiliza el motor de almacenamiento InnoDB y la codificación de caracteres utf8mb4 COLLATE utf8mb4_spanish_ci.
 CREATE TABLE
   IF NOT EXISTS habitaciones (
-    habitacion_id int unsigned NOT NULL AUTO_INCREMENT,
+    habitacion_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     identificador_habitacion VARCHAR(140) NOT NULL,
-    created_at datetime NOT NULL,
-    modified_at timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    created_at DATETIME NOT NULL,
+    modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     tipo_habitacion VARCHAR(140) NOT NULL,
+    fk_piso INT UNSIGNED NOT NULL,
     PRIMARY KEY (habitacion_id),
     FOREIGN KEY (fk_piso) REFERENCES pisos (piso_id)
   ) ENGINE = InnoDB DEFAULT CHARSET utf8mb4 COLLATE = utf8mb4_spanish_ci;
