@@ -49,7 +49,7 @@
         <li class="nav-item">
           <a href="#" class="nav-link">
             <p>
-              Gestión de usuarios
+              Gestión de Gerencia
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
@@ -82,8 +82,34 @@
               </a>
             </li>
 
+            <li class="nav-item">
+              <a href="<?php echo SERVERURL . "alas" ?>" class="nav-link">
+                <p>Alas</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo SERVERURL . "pisos" ?>" class="nav-link">
+                <p>Pisos</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo SERVERURL . "habitaciones" ?>" class="nav-link">
+                <p>Habitaciones</p>
+              </a>
+            </li>
+
+
+            <li class="nav-item">
+              <a href="<?php echo SERVERURL . "tareas" ?>" class="nav-link">
+                <p>Tareas</p>
+              </a>
+            </li>
+
           </ul>
         </li>
+
+            
+
 
 
 
@@ -121,7 +147,7 @@
         <li class="nav-item">
           <a href="#" class="nav-link">
             <p>
-              Gestión de solicitudes
+              Gestión de Almacen
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
@@ -137,42 +163,11 @@
         <li class="nav-item">
           <a href="#" class="nav-link">
             <p>
-              Gestión de tareas
+              Gestión de Sistemas Y Mantenimiento
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
           <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="<?php echo SERVERURL . "tareas" ?>" class="nav-link">
-                <p>Tareas</p>
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <p>
-              Instalaciones
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="<?php echo SERVERURL . "alas" ?>" class="nav-link">
-                <p>Alas</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo SERVERURL . "pisos" ?>" class="nav-link">
-                <p>Pisos</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo SERVERURL . "habitaciones" ?>" class="nav-link">
-                <p>Habitaciones</p>
-              </a>
-            </li>
             <li class="nav-item">
               <a href="<?php echo SERVERURL . "equipos" ?>" class="nav-link">
                 <p>Equipos</p>
