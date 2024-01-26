@@ -62,11 +62,13 @@
                                         $controlador = new alaControlador();
                                         $alas = $controlador->listar_ala_controlador();
                                         $con = 0;
+                                        echo $opc .= '<option value="">Seleccione</option>';
+                                        // aqui tenias un error de escritura solo colocaste id y nosotros usamos ala_id
                                         foreach ($alas as $ala) {
                                             $con = $con + 1;
                                             if ($con > 0) {
 
-                                                echo "<option value='{$ala['id']}'>{$ala['nombre']}</option>";
+                                                echo "<option value='{$ala['ala_id']}'>{$ala['nombre']}</option>";
                                             } else {
                                                 echo $opc .= '<option value="">Ala no disponible</option>';
                                             }

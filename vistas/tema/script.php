@@ -1,30 +1,6 @@
 <!-- jQuery -->
 <script src="<?php echo SERVERURL; ?>vistas/assets/plugins/jquery/jquery.min.js"></script>
 <!-- Script para el combobox -->
-<script>
-document.getElementById('fk_ala_reg').addEventListener('change', function() {
-  var ala_id = this.value;
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'getPisos.php?ala_id=' + ala_id, true);
-  xhr.onload = function() {
-    if (this.status == 200) {
-      document.getElementById('fk_piso_reg').innerHTML = this.responseText;
-    }
-  };
-  xhr.send();
-});
-</script>
-
-<?php
-if (isset($_GET['ala_id'])) {
-  require_once "./controladores/alaControlador.php";
-  $controlador = new alaControlador();
-  $pisos = $controlador->getPisos($_GET['ala_id']);
-  foreach ($pisos as $piso) {
-    echo "<option value='{$piso['id']}'>{$piso['ubicacion']}</option>";
-  }
-}
-?>
 
 <!-- Bootstrap 4 -->
 <script src="<?php echo SERVERURL; ?>vistas/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -57,22 +33,50 @@ if (isset($_GET['ala_id'])) {
 <script src="<?php echo SERVERURL; ?>vistas/assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
 <script>
-    $(function() {
-        $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            "responsive": true,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
+  $(function() {
+    $("#example1").DataTable({
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      "responsive": true,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
     });
+  });
 </script>
+
+
+
+<!-- Combobox -->
+<script>
+  $(document).ready(function() {
+    $('#fk_ala_reg').on('change', function() {
+
+      // esto signinfica que va a detectar el cambio que ocurra en el atributo del DOM que tenga como ID fk_ala_reg
+      var countryID = $(this).val();
+      console.log(countryID);
+      if (countryID) {
+        $.ajax({
+          type: 'POST', // Se envia por metodo POST igual que el formulario
+          url: '<?php echo SERVERURL; ?>ajax/habitacionAjax.php', // Se envia a nuestro gestor
+          data: 'ala_id=' + countryID, // Enviamos el id que sufrio el cambio o fue seleccionado en el select
+          success: function(html) {
+            $('#fk_piso_reg').html(html); // cuando recibimos los datos del controlador lo asignamos a la data del piso
+          }
+        });
+      } else {
+        $('#fk_piso_reg').html('<option value="">Selecciona la ala primero</option>');
+      }
+    });
+
+  });
+</script>
+<!-- Combobox -->
