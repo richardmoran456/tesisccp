@@ -31,28 +31,6 @@ class equipoControlador extends equipoModelo
 			echo json_encode($alerta);
 			exit();
 		}
-		/*== Verificando integridad de los datos ==*/
-		if (mainModel::verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}", $modelo)) {
-			$alerta = [
-				"Alerta" => "simple",
-				"Titulo" => "Ocurrió un error inesperado",
-				"Texto" => "El MODELO no coincide con el formato solicitado",
-				"Tipo" => "error"
-			];
-			echo json_encode($alerta);
-			exit();
-		}
-
-		if (mainModel::verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,10}", $nserial)) {
-			$alerta = [
-				"Alerta" => "simple",
-				"Titulo" => "Ocurrió un error inesperado",
-				"Texto" => "El Numero del Serial no coincide con el formato solicitado",
-				"Tipo" => "error"
-			];
-			echo json_encode($alerta);
-			exit();
-		}
 
 
 		/*== Enviar datos a la BD ==*/
@@ -145,10 +123,10 @@ class equipoControlador extends equipoModelo
 		$id = mainModel::decryption($_POST['equipo_id_up']);
 		$id = mainModel::limpiar_cadena($id);
 		$modelo = mainModel::limpiar_cadena($_POST['modelo_equipo_up']);
-		$nserial = mainModel::limpiar_cadena($_POST['nserial_equipo_reg']);
-		$estado = mainModel::limpiar_cadena($_POST['estado_equipo_reg']);
-		$tipo_equipo = mainModel::limpiar_cadena($_POST['tipo_equipo_reg']);
-		$descripcion_equipo = mainModel::limpiar_cadena($_POST['descripcion_equipo_reg']);
+		$nserial = mainModel::limpiar_cadena($_POST['nserial_equipo_up']);
+		$estado = mainModel::limpiar_cadena($_POST['estado_equipo_up']);
+		$tipo_equipo = mainModel::limpiar_cadena($_POST['tipo_equipo_up']);
+		$descripcion_equipo = mainModel::limpiar_cadena($_POST['descripcion_equipo_up']);
 
 		$datos_equipo_up = [
 			"modelo" => $modelo,
@@ -158,6 +136,8 @@ class equipoControlador extends equipoModelo
 			"descripcion_equipo" => $descripcion_equipo,
 			"id" => $id
 		];
+
+
 
 		if (equipoModelo::actualizar_equipo($datos_equipo_up)) {
 			$alerta = [

@@ -51,23 +51,23 @@ if ($datos_modulo->rowCount() == 1) {
 
                                 <div class="form-group">
                                     <label for="modelo_equipo_up">Modelo del Equipo</label>
-                                    <input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}" class="form-control" id="modelo_equipo_up" placeholder="Ingresa el modelo" maxlength="35" required="" name="modelo_equipo_up">
+                                    <input type="text"  class="form-control" id="modelo_equipo_up" placeholder="Ingresa el modelo" maxlength="35" required="" name="modelo_equipo_up" value="<?php echo $campos['modelo']; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="nserial_equipo_up">Serial</label>
-                                    <input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,10}" class="form-control" id="nserial_equipo_up" placeholder="Ingrese el serial del equipo" maxlength="10" required="" name="nserial_equipo_up">
+                                    <input type="text"  class="form-control" id="nserial_equipo_up" placeholder="Ingrese el serial del equipo" maxlength="10" required="" name="nserial_equipo_up" value="<?php echo $campos['nserial']; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="estado_equipo_up">Estado</label>
-                                    <input type="text" class="form-control" id="estado_equipo_up" placeholder="Estadooooo" maxlength="35" required="" name="estado_equipo_up">
+                                    <input type="text" class="form-control" id="estado_equipo_up" placeholder="Estado del equipo" maxlength="35" required="" name="estado_equipo_up" value="<?php echo $campos['estado']; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="descripcion_equipo_up">Descripcion</label>
-                                    <input type="text" class="form-control" id="descripcion_equipo_up" placeholder="Ingrese una breve descripcion del equipo" maxlength="35" required="" name="descripcion_equipo_up">
+                                    <input type="text" class="form-control" id="descripcion_equipo_up" placeholder="Ingrese una breve descripcion del equipo" maxlength="35" required="" name="descripcion_equipo_up" value="<?php echo $campos['modelo']; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="tipo_equipo_up">Tipo</label>
-                                    <input type="text" class="form-control" id="tipo_equipo_up" placeholder="Indique el tipo de equipo" maxlength="35" required="" name="tipo_equipo_up">
+                                    <input type="text" class="form-control" id="tipo_equipo_up" placeholder="Indique el tipo de equipo" maxlength="35" required="" name="tipo_equipo_up" value="<?php echo $campos['tipo_equipo']; ?>">
                                 </div>
 
 

@@ -16,13 +16,14 @@
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content-header -->
-
-
   <!-- Main content -->
-  <div class="content">
+  <div class="content"> 
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 mb-4">
+
+          <!-- Boton Solo para el departamento de sistemas y mantenimiento -->
+
           <a href="<?php echo SERVERURL . "equipo-create" ?>" class="btn btn-default">Agregar equipo</a>
         </div>
       </div>
@@ -56,6 +57,7 @@
                     <th>Estado</th>
                     <th>Descripcion</th>
                     <th>Tipo</th>
+                    <th>Fecha</th>
                     <th>Acciones</th>
                     <th></th>
 

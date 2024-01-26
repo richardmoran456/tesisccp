@@ -60,7 +60,6 @@
                   </tr>
                 </thead>
                 <tbody>
-
                   <?php
                   require_once "./controladores/usuarioControlador.php";
                   $ins_controlador = new usuarioControlador();

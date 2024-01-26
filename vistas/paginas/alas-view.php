@@ -17,12 +17,16 @@
   </div>
   <!-- /.content-header -->
 
+<!-- Esta vista es para el departamento de Gerencia y Recepcion -->
 
   <!-- Main content -->
   <div class="content">
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 mb-4">
+
+          <!-- Boton solo estara para el departamento de Recepcion -->
+
           <a href="<?php echo SERVERURL . "ala-create" ?>" class="btn btn-default">Agregar Ala</a>
         </div>
       </div>
