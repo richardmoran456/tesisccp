@@ -17,6 +17,7 @@
   </div>
   <!-- /.content-header -->
 
+      <!--Vista para el departamento de Recepcion, sistemas y mantenimiento-->
 
   <!-- Main content -->
   <div class="content">
@@ -25,6 +26,9 @@
       <div class="row">
         <div class="col-12 mb-4">
           <?php if ($_SESSION['privilegio_spm'] === 2 or  $_SESSION['privilegio_spm'] === 4) { ?>
+
+                  <!-- Boton solo estara para el departamento de Recepcion -->
+
             <a href="<?php echo SERVERURL . "tarea-create" ?>" class="btn btn-default">Agregar tarea</a>
           <?php } ?>
         </div>
@@ -53,6 +57,9 @@
             <div class="card-body table-responsive">
               <table class="table table-striped  text-nowrap table-sm" id="example1">
                 <thead>
+                  <!-- los registros los ve cada departamento pero de manera indidual, 
+                                          es decir las solicitudes entre sistemas y Recepcion solo las ve sistemas, 
+                                          pero Recepcion puede ver todas que tenga con otros departamentos en una sola feed -->
                   <tr>
                     <th>#</th>
                     <th>Tarea</th>
