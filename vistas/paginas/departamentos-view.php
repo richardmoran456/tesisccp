@@ -17,12 +17,16 @@
   </div>
   <!-- /.content-header -->
 
+      <!-- VISTA solo estara para el departamento de RRHH y Gerencia -->
 
   <!-- Main content -->
   <div class="content">
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 mb-4">
+
+              <!-- Boton solo estara para el departamento de RRHH -->
+
           <a href="<?php echo SERVERURL . "departamento-create" ?>" class="btn btn-default">Agregar departamento</a>
         </div>
       </div>

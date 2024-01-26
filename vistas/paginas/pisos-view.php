@@ -17,11 +17,16 @@
     </div>
     <!-- /.content-header -->
 
+          <!-- Vista para el departamento de Recepcion y Gerencia -->
+
     <!-- Main content -->
     <div class="content">
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 mb-4">
+
+              <!-- Boton solo estara para el departamento de Recepcion -->
+
           <a href="<?php echo SERVERURL . "piso-create" ?>" class="btn btn-default">Agregar piso</a>
         </div>
       </div>
@@ -53,6 +58,7 @@
                     <th>Piso</th>
                     <th>ala</th>
                     <th>Creado</th>
+                          <!-- Acciones solo estara para el departamento de Recepcion -->
                     <th>Acciones</th>
                     <th></th>
 

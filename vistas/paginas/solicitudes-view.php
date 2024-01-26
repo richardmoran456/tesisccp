@@ -17,6 +17,7 @@
     </div>
     <!-- /.content-header -->
 
+      <!-- Vista para el departamento de Almacen, Sistemas y Mantenimiento -->
 
     <!-- Main content -->
     <div class="content">
@@ -24,6 +25,9 @@
 
             <div class="row">
                 <div class="col-12 mb-4">
+
+                      <!-- Boton de Solicitudes las crean los departamentos de Sistemas y Mantenimiento -->
+
                     <a href="<?php echo SERVERURL . "solicitud-create" ?>" class="btn btn-default">Agregar Solicitud</a>
                 </div>
             </div>
@@ -51,6 +55,9 @@
                         <div class="card-body table-responsive">
                             <table class="table table-striped  text-nowrap table-sm" id="example1">
                                 <thead>
+                                          <!-- los registros los ve cada departamento pero de manera indidual, 
+                                          es decir las solicitudes entre sistemas y almacen solo las ve sistemas, 
+                                          pero almacen puede ver todas que tenga con otros departamentos en una sola feed -->
                                     <tr>
                                         <th>#</th>
                                         <th>Solicitud</th>
