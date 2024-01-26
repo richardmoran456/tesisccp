@@ -108,6 +108,22 @@ class alaControlador extends alaModelo
 		}
 		echo json_encode($alerta);
 	}
+	/*--------- Combobox  ---------*/
+	public function get_alas() {
+		require_once "./modelos/alaModelo.php";
+		$modelo = new alaModelo();
+		$alas = $modelo->get_alas();
+		return $alas;
+	  }
+
+	  public function getPisos($id) {
+		require_once "./modelos/pisoModelo.php";
+		$modelo = new PisoModelo();
+		$pisos = $modelo->getPisosPorAla($ala_id);
+		return $pisos;
+	  }
+	  
+
 
 	/*--------- Controlador datos  ---------*/
 	public function datos_ala_controlador($tipo, $id)

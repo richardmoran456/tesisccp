@@ -18,6 +18,10 @@ class pisoModelo extends mainModel
 
         return $sql;
     }
+/*--------- combobox ---------*/
+public function getPisosPorAla($id) {
+    // Realiza la consulta a la base de datos para obtener los pisos de una ala específica
+  }
 
     /*--------- Eliminar ---------*/
     protected static function eliminar_piso($id)

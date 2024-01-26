@@ -1,5 +1,31 @@
 <!-- jQuery -->
 <script src="<?php echo SERVERURL; ?>vistas/assets/plugins/jquery/jquery.min.js"></script>
+<!-- Script para el combobox -->
+<script>
+document.getElementById('fk_ala_reg').addEventListener('change', function() {
+  var ala_id = this.value;
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'getPisos.php?ala_id=' + ala_id, true);
+  xhr.onload = function() {
+    if (this.status == 200) {
+      document.getElementById('fk_piso_reg').innerHTML = this.responseText;
+    }
+  };
+  xhr.send();
+});
+</script>
+
+<?php
+if (isset($_GET['ala_id'])) {
+  require_once "./controladores/alaControlador.php";
+  $controlador = new alaControlador();
+  $pisos = $controlador->getPisos($_GET['ala_id']);
+  foreach ($pisos as $piso) {
+    echo "<option value='{$piso['id']}'>{$piso['ubicacion']}</option>";
+  }
+}
+?>
+
 <!-- Bootstrap 4 -->
 <script src="<?php echo SERVERURL; ?>vistas/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->

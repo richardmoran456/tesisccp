@@ -30,7 +30,11 @@ class alaModelo extends mainModel
 
         return $sql;
     }
-
+    
+    /*--------- combobox ---------*/
+    public function get_alas() {
+        // Realiza la consulta a la base de datos para obtener las alas
+      }
     /*--------- Datos ---------*/
 
     protected static function datos_ala($tipo, $id)
