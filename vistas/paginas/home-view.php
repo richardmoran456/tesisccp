@@ -21,12 +21,97 @@
   <div class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="info-box">
-            <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+
+      <div class="col-12 col-sm-6 col-md-3">
+          <div class="info-box mb-3">
+            <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">CPU Traffic</span>
+              <span class="info-box-text">Usuarios registrados</span>
+              <span class="info-box-number">2,000</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="info-box">
+            <span class="info-box-icon bg-info elevation-1"><i class="fas fa-bed"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Habitaciones Disponibles</span>
+              <span class="info-box-number">
+                15
+              </span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="info-box mb-3">
+            <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-bed"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Ocupadas</span>
+              <span class="info-box-number">10</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+
+        <!-- fix for small devices only -->
+        <div class="clearfix hidden-md-up"></div>
+
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="info-box mb-3">
+            <span class="info-box-icon bg-success elevation-1"><i class="fas fa-calendar"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Eventos al mes</span>
+              <span class="info-box-number">5</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+       
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+
+
+
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+
+      <div class="col-12 col-sm-6 col-md-3">
+          <div class="info-box mb-3">
+            <span class="info-box-icon bg-warning elevation-1"><i class="fa fa-wallet"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Dinero ganado</span>
+              <span class="info-box-number">2,000$</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="info-box">
+            <span class="info-box-icon bg-info elevation-1"><i class="fas fa-tasks"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Tareas asignadas</span>
               <span class="info-box-number">
                 10
                 <small>%</small>
@@ -39,10 +124,10 @@
         <!-- /.col -->
         <div class="col-12 col-sm-6 col-md-3">
           <div class="info-box mb-3">
-            <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+            <span class="info-box-icon bg-success elevation-1"><i class="fas fa-wrench"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Likes</span>
+              <span class="info-box-text">Total Equipos registrados</span>
               <span class="info-box-number">41,410</span>
             </div>
             <!-- /.info-box-content -->
@@ -56,10 +141,10 @@
 
         <div class="col-12 col-sm-6 col-md-3">
           <div class="info-box mb-3">
-            <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+            <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-wrench"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Sales</span>
+              <span class="info-box-text">Total Equipos dañados</span>
               <span class="info-box-number">760</span>
             </div>
             <!-- /.info-box-content -->
@@ -67,18 +152,79 @@
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="info-box mb-3">
-            <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+       
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
 
+
+
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+
+      <div class="col-12 col-sm-6 col-md-3">
+          <div class="info-box mb-3">
+            <span class="info-box-icon bg-success elevation-1"><i class="fa fa-thumbs-up"></i></span>
             <div class="info-box-content">
-              <span class="info-box-text">New Members</span>
-              <span class="info-box-number">2,000</span>
+              <span class="info-box-text">Solicitudes aprobadas</span>
+              <span class="info-box-number">2</span>
             </div>
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
         </div>
+
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="info-box mb-3">
+            <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-business-time"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">solicitudes en espera</span>
+              <span class="info-box-number">5</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="info-box">
+            <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-down"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Solicitudes rechazadas</span>
+              <span class="info-box-number">
+                10
+              </span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+      
+        <!-- /.col -->
+
+        <!-- fix for small devices only -->
+        <div class="clearfix hidden-md-up"></div>
+
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="info-box mb-3">
+            <span class="info-box-icon bg-success elevation-1"><i class="fas fa-sitemap"></i></span>
+        
+            <div class="info-box-content">
+              <span class="info-box-text">Total departamentos</span>
+              <span class="info-box-number">760</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+       
         <!-- /.col -->
       </div>
       <!-- /.row -->
