@@ -6,17 +6,21 @@ if ($peticionAjax) {
 	require_once "./modelos/habitacionModelo.php";
 }
 
+
 class habitacionControlador extends habitacionModelo
 {
 	/*--------- Controlador agregar modelo ---------*/
 	public function agregar_habitacion_controlador()
 	{
 
-		$nombre = mainModel::limpiar_cadena($_POST['nombre_habitacion_reg']);
-		$abreviatura = mainModel::limpiar_cadena($_POST['abreviatura_habitacion_reg']);
+		$habitacion = mainModel::limpiar_cadena($_POST['habitacion_reg']);
+		$identificador = mainModel::limpiar_cadena($_POST['identificador_habitacion_reg']);
+		$tipo = mainModel::limpiar_cadena($_POST['tipo_habitacion_reg']);
+	
+
 
 		/*== comprobar campos vacios ==*/
-		if ($nombre == "" || $abreviatura == "") {
+		if ($habitacion == "" || $identificador == "" || $tipo == ""|| $fk_piso == "") {
 			$alerta = [
 				"Alerta" => "simple",
 				"Titulo" => "Ocurrió un error inesperado",
@@ -27,7 +31,7 @@ class habitacionControlador extends habitacionModelo
 			exit();
 		}
 		/*== Verificando integridad de los datos ==*/
-		if (mainModel::verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}", $nombre)) {
+		if (mainModel::verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}", $habitacion)) {
 			$alerta = [
 				"Alerta" => "simple",
 				"Titulo" => "Ocurrió un error inesperado",
@@ -38,7 +42,7 @@ class habitacionControlador extends habitacionModelo
 			exit();
 		}
 
-		if (mainModel::verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,10}", $abreviatura)) {
+		if (mainModel::verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,10}", $identificador)) {
 			$alerta = [
 				"Alerta" => "simple",
 				"Titulo" => "Ocurrió un error inesperado",
@@ -53,8 +57,10 @@ class habitacionControlador extends habitacionModelo
 		/*== Enviar datos a la BD ==*/
 
 		$agregar_habitacion_reg = [
-			"nombre" => $nombre,
-			"abreviatura" => $abreviatura
+			"habitacion" => $habitacion,
+			"identificador" => $identificador,
+			"tipo" => $tipo,
+			"fk_piso" => $fk_piso
 		];
 
 
@@ -136,8 +142,8 @@ class habitacionControlador extends habitacionModelo
 	{
 		$id = mainModel::decryption($_POST['habitacion_id_up']);
 		$id = mainModel::limpiar_cadena($id);
-		$nombre = mainModel::limpiar_cadena($_POST['nombre_habitacion_up']);
-		$abr = mainModel::limpiar_cadena($_POST['abreviatura_habitacion_up']);
+		$nombre = mainModel::limpiar_cadena($_POST['habitacion_up']);
+		$abr = mainModel::limpiar_cadena($_POST['identificador_habitacion_up']);
 
 		$datos_habitacion_up = [
 			"nombre" => $nombre,

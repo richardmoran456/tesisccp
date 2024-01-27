@@ -31,6 +31,11 @@ class alaModelo extends mainModel
         return $sql;
     }
 
+    /*--------- combobox ---------*/
+    public function get_alas()
+    {
+        // Realiza la consulta a la base de datos para obtener las alas
+    }
     /*--------- Datos ---------*/
 
     protected static function datos_ala($tipo, $id)
@@ -38,7 +43,6 @@ class alaModelo extends mainModel
         if ($tipo == "Unico") {
             $sql = mainModel::conectar()->prepare("SELECT * FROM alas WHERE ala_id=:ID");
             $sql->bindParam(":ID", $id);
-
         } elseif ($tipo == "Conteo") {
             $sql = mainModel::conectar()->prepare("SELECT ala_id FROM alas WHERE ala_id!='1'");
         }
@@ -76,5 +80,21 @@ class alaModelo extends mainModel
         $sql->execute();
 
         return $sql;
+    }
+
+    /*--------- Listar pisos si pasamos ID ala ---------*/
+
+    protected static function obtener_pisos_alas($id)
+    {
+        // Seleccionamos todos los pisos donde su fk_ala sea igual a la que estamos pasando
+        $sql = mainModel::conectar()->prepare("SELECT * FROM pisos WHERE fk_ala=:ID");
+        $sql->bindParam(":ID", $id);
+
+        $sql->execute();
+
+        // Fetcheamos los resultados como un array asociativo
+        $resultados = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+        return $resultados; // Devolvemos el array de resultados
     }
 }
