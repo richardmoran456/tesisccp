@@ -1,4 +1,4 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4"style="background-color: #023564;">
+<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #023564;">
   <!-- Brand Logo -->
   <a href="<?php echo SERVERURL . "home" ?>" class="brand-link">
     <img src="<?php echo SERVERURL; ?>vistas/assets/dist/img/logoccp.png" alt="CCP Suites Logo" class="brand-image elevation-3" style="opacity: .8">
@@ -10,7 +10,7 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
-        <img src="<?php echo SERVERURL; ?>vistas/assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        <img src="<?php echo  $_SESSION['avatar_default']; ?>" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
         <a href="<?php echo SERVERURL . "perfil" ?>" class="d-block"><?php echo $_SESSION['nombre_spm']; ?></a>
@@ -108,7 +108,7 @@
           </ul>
         </li>
 
-            
+
 
 
 

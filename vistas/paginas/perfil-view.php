@@ -38,15 +38,33 @@ if ($datos_modulo->rowCount() == 1) {
           <div class="card card-primary card-outline">
             <div class="card-body box-profile">
               <div class="text-center">
-                <img class="profile-user-img img-fluid img-circle" src="<?php echo SERVERURL; ?>vistas/assets/dist/img/user4-128x128.jpg" alt="User profile picture">
+                <img class="profile-user-img img-fluid img-circle" src="<?php echo  $_SESSION['avatar_default']; ?>" alt="User profile picture">
               </div>
 
               <h3 class="profile-username text-center"><?php echo $_SESSION['nombre_spm']; ?></h3>
 
               <p class="text-muted text-center">Departamento</p>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Cambiar contraseña</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form class="FormularioAjax " action="<?php echo SERVERURL; ?>ajax/usuarioAjax.php" method="POST" data-form="update" autocomplete="off" enctype="multipart/form-data">
 
 
 
+
+                <div class="custom-file mb-2">
+                  <input type="file" class="custom-file-input" id="customFile" name="file">
+                  <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+                <input type="submit" class="btn btn-block bg-gradient-primary btn-sm" value="Cambiar">
+              </form>
 
             </div>
             <!-- /.card-body -->

@@ -9,7 +9,7 @@ class equipoModelo extends mainModel
     protected static function agregar_equipo($datos)
     {
 
-        $sql = mainModel::conectar()->prepare("INSERT INTO equipos(
+        $sql = mainModel::conectar()->prepare("INSERT INTO equipos(fk_departamento,
             modelo,
             nserial,
             estado,
@@ -17,13 +17,18 @@ class equipoModelo extends mainModel
             tipo_equipo,
             created_at) 
             VALUES (
+                :FK,
                 :Modelo,
-            :Nserial,
-            :Estado,
-            :Descripcion_equipo,
-            :Tipo_equipo,
-            :Created_at)");
+                :Nserial,
+                :Estado,
+                :Descripcion_equipo,
+                :Tipo_equipo,
+                :Created_at)");
+
+
+
         $createdAt = date('Y-m-d H:i:s');
+        $sql->bindParam(":FK", $datos['fk_departamento']);
         $sql->bindParam(":Modelo", $datos['modelo']);
         $sql->bindParam(":Nserial", $datos['nserial']);
         $sql->bindParam(":Estado", $datos['estado_equipo']);

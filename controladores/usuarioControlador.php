@@ -159,4 +159,85 @@ class usuarioControlador extends usuarioModelo
 		}
 		echo json_encode($alerta);
 	}
+
+	/*--------- Controlador cargar avatar  ---------*/
+
+	public function  actualizar_avatar()
+	{
+		// File upload directory 
+		session_start(['name' => 'SPM']);
+		$targetDir = "../vistas/assets/images/users/";
+
+		if (!empty($_FILES["file"]["name"])) {
+			// Get file info 
+			$fileName = basename($_FILES["file"]["name"]);
+			$fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+			$newFileName = "user-" . $_SESSION['id_spm'] . uniqid() . '.' . $fileType;
+
+			$targetFilePath = $targetDir . $newFileName;
+			// $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+
+
+			// Allow certain file formats 
+			$allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+			if (in_array($fileType, $allowTypes)) {
+
+				// Upload file to server 
+				if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
+
+					$datos = [
+						"id" => $_SESSION['id_spm'],
+						"avatar" => $newFileName
+					];
+
+					if (usuarioModelo::actualizar_usuario_avatar($datos)) {
+						$alerta = [
+							"Alerta" => "recargar",
+							"Titulo" => "Datos actualizados",
+							"Texto" => "El archivo " . $newFileName . " se ha cargado correctamente.",
+							"Tipo" => "success"
+						];
+						$_SESSION['avatar_default']  = "vistas/assets/images/users/" . $newFileName;
+					} else {
+						$alerta = [
+							"Alerta" => "simple",
+							"Titulo" => "Ocurrió un error inesperado",
+							"Texto" => "Error al cargar el archivo, por favor intente nuevamente",
+							"Tipo" => "error"
+						];
+					}
+					echo json_encode($alerta);
+				} else {
+					$alerta = [
+						"Alerta" => "simple",
+						"Titulo" => "Error",
+						"Texto" => "Lo sentimos, se ha producido un error al cargar el archivo.",
+						"Tipo" => "error"
+					];
+				}
+			} else {
+
+				$alerta = [
+					"Alerta" => "simple",
+					"Titulo" => "Lo sentimos.",
+					"Texto" => "Solo permitimos cargar archivos JPG, JPEG, PNG, Y GIF ",
+					"Tipo" => "error"
+				];
+				echo json_encode($alerta);
+			}
+		} else {
+			$alerta = [
+				"Alerta" => "simple",
+				"Titulo" => "Por favor",
+				"Texto" => "Selecciona al menos un archivo",
+				"Tipo" => "error"
+			];
+			echo json_encode($alerta);
+		}
+
+
+
+		// Display status message 
+
+	}
 }
