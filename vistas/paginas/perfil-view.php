@@ -50,7 +50,7 @@ if ($datos_modulo->rowCount() == 1) {
           <!-- /.card -->
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Cambiar contraseña</h3>
+              <h3 class="card-title">Cambiar Foto de Perfil</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
