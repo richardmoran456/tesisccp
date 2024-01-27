@@ -4,7 +4,7 @@ require_once "../config/APP.php";
 
 
 
-if (isset($_POST['nombre_usuario_reg']) ||  isset($_POST['usuario_id_del']) || isset($_POST['usuario_id_up'])) {
+if (isset($_POST['nombre_usuario_reg']) ||  isset($_POST['usuario_id_del']) || isset($_POST['usuario_id_up']) || isset($_FILES['file'])) {
     /*--------- Instancia al controlador ---------*/
     require_once "../controladores/usuarioControlador.php";
     $instancia_controlador = new usuarioControlador();
@@ -23,6 +23,11 @@ if (isset($_POST['nombre_usuario_reg']) ||  isset($_POST['usuario_id_del']) || i
     /*--------- Actualizar ---------*/
     if (isset($_POST['usuario_id_up'])) {
         echo $instancia_controlador->actualizar_usuario_controlador();
+    }
+
+    /*--------- cargar avatar ---------*/
+    if (isset($_FILES['file'])) {
+        echo $instancia_controlador->actualizar_avatar();
     }
 } else {
     echo "aqui";

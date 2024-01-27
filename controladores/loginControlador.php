@@ -79,6 +79,21 @@ class loginControlador extends loginModelo
             $_SESSION['privilegio_spm'] = $row['fk_departamento'];
             $_SESSION['token_spm'] = md5(uniqid(mt_rand(), true));
 
+            /**
+             * Agregamos el avatar default
+             */
+            $imagen_default = SERVERURL . 'vistas/assets/images/user-profile-icon.jpg';
+
+
+
+            if (empty($row['avatar'])) {
+                // No hay avatar predeterminado
+                $_SESSION['avatar_default']  = $imagen_default;
+            } else {
+                // Almacenar el avatar predeterminado en la variable de sesión
+                $_SESSION['avatar_default']  = "vistas/assets/images/users/" . $row['avatar'];
+            }
+
             return header("Location: " . SERVERURL . "home/");
         } else {
             echo '

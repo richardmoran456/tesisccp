@@ -29,7 +29,8 @@
 <script src="<?php echo SERVERURL; ?>vistas/assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="<?php echo SERVERURL; ?>vistas/assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="<?php echo SERVERURL; ?>vistas/assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-
+<!-- bs-custom-file-input -->
+<script src="<?php echo SERVERURL; ?>vistas/assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <script>
     $(function() {
         $("#example1").DataTable({
@@ -48,5 +49,11 @@
             "autoWidth": false,
             "responsive": true,
         });
+    });
+</script>
+
+<script>
+    $(function() {
+        bsCustomFileInput.init();
     });
 </script>

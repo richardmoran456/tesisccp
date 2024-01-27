@@ -79,4 +79,19 @@ class usuarioModelo extends mainModel
 
         return $sql;
     }
+
+    /*--------- Actualizar Avatar---------*/
+    protected static function actualizar_usuario_avatar($datos)
+    {
+
+        $sql = mainModel::conectar()->prepare("UPDATE usuarios SET avatar=:AVATAR  WHERE usuario_id=:ID");
+
+
+        $sql->bindParam(":AVATAR", $datos['avatar']);
+        $sql->bindParam(":ID", $datos['id']);
+
+        $sql->execute();
+
+        return $sql;
+    }
 }
