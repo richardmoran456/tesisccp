@@ -34,13 +34,14 @@ class equipoControlador extends equipoModelo
 
 
 		/*== Enviar datos a la BD ==*/
-
+		session_start(['name' => 'SPM']);
 		$agregar_equipo_reg = [
 			"modelo" => $modelo,
 			"nserial" => $nserial,
 			"estado_equipo" => $estado,
 			"descripcion_equipo" => $descripcion_equipo,
-			"tipo_equipo" => $tipo_equipo
+			"tipo_equipo" => $tipo_equipo,
+			"fk_departamento" => $_SESSION['privilegio_spm']
 		];
 
 
