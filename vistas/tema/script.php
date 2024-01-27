@@ -58,16 +58,18 @@
 <!-- Combobox -->
 <script>
   $(document).ready(function() {
+    $('#fk_piso_reg').html('<option value="">Selecciona la ala primero</option>');
     $('#fk_ala_reg').on('change', function() {
 
       // esto signinfica que va a detectar el cambio que ocurra en el atributo del DOM que tenga como ID fk_ala_reg
       var countryID = $(this).val();
-      console.log(countryID);
+
       if (countryID) {
+        console.log(countryID);
         $.ajax({
           type: 'POST', // Se envia por metodo POST igual que el formulario
-          url: '<?php echo SERVERURL; ?>ajax/habitacionAjax.php', // Se envia a nuestro gestor
-          data: 'ala_id=' + countryID, // Enviamos el id que sufrio el cambio o fue seleccionado en el select
+          url: '<?php echo SERVERURL; ?>ajax/alaAjax.php', // Se envia a nuestro gestor
+          data: 'combo=' + countryID, // Enviamos el id que sufrio el cambio o fue seleccionado en el select
           success: function(html) {
             $('#fk_piso_reg').html(html); // cuando recibimos los datos del controlador lo asignamos a la data del piso
           }

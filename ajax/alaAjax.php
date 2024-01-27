@@ -4,7 +4,7 @@ require_once "../config/APP.php";
 
 
 
-if (isset($_POST['nombre_ala_reg']) ||  isset($_POST['ala_id_del']) || isset($_POST['ala_id_up']) || isset($_POST['ala_id'])) {
+if (isset($_POST['nombre_ala_reg']) ||  isset($_POST['ala_id_del']) || isset($_POST['ala_id_up']) || isset($_POST['combo'])) {
     /*--------- Instancia al controlador ---------*/
     require_once "../controladores/alaControlador.php";
     $instancia_controlador = new alaControlador();
@@ -26,9 +26,9 @@ if (isset($_POST['nombre_ala_reg']) ||  isset($_POST['ala_id_del']) || isset($_P
     }
 
     /*--------- Esto es del combobox ---------*/
-    if (isset($_POST['ala_id'])) {
-        // echo $instancia_controlador->actualizar_ala_controlador();
-        echo 'hola';
+    if (isset($_POST['combo'])) {
+        echo $instancia_controlador->obtener_combobox($_POST['combo']);
+        // echo 'hola';
     }
 } else {
     echo "aqui";

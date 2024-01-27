@@ -13,10 +13,10 @@ class alaControlador extends alaModelo
 	{
 
 		$nombre = mainModel::limpiar_cadena($_POST['nombre_ala_reg']);
-	
+
 
 		/*== comprobar campos vacios ==*/
-		if ($nombre == "" ) {
+		if ($nombre == "") {
 			$alerta = [
 				"Alerta" => "simple",
 				"Titulo" => "Ocurrió un error inesperado",
@@ -109,20 +109,26 @@ class alaControlador extends alaModelo
 		echo json_encode($alerta);
 	}
 	/*--------- Combobox  ---------*/
-	public function get_alas() {
-		require_once "./modelos/alaModelo.php";
-		$modelo = new alaModelo();
-		$alas = $modelo->get_alas();
-		return $alas;
-	  }
+	// aqui recibimos el id de la ala a la que vamos a tomar como referencia para cargar sus pisos
+	public function obtener_combobox($id)
+	{
+		// toda operacion a la base de datos se debe limpiar si o si
+		$id = mainModel::limpiar_cadena($id);
+		$listado = alaModelo::obtener_pisos_alas($id);
+		$con = 0;
+		$opc = "";
 
-	  public function getPisos($id) {
-		require_once "./modelos/pisoModelo.php";
-		$modelo = new PisoModelo();
-		$pisos = $modelo->getPisosPorAla($ala_id);
-		return $pisos;
-	  }
-	  
+		foreach ($listado as $fila) {
+			$con = $con + 1;
+			if ($con > 0) {
+
+				$opc .=  "<option value='" . $fila['piso_id'] . "'>" . $fila['nombre'] . "</option>";
+			} else {
+				$opc .= '<option value="">Pisos no disponibles</option>';
+			}
+		}
+		return $opc;
+	}
 
 
 	/*--------- Controlador datos  ---------*/
@@ -143,7 +149,7 @@ class alaControlador extends alaModelo
 		$id = mainModel::limpiar_cadena($id);
 
 		$nombre = mainModel::limpiar_cadena($_POST['nombre_ala_up']);
-		
+
 
 		$datos_ala_up = [
 			"nombre" => $nombre,
