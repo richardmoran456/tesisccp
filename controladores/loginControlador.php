@@ -86,12 +86,12 @@ class loginControlador extends loginModelo
 
 
 
-            if (empty($row['avatar'])) {
+            if ($row['avatar'] == "") {
                 // No hay avatar predeterminado
                 $_SESSION['avatar_default']  = $imagen_default;
             } else {
                 // Almacenar el avatar predeterminado en la variable de sesión
-                $_SESSION['avatar_default']  = "vistas/assets/images/users/" . $row['avatar'];
+                $_SESSION['avatar_default']  = SERVERURL . "vistas/assets/images/users/" . $row['avatar'];
             }
 
             return header("Location: " . SERVERURL . "home/");

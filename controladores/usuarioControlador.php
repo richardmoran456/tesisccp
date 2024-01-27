@@ -197,7 +197,7 @@ class usuarioControlador extends usuarioModelo
 							"Texto" => "El archivo " . $newFileName . " se ha cargado correctamente.",
 							"Tipo" => "success"
 						];
-						$_SESSION['avatar_default']  = "vistas/assets/images/users/" . $newFileName;
+						$_SESSION['avatar_default']  = SERVERURL . "vistas/assets/images/users/" . $newFileName;
 					} else {
 						$alerta = [
 							"Alerta" => "simple",
