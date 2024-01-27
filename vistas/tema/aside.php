@@ -77,6 +77,12 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
+              <a href="<?php echo SERVERURL . "recepcion" ?>" class="nav-link">
+                <p>Recepción</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
               <a href="<?php echo SERVERURL . "huespedes" ?>" class="nav-link">
                 <p>Huespedes</p>
               </a>
