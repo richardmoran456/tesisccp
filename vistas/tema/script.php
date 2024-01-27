@@ -12,8 +12,10 @@
 <script src="<?php echo SERVERURL; ?>vistas/assets/plugins/sweetalert2/sweetalert2.min.js"></script>
 <!-- Toastr -->
 <script src="<?php echo SERVERURL; ?>vistas/assets/plugins/toastr/toastr.min.js"></script>
-
-
+<!-- FullCalendar -->
+<script src="<?php echo SERVERURL; ?>vistas/assets/js/script.js"></script>
+<script src="<?php echo SERVERURL; ?>vistas/assets/js/main.min.js"></script>
+<script src="<?php echo SERVERURL; ?>vistas/assets/js/main.js"></script>
 <!-- Alertas -->
 <script src="<?php echo SERVERURL; ?>vistas/assets/js/alertas.js"></script>
 

@@ -3,8 +3,9 @@
 <link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/assets/plugins/fontawesome-free/css/all.min.css">
 <!-- Theme style -->
 <link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/assets/dist/css/adminlte.min.css">
-
-
+<!-- FullCalendar -->
+<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/assets/dist/css/main.min.css">
+<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/assets/dist/css/main.css">
 <!-- SweetAlert2 -->
 <link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 <!-- Toastr -->
