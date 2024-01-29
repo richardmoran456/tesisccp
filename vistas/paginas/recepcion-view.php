@@ -10,29 +10,23 @@
 
   .card-header {
     position: relative;
-    background: #303841;
+    background: #FFFFFF;
     height: 200px;
     text-align: center;
     overflow: hidden;
   }
 
-  .card-header__avatar {
-    background: #303841;
-    background-position: center 30%;
-    background-size: 100%;
-    height: 100%;
-    width: 100%;
-  }
+ 
 
   .card-header__follow {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: #FFFFFF;
+    background: #4075FF;
     border-radius: 2px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     padding: 6px 10px;
-    color: #333333;
+    color: #FFCC49;
     font-size: 10px;
     font-weight: 600;
     line-height: normal;
@@ -75,7 +69,7 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
-    background: #F3F3F3;
+    background: #4075FF;
     padding: 15px 40px;
     color: #333333;
     font-size: 14px;
@@ -144,30 +138,22 @@
         <?php
         for ($i = 0; $i < 12; $i++) {
           # code...
-
         ?>
 
           <div class="col-3 mb-3">
             <div class="card">
               <!-- Header -->
               <div class="card-header">
-                <div class="card-header__avatar"></div><a class="card-header__follow" href="#">Follow</a>
+                <img src="../assets/images/hab.jpg" alt="Imagen de habitacion"></i><a class="card-header__follow" href="#">Ver</a>
               </div>
               <!-- Content-->
               <div class="card-content">
-                <div class="card-content__username">Numero habitcion</div>
+                <div class="card-content__username">Numero habitacion</div>
                 <div class="card-content__bio">Tipo de habitacion</div>
               </div>
               <!-- Footer-->
               <div class="card-footer">
-                <div class="card-footer__pens"> <span>231</span>
-                  <div class="label">Pens</div>
-                </div>
-                <div class="card-footer__followers"> <span>0</span>
-                  <div class="label">Followers</div>
-                </div>
-                <div class="card-footer__following"> <span>0</span>
-                  <div class="label">Following</div>
+                <div class="card-footer__pens"> <span>Gran Hotel CCP Suites</span>
                 </div>
               </div>
             </div>
