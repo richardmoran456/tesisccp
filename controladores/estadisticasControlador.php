@@ -16,4 +16,12 @@ class estadisticasControlador extends estadisticaModelo
 		$datos = estadisticaModelo::cantidad_usuarios_registrados();
 		return $datos;
 	}
+
+	/*--------- Mostrar cantidad de departamentos registrados ---------*/
+	public function show_total_departamentos()
+	{
+		$datos = estadisticaModelo::cantidad_departamentos_registrados();
+		return $datos;
+	}
 }
+

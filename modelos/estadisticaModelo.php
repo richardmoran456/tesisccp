@@ -24,4 +24,17 @@ class estadisticaModelo extends mainModel
         // Return the count (not the PDOStatement object):
         return $cantidad_usuarios;
     }
+
+    protected static function cantidad_departamentos_registrados()
+    {
+
+        $sql = mainModel::conectar()->prepare("SELECT count(*) FROM departamentos");
+        $sql->execute();
+
+        // Fetch the count using fetchColumn():
+        $cantidad_departamentos = $sql->fetchColumn();
+
+        // Return the count (not the PDOStatement object):
+        return $cantidad_departamentos;
+    }
 }

@@ -249,7 +249,8 @@ $ins_controlador = new estadisticasControlador();
 
             <div class="info-box-content">
               <span class="info-box-text">Total departamentos</span>
-              <span class="info-box-number">760</span>
+              <span class="info-box-number"><?php echo  $ins_controlador->show_total_departamentos(); ?></span>
+              
             </div>
             <!-- /.info-box-content -->
           </div>
