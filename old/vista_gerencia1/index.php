@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -8,8 +7,7 @@
   <title>CCP Suites | Inicio</title>
 
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plantilla/plugins/fontawesome-free/css/all.min.css">
   <!-- fullCalendar -->
@@ -96,11 +94,12 @@
   <!-- AdminLTE for demo purposes -->
   <script src="../plantilla/dist/js/demo.js"></script>
   <!-- Page specific script -->
-  
+
 
 </body>
 
-<script src="../calendario/js/es.js"></script> <!--Idioma español Fullcalendar-->
+<script src="../calendario/js/es.js"></script>
+<!--Idioma español Fullcalendar-->
 <script>
   var scheds = $.parseJSON('<?= json_encode($sched_res) ?>')
 </script>

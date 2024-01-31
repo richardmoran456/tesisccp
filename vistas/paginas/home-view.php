@@ -22,7 +22,7 @@
     <div class="container-fluid">
       <div class="row">
 
-      <div class="col-12 col-sm-6 col-md-3">
+        <div class="col-12 col-sm-6 col-md-3">
           <div class="info-box mb-3">
             <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 
@@ -80,7 +80,7 @@
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
-       
+
         <!-- /.col -->
       </div>
       <!-- /.row -->
@@ -93,7 +93,7 @@
     <div class="container-fluid">
       <div class="row">
 
-      <div class="col-12 col-sm-6 col-md-3">
+        <div class="col-12 col-sm-6 col-md-3">
           <div class="info-box mb-3">
             <span class="info-box-icon bg-warning elevation-1"><i class="fa fa-wallet"></i></span>
 
@@ -152,7 +152,7 @@
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
-       
+
         <!-- /.col -->
       </div>
       <!-- /.row -->
@@ -165,7 +165,7 @@
     <div class="container-fluid">
       <div class="row">
 
-      <div class="col-12 col-sm-6 col-md-3">
+        <div class="col-12 col-sm-6 col-md-3">
           <div class="info-box mb-3">
             <span class="info-box-icon bg-success elevation-1"><i class="fa fa-thumbs-up"></i></span>
             <div class="info-box-content">
@@ -205,7 +205,7 @@
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
-      
+
         <!-- /.col -->
 
         <!-- fix for small devices only -->
@@ -214,7 +214,7 @@
         <div class="col-12 col-sm-6 col-md-3">
           <div class="info-box mb-3">
             <span class="info-box-icon bg-success elevation-1"><i class="fas fa-sitemap"></i></span>
-        
+
             <div class="info-box-content">
               <span class="info-box-text">Total departamentos</span>
               <span class="info-box-number">760</span>
@@ -224,7 +224,7 @@
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
-       
+
         <!-- /.col -->
       </div>
       <!-- /.row -->

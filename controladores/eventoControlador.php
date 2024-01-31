@@ -8,4 +8,10 @@ if ($peticionAjax) {
 
 class eventoControlador extends eventoModelo
 {
+    /*--------- Controlador listar modelo ---------*/
+    public function listar_evento_controlador()
+    {
+        $datos = eventoModelo::listar_eventos();
+        return $datos;
+    }
 }

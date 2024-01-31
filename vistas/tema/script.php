@@ -55,52 +55,6 @@
     });
 
 
-    // Calendario
-
-
-
-    /* initialize the calendar
-     -----------------------------------------------------------------*/
-    //Date for the calendar events (dummy data)
-    var date = new Date()
-    var d = date.getDate(),
-      m = date.getMonth(),
-      y = date.getFullYear()
-
-    var Calendar = FullCalendar.Calendar;
-    var Draggable = FullCalendar.Draggable;
-
-    var checkbox = document.getElementById('drop-remove');
-    var calendarEl = document.getElementById('calendar');
-
-    // initialize the external events
-    // -----------------------------------------------------------------
-
-
-    var calendar = new Calendar(calendarEl, {
-      headerToolbar: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay'
-      },
-      themeSystem: 'bootstrap',
-      //Random default events
-      events: {
-        url: 'php/get-events.php',
-      },
-      editable: true,
-      droppable: true, // this allows things to be dropped onto the calendar !!!
-      drop: function(info) {
-        // is the "remove after drop" checkbox checked?
-        if (checkbox.checked) {
-          // if so, remove the element from the "Draggable Events" list
-          info.draggedEl.parentNode.removeChild(info.draggedEl);
-        }
-      }
-    });
-
-    calendar.render();
-    // $('#calendar').fullCalendar()
 
 
   });
@@ -143,3 +97,60 @@
     bsCustomFileInput.init();
   });
 </script>
+<?php
+/** Esta parte es visible solo en la vista de eventos. */
+
+if ($pagina[0] === 'eventos') { ?>
+
+  <script src="<?php echo SERVERURL; ?>vistas/assets/plugins/fullcalendar/es.js"></script>
+
+  <!-- <script src="<?php echo SERVERURL; ?>vistas/assets/plugins/fullcalendar/script.js"></script> -->
+  <script>
+    var scheds = $.parseJSON('<?= json_encode($sched_res) ?>');
+
+    console.log(scheds);
+
+    var events = [];
+    if (!!scheds) {
+      Object.keys(scheds).map((k) => {
+        var row = scheds[k];
+        console.log(row);
+
+        events.push({
+          id: row.id,
+          title: row.titulo_evento,
+          start: row.inicio_evento,
+          end: row.finaliza_evento,
+        });
+      });
+    }
+
+
+
+    var date = new Date();
+    var d = date.getDate(),
+      m = date.getMonth(),
+      y = date.getFullYear();
+
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        locale: 'es', //Idioma Español FullCalendar
+        height: 650,
+        headerToolbar: {
+          left: "prev,next today",
+          right: "dayGridMonth,dayGridWeek,list",
+          center: "title",
+        },
+        selectable: true,
+        events: events,
+      });
+
+      calendar.render();
+    });
+  </script>
+<?php } ?>

@@ -7,7 +7,7 @@
         </div>
         <!-- crear eventos card -->
         <div class="col-md-3">
-            <div class="cardt rounded-0 shadow">
+            <div class="card t rounded-0 shadow">
                 <div class="card-header bg-gradient bg-primary text-light">
                     <h5 class="card-title">Crear Evento</h5>
                 </div>
