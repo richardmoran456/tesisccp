@@ -33,6 +33,8 @@
 <script src="<?php echo SERVERURL; ?>vistas/assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- bs-custom-file-input -->
 <script src="<?php echo SERVERURL; ?>vistas/assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<script src="<?php echo SERVERURL; ?>vistas/assets/plugins/fullcalendar/main.js"></script>
+
 <script>
   $(function() {
     $("#example1").DataTable({
@@ -51,6 +53,56 @@
       "autoWidth": false,
       "responsive": true,
     });
+
+
+    // Calendario
+
+
+
+    /* initialize the calendar
+     -----------------------------------------------------------------*/
+    //Date for the calendar events (dummy data)
+    var date = new Date()
+    var d = date.getDate(),
+      m = date.getMonth(),
+      y = date.getFullYear()
+
+    var Calendar = FullCalendar.Calendar;
+    var Draggable = FullCalendar.Draggable;
+
+    var checkbox = document.getElementById('drop-remove');
+    var calendarEl = document.getElementById('calendar');
+
+    // initialize the external events
+    // -----------------------------------------------------------------
+
+
+    var calendar = new Calendar(calendarEl, {
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      },
+      themeSystem: 'bootstrap',
+      //Random default events
+      events: {
+        url: 'php/get-events.php',
+      },
+      editable: true,
+      droppable: true, // this allows things to be dropped onto the calendar !!!
+      drop: function(info) {
+        // is the "remove after drop" checkbox checked?
+        if (checkbox.checked) {
+          // if so, remove the element from the "Draggable Events" list
+          info.draggedEl.parentNode.removeChild(info.draggedEl);
+        }
+      }
+    });
+
+    calendar.render();
+    // $('#calendar').fullCalendar()
+
+
   });
 </script>
 
@@ -87,8 +139,7 @@
 
 
 <script>
-    $(function() {
-        bsCustomFileInput.init();
-    });
+  $(function() {
+    bsCustomFileInput.init();
+  });
 </script>
-

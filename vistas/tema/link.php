@@ -14,3 +14,8 @@
 <link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 <link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+
+
+<!-- fullCalendar -->
+<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/assets/plugins/fullcalendar/main.css">
