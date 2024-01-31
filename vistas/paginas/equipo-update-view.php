@@ -57,10 +57,16 @@ if ($datos_modulo->rowCount() == 1) {
                                     <label for="nserial_equipo_up">Serial</label>
                                     <input type="text"  class="form-control" id="nserial_equipo_up" placeholder="Ingrese el serial del equipo" maxlength="10" required="" name="nserial_equipo_up" value="<?php echo $campos['nserial']; ?>">
                                 </div>
+
                                 <div class="form-group">
-                                    <label for="estado_equipo_up">Estado</label>
-                                    <input type="text" class="form-control" id="estado_equipo_up" placeholder="Estado del equipo" maxlength="35" required="" name="estado_equipo_up" value="<?php echo $campos['estado']; ?>">
+                                    <label for="estado_equipo_reg">Estado</label>
+                                    <select class="form-control" id="estado_equipo_up" name="estado_equipo_up">
+                                        <option value="funcionando">Funcionando</option>
+                                        <option value="dañado">Dañado</option>
+                                    </select>
                                 </div>
+
+
                                 <div class="form-group">
                                     <label for="descripcion_equipo_up">Descripcion</label>
                                     <input type="text" class="form-control" id="descripcion_equipo_up" placeholder="Ingrese una breve descripcion del equipo" maxlength="35" required="" name="descripcion_equipo_up" value="<?php echo $campos['modelo']; ?>">
