@@ -21,64 +21,67 @@
   <div class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-12">
           <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-
-              <p class="card-text">
-                Some quick example text to build on the card title and make up the bulk of the card's
-                content.
-              </p>
-
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div>
-
-          <div class="card card-primary card-outline">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-
-              <p class="card-text">
-                Some quick example text to build on the card title and make up the bulk of the card's
-                content.
-              </p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div><!-- /.card -->
-        </div>
-        <!-- /.col-md-6 -->
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-header">
-              <h5 class="m-0">Featured</h5>
-            </div>
-            <div class="card-body">
-              <h6 class="card-title">Special title treatment</h6>
-
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-
-          <div class="card card-primary card-outline">
-            <div class="card-header">
-              <h5 class="m-0">Featured</h5>
-            </div>
-            <div class="card-body">
-              <h6 class="card-title">Special title treatment</h6>
-
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
+            <div class="card-body" id="calendar"></div>
           </div>
         </div>
-        <!-- /.col-md-6 -->
+        <!-- <div class="col-lg-4 ">
+          <div class="card t rounded-0 shadow">
+            <div class="card-header bg-gradient bg-primary text-light">
+              <h5 class="card-title">Crear Evento</h5>
+            </div>
+            <div class="card-body">
+              <div class="container-fluid">
+                <form action="save_schedule.php" method="post" id="schedule-form">
+                  <input type="hidden" name="id" value="">
+                  <div class="form-group mb-2">
+                    <label for="title" class="control-label">Nombre</label>
+                    <input type="text" class="form-control form-control-sm rounded-0" name="title" id="title" required>
+                  </div>
+                  <div class="form-group mb-2">
+                    <label for="description" class="control-label">Descripción</label>
+                    <textarea rows="3" class="form-control form-control-sm rounded-0" name="description" id="description" required></textarea>
+                  </div>
+                  <div class="form-group mb-2">
+                    <label for="start_datetime" class="control-label">Inicio</label>
+                    <input type="datetime-local" class="form-control form-control-sm rounded-0" name="start_datetime" id="start_datetime" required>
+                  </div>
+                  <div class="form-group mb-2">
+                    <label for="end_datetime" class="control-label">Fin</label>
+                    <input type="datetime-local" class="form-control form-control-sm rounded-0" name="end_datetime" id="end_datetime" required>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="text-center">
+                <button class="btn btn-primary btn-sm rounded-0" type="submit" form="schedule-form"><i class="fa fa-save"></i> Guardar</button>
+                <button class="btn btn-default border btn-sm rounded-0" type="reset" form="schedule-form"><i class="fa fa-reset"></i> Cancelar</button>
+              </div>
+            </div>
+          </div>
+        </div> -->
       </div>
       <!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content -->
 </div>
+
+
+<script>
+  <?php
+
+  require_once "./controladores/eventoControlador.php";
+  $ins_controlador = new eventoControlador();
+  $sched_res = [];
+  $schedules =  $ins_controlador->listar_evento_controlador();
+
+  foreach ($schedules as $row) {
+    $row['sdate'] = date("F d, Y h:i A", strtotime($row['inicio_evento']));
+    $row['edate'] = date("F d, Y h:i A", strtotime($row['finaliza_evento']));
+    $sched_res[$row['evento_id']] = $row;
+  }
+  ?>
+</script>

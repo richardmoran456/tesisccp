@@ -18,7 +18,7 @@ class huespedControlador extends huespedModelo
 
 
 		/*== comprobar campos vacios ==*/
-		if ($nombre == "" || $documento == "" ) {
+		if ($nombre == "" || $documento == "") {
 			$alerta = [
 				"Alerta" => "simple",
 				"Titulo" => "Ocurrió un error inesperado",

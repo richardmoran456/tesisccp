@@ -33,6 +33,8 @@
 <script src="<?php echo SERVERURL; ?>vistas/assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- bs-custom-file-input -->
 <script src="<?php echo SERVERURL; ?>vistas/assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<script src="<?php echo SERVERURL; ?>vistas/assets/plugins/fullcalendar/main.js"></script>
+
 <script>
   $(function() {
     $("#example1").DataTable({
@@ -51,6 +53,10 @@
       "autoWidth": false,
       "responsive": true,
     });
+
+
+
+
   });
 </script>
 
@@ -87,8 +93,64 @@
 
 
 <script>
-    $(function() {
-        bsCustomFileInput.init();
-    });
+  $(function() {
+    bsCustomFileInput.init();
+  });
 </script>
+<?php
+/** Esta parte es visible solo en la vista de eventos. */
 
+if ($pagina[0] === 'eventos') { ?>
+
+  <script src="<?php echo SERVERURL; ?>vistas/assets/plugins/fullcalendar/es.js"></script>
+
+  <!-- <script src="<?php echo SERVERURL; ?>vistas/assets/plugins/fullcalendar/script.js"></script> -->
+  <script>
+    var scheds = $.parseJSON('<?= json_encode($sched_res) ?>');
+
+    console.log(scheds);
+
+    var events = [];
+    if (!!scheds) {
+      Object.keys(scheds).map((k) => {
+        var row = scheds[k];
+        console.log(row);
+
+        events.push({
+          id: row.id,
+          title: row.titulo_evento,
+          start: row.inicio_evento,
+          end: row.finaliza_evento,
+        });
+      });
+    }
+
+
+
+    var date = new Date();
+    var d = date.getDate(),
+      m = date.getMonth(),
+      y = date.getFullYear();
+
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        locale: 'es', //Idioma Español FullCalendar
+        height: 650,
+        headerToolbar: {
+          left: "prev,next today",
+          right: "dayGridMonth,dayGridWeek,list",
+          center: "title",
+        },
+        selectable: true,
+        events: events,
+      });
+
+      calendar.render();
+    });
+  </script>
+<?php } ?>
