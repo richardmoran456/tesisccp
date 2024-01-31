@@ -16,7 +16,7 @@
     overflow: hidden;
   }
 
- 
+
 
   .card-header__follow {
     position: absolute;
@@ -144,7 +144,7 @@
             <div class="card">
               <!-- Header -->
               <div class="card-header">
-                <img src="../assets/images/hab.jpg" alt="Imagen de habitacion"></i><a class="card-header__follow" href="#">Ver</a>
+                <img src="<?php echo SERVERURL; ?>vistas/assets/images/hab.jpg" alt="Imagen de habitacion"></i><a class="card-header__follow" href="#">Ver</a>
               </div>
               <!-- Content-->
               <div class="card-content">
