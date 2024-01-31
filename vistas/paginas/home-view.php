@@ -127,11 +127,11 @@ $ins_controlador = new estadisticasControlador();
 
         <div class="col-12 col-sm-6 col-md-3">
           <div class="info-box mb-3">
-            <span class="info-box-icon bg-warning elevation-1"><i class="fa fa-wallet"></i></span>
+            <span class="info-box-icon bg-warning elevation-1"><i class="fa fa-address-card"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Dinero ganado</span>
-              <span class="info-box-number">2,000$</span>
+              <span class="info-box-text">Total Empleados</span>
+              <span class="info-box-number"><?php echo  $ins_controlador->show_total_empleados(); ?></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -144,9 +144,7 @@ $ins_controlador = new estadisticasControlador();
 
             <div class="info-box-content">
               <span class="info-box-text">Tareas asignadas</span>
-              <span class="info-box-number">
-                10
-                <small>%</small>
+              <span class="info-box-number"><?php echo  $ins_controlador->show_total_tareas(); ?></span>
               </span>
             </div>
             <!-- /.info-box-content -->
@@ -160,7 +158,7 @@ $ins_controlador = new estadisticasControlador();
 
             <div class="info-box-content">
               <span class="info-box-text">Total Equipos registrados</span>
-              <span class="info-box-number">41,410</span>
+              <span class="info-box-number"><?php echo  $ins_controlador->show_total_equipos(); ?></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -177,7 +175,7 @@ $ins_controlador = new estadisticasControlador();
 
             <div class="info-box-content">
               <span class="info-box-text">Total Equipos dañados</span>
-              <span class="info-box-number">760</span>
+              <span class="info-box-number"><?php echo  $ins_controlador->show_total_equipos_mal(); ?></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -201,8 +199,8 @@ $ins_controlador = new estadisticasControlador();
           <div class="info-box mb-3">
             <span class="info-box-icon bg-success elevation-1"><i class="fa fa-thumbs-up"></i></span>
             <div class="info-box-content">
-              <span class="info-box-text">Solicitudes aprobadas</span>
-              <span class="info-box-number">2</span>
+              <span class="info-box-text">Solicitudes Completadas</span>
+              <span class="info-box-number"><?php echo  $ins_controlador->show_total_solicitudes_completadas(); ?></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -215,7 +213,7 @@ $ins_controlador = new estadisticasControlador();
 
             <div class="info-box-content">
               <span class="info-box-text">solicitudes en espera</span>
-              <span class="info-box-number">5</span>
+              <span class="info-box-number"><?php echo  $ins_controlador->show_total_solicitudes_abiertas(); ?></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -228,9 +226,7 @@ $ins_controlador = new estadisticasControlador();
 
             <div class="info-box-content">
               <span class="info-box-text">Solicitudes rechazadas</span>
-              <span class="info-box-number">
-                10
-              </span>
+              <span class="info-box-number"><?php echo  $ins_controlador->show_total_solicitudes_cerradas(); ?></span>
             </div>
             <!-- /.info-box-content -->
           </div>
