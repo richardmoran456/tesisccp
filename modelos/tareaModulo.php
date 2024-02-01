@@ -6,6 +6,21 @@ require_once "mainModel.php";
 class tareaModulo extends mainModel
 {
 
+    /** crear notificacion */
+    protected static function crear_notificacion_tarea($datos)
+    {
+        $sql = mainModel::conectar()->prepare("INSERT INTO notificaciones(fk_departamento,descripcion_notificacion, url_notificacion,created_at) VALUES (:FK,:DESN,:URLN,:Created_at)");
+        $createdAt = date('Y-m-d H:i:s');
+
+
+        $sql->bindParam(":FK", $datos['fk_departamento']);
+        $sql->bindParam(":DESN", $datos['descripcion_notificacion']);
+        $sql->bindParam(":URLN", $datos['url_notificacion']);
+        $sql->bindParam(":Created_at", $createdAt);
+        $sql->execute();
+        return $sql;
+    }
+
 
 
     /** Agregar registros y retorna el ID ingresado */
@@ -98,7 +113,7 @@ class tareaModulo extends mainModel
     protected static function datos_tarea($tipo, $id)
     {
         if ($tipo == "Unico") {
-            $sql = mainModel::conectar()->prepare("SELECT t.descripcion_tarea, t.estatus_tarea, t.created_at, t.tarea_id, t.titulo_tarea, t.fk_creado, t.fk_departamento_destino, u.nombre_completo AS creador, d.nombre AS nombre_departamento FROM tareas AS t INNER JOIN departamentos AS d ON t.fk_departamento_origen = d.departamento_id INNER JOIN usuarios AS u ON u.usuario_id = t.fk_creado WHERE tarea_id=:ID");
+            $sql = mainModel::conectar()->prepare("SELECT t.descripcion_tarea, t.estatus_tarea, t.created_at, t.tarea_id, t.titulo_tarea, t.fk_creado, t.fk_departamento_destino, t.fk_departamento_origen, u.nombre_completo AS creador, d.nombre AS nombre_departamento FROM tareas AS t INNER JOIN departamentos AS d ON t.fk_departamento_origen = d.departamento_id INNER JOIN usuarios AS u ON u.usuario_id = t.fk_creado WHERE tarea_id=:ID");
             $sql->bindParam(":ID", $id);
         } elseif ($tipo == "Conteo") {
             $sql = mainModel::conectar()->prepare("SELECT tarea_id FROM tareas WHERE tarea_id!='1'");

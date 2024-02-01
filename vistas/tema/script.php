@@ -87,6 +87,31 @@
     });
 
 
+    $('.notificacionccp').click(function() {
+      var notificacionSeleccionada = $(this).attr('id');
+      var urls = $(this).attr('data-urls');
+      // Enviar el ID a través de AJAX o a otra función
+      console.log(urls);
+
+      if (notificacionSeleccionada) {
+        $.ajax({
+          type: "POST",
+          url: '<?php echo SERVERURL; ?>ajax/notificacionAjax.php',
+          data: 'notificacion_id=' + notificacionSeleccionada,
+          success: function(res) {
+
+            if (res) {
+              console.log("actualizados");
+              window.location.href = urls;
+            } else {
+              console.log("no actualizado")
+            }
+          }
+        })
+      }
+    });
+
+
   });
 </script>
 <!-- Combobox -->

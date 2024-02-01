@@ -59,20 +59,13 @@ class tareaControlador extends tareaModulo
 			'fk_departamento_destino' => $fk_departamento_reg // El 5to corresponde al mantenimiento
 		];
 
-
-
-
 		$tarea_id = tareaModulo::agregar_tarea_with_id($data);
-
 
 		$data_historial = [
 			'descripcion_tarea' =>  'Se ha creado la tarea',
 			'fk_usuario' => $_SESSION['id_spm'],
 			'fk_tarea' => $tarea_id
 		];
-
-
-
 
 		if ($tarea_id > 0) {
 
@@ -85,6 +78,27 @@ class tareaControlador extends tareaModulo
 				"Texto" => "Los datos de la tarea han sido registrados con exito",
 				"Tipo" => "success"
 			];
+
+			/**
+			 * crear una notificacion para el departamento origen y departamento de destino
+			 * --fk_departamento
+			 * --descripcion_notificacion
+			 * --url_notificacion
+			 */
+
+			$notificacion_origen = [
+				"fk_departamento" => $_SESSION['privilegio_spm'],
+				"descripcion_notificacion" => "Se ha creado la tarea " . $titulo,
+				"url_notificacion" => "tarea/" . mainModel::encryption($tarea_id)
+			];
+			$registrar_notificacion_origen = tareaModulo::crear_notificacion_tarea($notificacion_origen);
+
+			$notificacion_destino = [
+				"fk_departamento" => $fk_departamento_reg,
+				"descripcion_notificacion" => "Se ha asignado la tarea de " . $titulo . " a tu departamento ",
+				"url_notificacion" => "tarea/" . mainModel::encryption($tarea_id)
+			];
+			$registrar_notificacion_destino = tareaModulo::crear_notificacion_tarea($notificacion_destino);
 		} else {
 			$alerta = [
 				"Alerta" => "simple",
@@ -99,9 +113,29 @@ class tareaControlador extends tareaModulo
 
 	public function agregar_historial_controlador()
 	{
+
+
+		$departamento_origen = mainModel::limpiar_cadena($_POST['departamento_origen_2']);
+		$fk_departamento_destino = mainModel::limpiar_cadena($_POST['fk_departamento_destino_2']);
+		$titulo_tarea = mainModel::limpiar_cadena($_POST['titulo_tarea_2']);
 		$historial_reg = mainModel::limpiar_cadena($_POST['historial_reg']);
 		$tarea_id = mainModel::limpiar_cadena($_POST['fk_tarea']);
 
+		/** NOTIFICACIONES DE CAMBIOS EN EL HISTORIAL */
+
+		$notificacion_origen = [
+			"fk_departamento" => $departamento_origen,
+			"descripcion_notificacion" => "Se ha actualizado la tarea " . $titulo_tarea,
+			"url_notificacion" => "tarea/" . mainModel::encryption($tarea_id)
+		];
+		$registrar_notificacion_origen = tareaModulo::crear_notificacion_tarea($notificacion_origen);
+
+		$notificacion_destino = [
+			"fk_departamento" => $fk_departamento_destino,
+			"descripcion_notificacion" => "Se actualizó el historial de la tarea " . $titulo_tarea,
+			"url_notificacion" => "tarea/" . mainModel::encryption($tarea_id)
+		];
+		$registrar_notificacion_destino = tareaModulo::crear_notificacion_tarea($notificacion_destino);
 
 		if ($historial_reg == "") {
 			$alerta = [

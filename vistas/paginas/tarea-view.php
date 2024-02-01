@@ -124,6 +124,10 @@ if ($datos_modulo->rowCount() == 1) {
                                     <div class="input-group input-group-md mb-4 p-2">
                                         <input type="text" class="form-control" name="historial_reg">
                                         <input type="hidden" class="form-control" name="fk_tarea" value="<?php echo $campos['tarea_id'] ?>">
+
+                                        <input type="hidden" name="departamento_origen_2" value="<?php echo $campos['fk_departamento_origen'] ?>">
+                                        <input type="hidden" name="fk_departamento_destino_2" value="<?php echo $campos['fk_departamento_destino'] ?>">
+                                        <input type="hidden" name="titulo_tarea_2" value="<?php echo $campos['titulo_tarea'] ?>">
                                         <span class="input-group-append">
                                             <button type="submit" class="btn btn-info btn-flat"><i class="fas fa-paper-plane"></i></button>
                                         </span>

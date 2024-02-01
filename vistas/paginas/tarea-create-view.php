@@ -55,7 +55,9 @@
                                         $lista =  $ins_controlador->listar_departamento_controlador();
                                         $opc = "";
                                         foreach ($lista as $fila) {
-                                            $opc .= "<option value='$fila[departamento_id]'>$fila[nombre]</option>";
+                                            if ($fila['departamento_id'] != $_SESSION['privilegio_spm']) {
+                                                $opc .= "<option value='$fila[departamento_id]'>$fila[nombre]</option>";
+                                            }
                                         }
 
                                         echo $opc;
