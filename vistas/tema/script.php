@@ -108,16 +108,15 @@ if ($pagina[0] === 'eventos') { ?>
   <script>
     var scheds = $.parseJSON('<?= json_encode($sched_res) ?>');
 
-    console.log(scheds);
 
     var events = [];
     if (!!scheds) {
       Object.keys(scheds).map((k) => {
         var row = scheds[k];
-        console.log(row);
 
         events.push({
-          id: row.id,
+          id: row.evento_id,
+          descript: row.descripcion_evento,
           title: row.titulo_evento,
           start: row.inicio_evento,
           end: row.finaliza_evento,
@@ -147,7 +146,42 @@ if ($pagina[0] === 'eventos') { ?>
           center: "title",
         },
         selectable: true,
+
         events: events,
+        eventClick: function(info) {
+
+          Swal.fire({
+            title: info.event.title,
+            text: info.event.extendedProps.descript,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ver",
+            cancelButtonText: "Cancelar",
+          }).then((result) => {
+            if (result.value) {
+              return window.location.href = '<?php echo SERVERURL; ?>' + 'evento-info/' +
+                info.event.id;
+            }
+          });
+        },
+        select: function() {
+          Swal.fire({
+            title: "Estas seguro?",
+            text: "Quieres crear un nuevo evento?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Crear",
+            cancelButtonText: "Cancelar",
+          }).then((result) => {
+            if (result.value) {
+              return window.location.href = '<?php echo SERVERURL; ?>' + 'evento-create';
+            }
+          });
+        },
       });
 
       calendar.render();

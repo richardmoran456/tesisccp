@@ -16,8 +16,8 @@
                         <form action="save_schedule.php" method="post" id="schedule-form">
                             <input type="hidden" name="id" value="">
                             <div class="form-group mb-2">
-                                <label for="title" class="control-label">Nombre</label>
-                                <input type="text" class="form-control form-control-sm rounded-0" name="title" id="title" required>
+                                <label for="titulo_reg" class="control-label">Titulo del evento</label>
+                                <input type="text" class="form-control form-control-sm rounded-0" name="titulo_reg" id="titulo_reg" required>
                             </div>
                             <div class="form-group mb-2">
                                 <label for="description" class="control-label">Descripción</label>
