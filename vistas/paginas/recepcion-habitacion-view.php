@@ -8,7 +8,29 @@ if ($datos_modulo->rowCount() == 1) {
   $campos = $datos_modulo->fetch();
 }
 
-// var_dump($campos);
+
+require_once "./controladores/gestorHabitacionControlador.php";
+$ins_habitacion = new gestorHabitacionControlador();
+
+$lista_huespedes =  $ins_habitacion->listar_ultimos_huespedes($campos['habitacion_id']);
+$huesped_activo = [];
+$con = 0;
+foreach ($lista_huespedes as $fila) {
+  $con = 1 + $con;
+  if ($con === 1) {
+    $huesped_activo = $fila;
+  }
+
+  $tabla .= "<tr>";
+
+  $tabla .= "<td>" . $fila['nombre_completo'] . " " . $fila['documento'] . "</td>";
+  $fecha_formateada_entrada = date("d M, Y H:i A", strtotime($fila['entrada']));
+  $tabla .= "<td>" . $fecha_formateada_entrada . "</td>";
+  $fecha_formateada_salida = date("d M, Y H:i A", strtotime($fila['entrada']));
+  $tabla .= "<td>" . $fecha_formateada_salida . "</td>";
+  $tabla .= "</tr>";
+}
+// var_dump($huesped_activo);
 ?>
 
 <div class="content-wrapper">
@@ -44,11 +66,11 @@ if ($datos_modulo->rowCount() == 1) {
             <li>Si el estatus es disponible
               <ol>
                 <li>Mostrar boton para poner en mantenimiento</li>
-                <li>Mostrar el buscador dinamico de clientes</li>
-                <li>Permitir la busqueda dinamica de clientes
+                <li>Mostrar el buscador dinamico de clientes <i class="fas fa-check"></i></li>
+                <li>Permitir la busqueda dinamica de clientes <i class="fas fa-check"></i>
 
                   <ol>
-                    <li>Si existe el cliente crear la relacion huesped-habitacion</li>
+                    <li>Si existe el cliente crear la relacion huesped-habitacion <i class="fas fa-check"></i></li>
                   </ol>
 
                 </li>
@@ -57,8 +79,8 @@ if ($datos_modulo->rowCount() == 1) {
             <li>Si el estatus es ocupado
               <ol>
                 <li>Ocultar formulario dinamico <i class="fas fa-check"></i></li>
-                <li>Obtener la lista del ultimo huesped de la habitacion</li>
-                <li>Mostrar la informacion del huesped</li>
+                <li>Obtener la lista del ultimo huesped de la habitacion <i class="fas fa-check"></i></li>
+                <li>Mostrar la informacion del huesped <i class="fas fa-check"></i></li>
                 <li>Mostrar boton que permita finalizar el hospedaje</li>
               </ol>
             </li>
@@ -156,25 +178,25 @@ if ($datos_modulo->rowCount() == 1) {
 
                   <div class="form-group  col-6">
                     <label for="identificador_habitacion">Nombre huesped</label>
-                    <input type="text" class="form-control" id="identificador_habitacion" placeholder="José Gregorio Heredia Bracho" required="" value="" readonly>
+                    <input type="text" class="form-control" id="identificador_habitacion" placeholder="José Gregorio Heredia Bracho" required="" value="<?= $huesped_activo['nombre_completo'] ?>" readonly>
                   </div>
 
 
 
                   <div class="form-group  col-6">
                     <label for="identificador_habitacion">Documento de identidad</label>
-                    <input type="text" class="form-control" id="identificador_habitacion" placeholder="V20890738" required="" value="" readonly>
+                    <input type="text" class="form-control" id="identificador_habitacion" placeholder="V20890738" required="" value="<?= $huesped_activo['documento'] ?>" readonly>
                   </div>
 
 
                   <div class="form-group  col-6">
                     <label for="identificador_habitacion">Entrada</label>
-                    <input type="datetime-local" class="form-control " name="final_reg" id="final_reg" required value="<?= date("Y-m-d H:i") ?>">
+                    <input type="datetime-local" class="form-control " name="final_reg" id="final_reg" required value="<?= $huesped_activo['entrada'] ?>" readonly>
                   </div>
 
                   <div class="form-group col-6 ">
                     <label for="identificador_habitacion">Salida</label>
-                    <input type="datetime-local" class="form-control " name="final_reg" id="final_reg" required>
+                    <input type="datetime-local" class="form-control " name="final_reg" id="final_reg" value="<?= $huesped_activo['salida'] ?>" required readonly>
                   </div>
 
                 </div>
@@ -201,21 +223,7 @@ if ($datos_modulo->rowCount() == 1) {
                 </thead>
                 <tbody>
                   <?php
-                  require_once "./controladores/gestorHabitacionControlador.php";
-                  $ins_habitacion = new gestorHabitacionControlador();
 
-                  $lista =  $ins_habitacion->listar_ultimos_huespedes($campos['habitacion_id']);
-                  foreach ($lista as $fila) {
-
-                    $tabla .= "<tr>";
-
-                    $tabla .= "<td>" . $fila['nombre_completo'] . " " . $fila['documento'] . "</td>";
-                    $fecha_formateada_entrada = date("d M, Y H:i A", strtotime($fila['entrada']));
-                    $tabla .= "<td>" . $fecha_formateada_entrada . "</td>";
-                    $fecha_formateada_salida = date("d M, Y H:i A", strtotime($fila['entrada']));
-                    $tabla .= "<td>" . $fecha_formateada_salida . "</td>";
-                    $tabla .= "</tr>";
-                  }
                   echo $tabla;
                   ?>
 

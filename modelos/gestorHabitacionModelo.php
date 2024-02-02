@@ -63,7 +63,7 @@ class gestorHabitacionModelo extends mainModel
         hh.fk_huesped,hh.fk_habitacion,hh.entrada,hh.salida,hh.created_at,h.nombre_completo,h.documento        
         
          FROM huesped_habitaciones as hh INNER JOIN huespedes as h ON h.huesped_id=hh.fk_huesped WHERE fk_habitacion=:ID
-        ORDER BY entrada DESC
+        ORDER BY huesped_hab_id ASC
         LIMIT 10");
         $sql->bindParam(":ID", $id);
         $sql->execute();
