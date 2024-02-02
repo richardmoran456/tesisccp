@@ -15,7 +15,13 @@ CREATE TABLE
     created_at DATETIME NOT NULL,
     modified_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     tipo_habitacion VARCHAR(140) NOT NULL,
+    estatus_habitacion enum ('disponible', 'ocupada', 'mantenimiento') DEFAULT 'disponible',
     fk_piso INT UNSIGNED NOT NULL,
     PRIMARY KEY (habitacion_id),
     FOREIGN KEY (fk_piso) REFERENCES pisos (piso_id)
   ) ENGINE = InnoDB DEFAULT CHARSET utf8mb4 COLLATE = utf8mb4_spanish_ci;
+
+-- Estados de la habitacion
+-- :disponible bg-info
+-- :ocupada bg-success
+-- :mantenimiento bg-danger

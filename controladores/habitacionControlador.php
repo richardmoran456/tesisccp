@@ -72,6 +72,14 @@ class habitacionControlador extends habitacionModelo
 		return $datos;
 	}
 
+
+	/*--------- Controlador listar modelo ---------*/
+	public function listar_habitacion_recepcion_controlador()
+	{
+		$datos = habitacionModelo::listar_habitacion_recepcion();
+		return $datos;
+	}
+
 	/*--------- Controlador eliminar módulo ---------*/
 	public function eliminar_habitacion_controlador()
 	{

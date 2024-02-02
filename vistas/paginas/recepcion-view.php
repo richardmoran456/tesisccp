@@ -25,15 +25,32 @@
       <div class="row">
 
         <?php
-        for ($i = 0; $i < 12; $i++) {
-          # code...
+        require_once "./controladores/habitacionControlador.php";
+        $ins_habitacion = new habitacionControlador();
+        $mainModel = new mainModel();
+
+        $lista =  $ins_habitacion->listar_habitacion_recepcion_controlador();
+        foreach ($lista as $fila) {
+
         ?>
           <div class="col-3">
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>150</h3>
+            <?php
+            $bg_hab = '';
+            $icon_hab = '';
+            if ($fila['estatus_habitacion'] === 'disponible') {
+              $bg_hab = 'bg-info';
+            } else if ($fila['estatus_habitacion'] === 'ocupada') {
+              $bg_hab = 'bg-success';
+            } else if ($fila['estatus_habitacion'] === 'mantenimiento') {
+              $bg_hab = 'bg-danger';
+            }
 
-                <p>Nombre Piso</p>
+            ?>
+            <div class="small-box <?= $bg_hab; ?>">
+              <div class="inner">
+                <h3><?= $fila['identificador']; ?></h3>
+
+                <p><?= $fila['ubicacion']; ?> - <i><?= $fila['estatus_habitacion']; ?></i></p>
               </div>
               <div class="icon">
                 <i class="fas fa-bed"></i>
