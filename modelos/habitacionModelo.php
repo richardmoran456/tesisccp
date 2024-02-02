@@ -9,13 +9,13 @@ class habitacionModelo extends mainModel
     protected static function agregar_habitacion($datos)
     {
 
-        $sql = mainModel::conectar()->prepare("INSERT INTO habitaciones(habitacion_id,identificador_habitacion,created_at,modified_at,tipo_habitacion) VALUES (:Habitacion,:Identificador,:Created_at,:Modified_at,:Tipo)");
+        $sql = mainModel::conectar()->prepare("INSERT INTO habitaciones(identificador_habitacion,tipo_habitacion,fk_piso,created_at) VALUES (:IDEN,:TH,:FK,:Created_at)");
         $createdAt = date('Y-m-d H:i:s');
-        $sql->bindParam(":Habitacion", $datos['habitacion_id']);
-        $sql->bindParam(":Identificador", $datos['identificador_habitacion']);
+
+        $sql->bindParam(":IDEN", $datos['identificador_habitacion']);
+        $sql->bindParam(":TH", $datos['tipo_habitacion']);
+        $sql->bindParam(":FK", $datos['fk_piso']);
         $sql->bindParam(":Created_at", $createdAt);
-        $sql->bindParam(":Modified_at", $modifiedAt);
-        $sql->bindParam(":Tipo", $datos['tipo_habitacion']);
         $sql->execute();
 
         return $sql;
@@ -51,7 +51,7 @@ class habitacionModelo extends mainModel
     protected static function listar_habitacion()
     {
 
-        $sql = mainModel::conectar()->prepare("SELECT * FROM habitaciones ORDER BY habitacion_id ASC");
+        $sql = mainModel::conectar()->prepare("SELECT h.identificador_habitacion as identificador, h.tipo_habitacion as tipo, h.habitacion_id ,h.created_at, concat(a.nombre ,' ',p.nombre) as ubicacion FROM habitaciones as h INNER JOIN pisos as p ON p.piso_id=h.fk_piso INNER JOIN alas as a ON a.ala_id=p.fk_ala ORDER BY habitacion_id ASC");
         $sql->execute();
 
         // Fetcheamos los resultados como un array asociativo

@@ -13,14 +13,14 @@ class habitacionControlador extends habitacionModelo
 	public function agregar_habitacion_controlador()
 	{
 
-		$habitacion = mainModel::limpiar_cadena($_POST['habitacion_reg']);
-		$identificador = mainModel::limpiar_cadena($_POST['identificador_habitacion_reg']);
-		$tipo = mainModel::limpiar_cadena($_POST['tipo_habitacion_reg']);
-	
+		$identificador_habitacion = mainModel::limpiar_cadena($_POST['identificador_habitacion_reg']);
+		$tipo_habitacion = mainModel::limpiar_cadena($_POST['tipo_habitacion_reg']);
+		$fk_piso  = mainModel::limpiar_cadena($_POST['fk_piso_reg']);
+
 
 
 		/*== comprobar campos vacios ==*/
-		if ($habitacion == "" || $identificador == "" || $tipo == ""|| $fk_piso == "") {
+		if ($identificador_habitacion == "" || $tipo_habitacion == "" || $fk_piso == "") {
 			$alerta = [
 				"Alerta" => "simple",
 				"Titulo" => "Ocurrió un error inesperado",
@@ -30,42 +30,21 @@ class habitacionControlador extends habitacionModelo
 			echo json_encode($alerta);
 			exit();
 		}
-		/*== Verificando integridad de los datos ==*/
-		if (mainModel::verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}", $habitacion)) {
-			$alerta = [
-				"Alerta" => "simple",
-				"Titulo" => "Ocurrió un error inesperado",
-				"Texto" => "El NOMBRE no coincide con el formato solicitado",
-				"Tipo" => "error"
-			];
-			echo json_encode($alerta);
-			exit();
-		}
-
-		if (mainModel::verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,10}", $identificador)) {
-			$alerta = [
-				"Alerta" => "simple",
-				"Titulo" => "Ocurrió un error inesperado",
-				"Texto" => "La ABREVIATURA no coincide con el formato solicitado",
-				"Tipo" => "error"
-			];
-			echo json_encode($alerta);
-			exit();
-		}
 
 
 		/*== Enviar datos a la BD ==*/
 
-		$agregar_habitacion_reg = [
-			"habitacion" => $habitacion,
-			"identificador" => $identificador,
-			"tipo" => $tipo,
+		$datos = [
+			"identificador_habitacion" => $identificador_habitacion,
+			"tipo_habitacion" => $tipo_habitacion,
 			"fk_piso" => $fk_piso
 		];
 
+		// var_dump($datos);
 
 
-		$agregar_habitacion = habitacionModelo::agregar_habitacion($agregar_habitacion_reg);
+
+		$agregar_habitacion = habitacionModelo::agregar_habitacion($datos);
 
 		if ($agregar_habitacion->rowCount() == 1) {
 			$alerta = [

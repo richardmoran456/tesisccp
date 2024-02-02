@@ -4,14 +4,14 @@ require_once "../config/APP.php";
 
 
 
-if (isset($_POST['habitacion_reg']) ||  isset($_POST['habitacion_id_del']) || isset($_POST['empleado_id_up'])) {
+if (isset($_POST['identificador_habitacion_reg']) ||  isset($_POST['habitacion_id_del']) || isset($_POST['empleado_id_up'])) {
     /*--------- Instancia al controlador ---------*/
     require_once "../controladores/habitacionControlador.php";
     $instancia_controlador = new habitacionControlador();
 
 
     /*--------- Agregar ---------*/
-    if (isset($_POST['habitacion_reg'])) {
+    if (isset($_POST['identificador_habitacion_reg'])) {
         echo $instancia_controlador->agregar_habitacion_controlador();
     }
 

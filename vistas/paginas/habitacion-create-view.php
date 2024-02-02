@@ -39,19 +39,15 @@
 
 
                             <form class="FormularioAjax" action="<?php echo SERVERURL; ?>ajax/habitacionAjax.php" method="POST" data-form="save" autocomplete="off">
-                                <div class="form-group">
-                                    <label for="habitacion_reg">habitacion habitacion</label>
-                                    <input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}" class="form-control" id="habitacion_reg" placeholder="Ingresa el nombre" maxlength="35" required="" name="habitacion_reg">
-                                </div>
 
                                 <div class="form-group">
-                                    <label for="identificador_habitacion_reg">identificador</label>
-                                    <input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,10}" class="form-control" id="identificador_habitacion_reg" placeholder="Ingresa identificacion" maxlength="10" required="" name="identificador_habitacion_reg">
+                                    <label for="identificador_habitacion_reg">Identificador</label>
+                                    <input type="text" class="form-control" id="identificador_habitacion_reg" placeholder="Ingresa identificacion" required="" name="identificador_habitacion_reg">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="tipo_habitacion_reg">Tipo de habitacion</label>
-                                    <input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,10}" class="form-control" id="tipo_habitacion_reg" placeholder="Ingresa el tipo de habitacion" maxlength="10" required="" name="tipo_habitacion_reg">
+                                    <input type="text" class="form-control" id="tipo_habitacion_reg" placeholder="Ingresa el tipo de habitacion" required="" name="tipo_habitacion_reg">
                                 </div>
 
                                 <div class="form-group">
