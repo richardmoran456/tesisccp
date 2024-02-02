@@ -33,7 +33,7 @@
         foreach ($lista as $fila) {
 
         ?>
-          <div class="col-3">
+          <div class="col-3 col-sm-6 col-md-6 col-lg-3">
             <?php
             $bg_hab = '';
             $icon_hab = '';
@@ -50,7 +50,7 @@
               <div class="inner">
                 <h3><?= $fila['identificador']; ?></h3>
 
-                <p><?= $fila['ubicacion']; ?> - <i><?= $fila['estatus_habitacion']; ?></i></p>
+                <p><?= $fila['tipo']; ?> - <?= $fila['ubicacion']; ?> - <i><?= $fila['estatus_habitacion']; ?></i></p>
               </div>
               <div class="icon">
                 <i class="fas fa-bed"></i>
