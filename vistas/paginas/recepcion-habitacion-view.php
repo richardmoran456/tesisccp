@@ -120,6 +120,11 @@ foreach ($lista_huespedes as $fila) {
                 <label for="tipo_habitacion">Tipo de habitación</label>
                 <input type="text" class="form-control" id="tipo_habitacion" placeholder="Ingresa identificacion" required="" name="tipo_habitacion" value="<?= $campos['tipo_habitacion'] ?>" readonly>
               </div>
+
+              <div class="form-group">
+                <label for="tipo_habitacion">Estatus</label>
+                <input type="text" class="form-control" id="tipo_habitacion" placeholder="Ingresa identificacion" required="" name="tipo_habitacion" value="<?= $campos['estatus_habitacion'] ?>" readonly>
+              </div>
             </div>
             <!-- /.card-body -->
           </div>
@@ -134,9 +139,13 @@ foreach ($lista_huespedes as $fila) {
                 <i class="fas fa-hand-sparkles"></i> Hacer mantenimiento
               </a>
 
-              <a class="btn btn-app">
-                <i class="fas fa-key"></i> Entregar llave
-              </a>
+              <?php if ($campos['estatus_habitacion'] === 'ocupada') { ?>
+                <a class="btn btn-app">
+                  <i class="fas fa-key"></i> Entregar llave
+                </a>
+              <?php } ?>
+
+
 
 
             </div>
@@ -198,6 +207,8 @@ foreach ($lista_huespedes as $fila) {
                     <label for="identificador_habitacion">Salida</label>
                     <input type="datetime-local" class="form-control " name="final_reg" id="final_reg" value="<?= $huesped_activo['salida'] ?>" required readonly>
                   </div>
+
+
 
                 </div>
               <?php   }  ?>
