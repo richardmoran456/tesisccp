@@ -36,7 +36,13 @@
 
 
         <li class="nav-item">
-          <a href="<?php echo SERVERURL . "eventos" ?>" class="nav-link">
+          <a href="<?php echo SERVERURL . "home" ?>" class="nav-link <?php echo ($_SESSION['page_active'] === 'home') ? 'active' : ''; ?>">
+            <p>Inicio</p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="<?php echo SERVERURL . "eventos" ?>" class="nav-link <?php echo ($_SESSION['page_active'] === 'eventos') ? 'active' : ''; ?>">
             <p>Eventos</p>
           </a>
         </li>
@@ -47,7 +53,7 @@
 
 
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="#" class="nav-link <?php echo ($_SESSION['nav_principal'] === 'gestion-gerencia') ? 'active' : ''; ?>">
             <p>
               Gestión de Gerencia
               <i class="right fas fa-angle-left"></i>
@@ -55,7 +61,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="<?php echo SERVERURL . "usuarios" ?>" class="nav-link">
+              <a href="<?php echo SERVERURL . "usuarios" ?>" class="nav-link <?php echo ($_SESSION['page_active'] === 'usuarios') ? 'active' : ''; ?>">
                 <p>Usuarios</p>
               </a>
             </li>
@@ -69,7 +75,7 @@
         </li>
 
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="#" class="nav-link <?php echo ($_SESSION['nav_principal'] === 'gestion-recepcion') ? 'active' : ''; ?>">
             <p>
               Gestión de Recepcion
               <i class="right fas fa-angle-left"></i>
@@ -77,36 +83,36 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="<?php echo SERVERURL . "recepcion" ?>" class="nav-link">
+              <a href="<?php echo SERVERURL . "recepcion" ?>" class="nav-link <?php echo ($_SESSION['page_active'] === 'recepcion') ? 'active' : ''; ?>">
                 <p>Recepción</p>
               </a>
             </li>
 
             <li class="nav-item">
-              <a href="<?php echo SERVERURL . "huespedes" ?>" class="nav-link">
+              <a href="<?php echo SERVERURL . "huespedes" ?>" class="nav-link <?php echo ($_SESSION['page_active'] === 'huespedes') ? 'active' : ''; ?>">
                 <p>Huespedes</p>
               </a>
             </li>
 
             <li class="nav-item">
-              <a href="<?php echo SERVERURL . "alas" ?>" class="nav-link">
+              <a href="<?php echo SERVERURL . "alas" ?>" class="nav-link <?php echo ($_SESSION['page_active'] === 'alas') ? 'active' : ''; ?>">
                 <p>Alas</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo SERVERURL . "pisos" ?>" class="nav-link">
+              <a href="<?php echo SERVERURL . "pisos" ?>" class="nav-link <?php echo ($_SESSION['page_active'] === 'pisos') ? 'active' : ''; ?>">
                 <p>Pisos</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo SERVERURL . "habitaciones" ?>" class="nav-link">
+              <a href="<?php echo SERVERURL . "habitaciones" ?>" class="nav-link <?php echo ($_SESSION['page_active'] === 'habitaciones') ? 'active' : ''; ?>">
                 <p>Habitaciones</p>
               </a>
             </li>
 
 
             <li class="nav-item">
-              <a href="<?php echo SERVERURL . "tareas" ?>" class="nav-link">
+              <a href="<?php echo SERVERURL . "tareas" ?>" class="nav-link <?php echo ($_SESSION['page_active'] === 'tareas') ? 'active' : ''; ?>">
                 <p>Tareas</p>
               </a>
             </li>
@@ -116,14 +122,8 @@
 
 
 
-
-
-
-
-
-
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="#" class="nav-link <?php echo ($_SESSION['nav_principal'] === 'gestion-rrhh') ? 'active' : ''; ?>">
             <p>
               Gestión de RRHH
               <i class="right fas fa-angle-left"></i>
@@ -131,18 +131,18 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="<?php echo SERVERURL . "empleados" ?>" class="nav-link">
+              <a href="<?php echo SERVERURL . "empleados" ?>" class="nav-link" <?php echo ($_SESSION['page_active'] === 'empleados') ? 'active' : ''; ?>>
                 <p>Empleados</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo SERVERURL . "puestos" ?>" class="nav-link">
+              <a href="<?php echo SERVERURL . "puestos" ?>" class="nav-link <?php echo ($_SESSION['page_active'] === 'puestos') ? 'active' : ''; ?>">
                 <p>Puestos</p>
               </a>
             </li>
 
             <li class="nav-item">
-              <a href="<?php echo SERVERURL . "departamentos" ?>" class="nav-link">
+              <a href="<?php echo SERVERURL . "departamentos" ?>" class="nav-link <?php echo ($_SESSION['page_active'] === 'departamentos') ? 'active' : ''; ?>">
                 <p>Departamentos</p>
               </a>
             </li>
@@ -151,7 +151,7 @@
 
 
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="#" class="nav-link <?php echo ($_SESSION['nav_principal'] === 'gestion-almacen') ? 'active' : ''; ?>">
             <p>
               Gestión de Almacen
               <i class="right fas fa-angle-left"></i>
@@ -159,7 +159,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="<?php echo SERVERURL . "solicitudes" ?>" class="nav-link">
+              <a href="<?php echo SERVERURL . "solicitudes" ?>" class="nav-link <?php echo ($_SESSION['page_active'] === 'solicitudes') ? 'active' : ''; ?>">
                 <p>Solicitudes</p>
               </a>
             </li>
@@ -167,7 +167,7 @@
         </li>
 
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="#" class="nav-link <?php echo ($_SESSION['nav_principal'] === 'gestion-sm') ? 'active' : ''; ?>">
             <p>
               Gestión de Sistemas Y Mantenimiento
               <i class="right fas fa-angle-left"></i>
@@ -175,7 +175,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="<?php echo SERVERURL . "equipos" ?>" class="nav-link">
+              <a href="<?php echo SERVERURL . "equipos" ?>" class="nav-link <?php echo ($_SESSION['page_active'] === 'equipos') ? 'active' : ''; ?>">
                 <p>Equipos</p>
               </a>
             </li>

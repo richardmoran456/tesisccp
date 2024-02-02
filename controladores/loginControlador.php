@@ -79,6 +79,9 @@ class loginControlador extends loginModelo
             $_SESSION['privilegio_spm'] = $row['fk_departamento'];
             $_SESSION['token_spm'] = md5(uniqid(mt_rand(), true));
 
+            $_SESSION['nav_principal'] = 'home';
+            $_SESSION['page_active'] = 'home';
+
             /**
              * Agregamos el avatar default
              */

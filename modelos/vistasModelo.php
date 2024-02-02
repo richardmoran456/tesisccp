@@ -13,7 +13,7 @@ class vistasModelo
 
         if (in_array($vistas, $listaBlanca)) {
             if (is_file("./vistas/paginas/" . $vistas . "-view.php")) {
-
+                $_SESSION['page_active'] =  $vistas;
                 $contenido = "./vistas/paginas/" . $vistas . "-view.php";
             } else {
                 $contenido = "404";

@@ -21,12 +21,15 @@
   $vistas = $IV->obtener_vistas_controlador();
 
   if ($vistas == "login" || $vistas == "404") {
+
     require_once "./vistas/paginas/" . $vistas . "-view.php";
   } else {
+
     session_start(['name' => 'SPM']);
 
-    $pagina = explode("/", $_GET['views']);
 
+    $pagina = explode("/", $_GET['views']);
+    $_SESSION['page_active'] =  $pagina[0];
     require_once "./controladores/loginControlador.php";
     $lc = new loginControlador();
 
@@ -46,7 +49,9 @@
       <?php include "tema/aside.php"; ?>
 
       <!-- Content Wrapper. Contains page content -->
+
       <?php include $vistas; ?>
+
       <!-- /.content-wrapper -->
 
       <!-- Control Sidebar -->
@@ -57,7 +62,9 @@
       <footer class="main-footer" style="background-color: #424446;">
         <!-- To the right -->
         <div class="float-right d-none d-sm-inline">
-          Ver- 0.0.9
+          <?php
+
+          echo $_SESSION['page_active']; ?>
         </div>
         <!-- Default to the left -->
         <strong>Copyright &copy; 2023-2024 <a href="https://adminlte.io">CCP Suites</a>.</strong> Todos los Derechos Reservados.
