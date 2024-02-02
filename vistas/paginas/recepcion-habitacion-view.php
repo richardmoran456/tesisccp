@@ -38,9 +38,9 @@ if ($datos_modulo->rowCount() == 1) {
         <div class="col-12">
           <ol>
             <li>Obtener información de la habitacion con el ID <i class="fas fa-check"></i></li>
-            <li>Obtener la informacion de los ultimos huespedes</li>
-            <li>Mostrar una tabla con los ultimos huespedes</li>
-            <li>Mostrar informacion de la habitacion</li>
+            <li>Obtener la informacion de los ultimos huespedes <i class="fas fa-check"></i></li>
+            <li>Mostrar una tabla con los ultimos huespedes <i class="fas fa-check"></i></li>
+            <li>Mostrar informacion de la habitacion <i class="fas fa-check"></i></li>
             <li>Si el estatus es disponible
               <ol>
                 <li>Mostrar boton para poner en mantenimiento</li>
@@ -56,6 +56,7 @@ if ($datos_modulo->rowCount() == 1) {
             </li>
             <li>Si el estatus es ocupado
               <ol>
+                <li>Ocultar formulario dinamico <i class="fas fa-check"></i></li>
                 <li>Obtener la lista del ultimo huesped de la habitacion</li>
                 <li>Mostrar la informacion del huesped</li>
                 <li>Mostrar boton que permita finalizar el hospedaje</li>
@@ -130,10 +131,11 @@ if ($datos_modulo->rowCount() == 1) {
               <?php
               if ($campos['estatus_habitacion'] === 'disponible') {
               ?>
-                <form action="#" id="formularioBusqueda">
+                <form id="formularioBusqueda">
                   <div class="form-group">
                     <div class="input-group input-group-md">
                       <input type="search" class="form-control form-control-md" placeholder="Ingresa nombre o cedula del huesped" name="inputsearchhuesped">
+                      <input type="hidden" name="fk_habitacion_search" id="fk_habiformularioBusquedatacion_search" value="<?= $campos['habitacion_id']; ?>">
                       <div class="input-group-append">
                         <button type="submit" class="btn btn-md btn-default">
                           <i class="fa fa-search"></i>
@@ -167,7 +169,7 @@ if ($datos_modulo->rowCount() == 1) {
 
                   <div class="form-group  col-6">
                     <label for="identificador_habitacion">Entrada</label>
-                    <input type="datetime-local" class="form-control " name="final_reg" id="final_reg" required>
+                    <input type="datetime-local" class="form-control " name="final_reg" id="final_reg" required value="<?= date("Y-m-d H:i") ?>">
                   </div>
 
                   <div class="form-group col-6 ">
@@ -190,7 +192,7 @@ if ($datos_modulo->rowCount() == 1) {
               <table class="table table-striped table-sm">
                 <thead>
                   <tr>
-                    <td class="font-weight-bold">#</td>
+
                     <td class="font-weight-bold">Nombre</td>
                     <td class="font-weight-bold">Entrada</td>
                     <td class="font-weight-bold">Salida</td>
@@ -199,19 +201,24 @@ if ($datos_modulo->rowCount() == 1) {
                 </thead>
                 <tbody>
                   <?php
-                  for ($i = 0; $i < 6; $i++) {
-                    # code...
+                  require_once "./controladores/gestorHabitacionControlador.php";
+                  $ins_habitacion = new gestorHabitacionControlador();
 
+                  $lista =  $ins_habitacion->listar_ultimos_huespedes($campos['habitacion_id']);
+                  foreach ($lista as $fila) {
+
+                    $tabla .= "<tr>";
+
+                    $tabla .= "<td>" . $fila['nombre_completo'] . " " . $fila['documento'] . "</td>";
+                    $fecha_formateada_entrada = date("d M, Y H:i A", strtotime($fila['entrada']));
+                    $tabla .= "<td>" . $fecha_formateada_entrada . "</td>";
+                    $fecha_formateada_salida = date("d M, Y H:i A", strtotime($fila['entrada']));
+                    $tabla .= "<td>" . $fecha_formateada_salida . "</td>";
+                    $tabla .= "</tr>";
+                  }
+                  echo $tabla;
                   ?>
 
-                    <tr>
-                      <td><?= $i + 1; ?></td>
-                      <td>Jose Gregorio Heredia Bracho V20890738</td>
-
-                      <td>22 Ene,2024</td>
-                      <td>22 Ene,2024</td>
-                    </tr>
-                  <?php } ?>
 
                 </tbody>
               </table>
