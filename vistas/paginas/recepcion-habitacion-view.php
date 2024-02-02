@@ -130,10 +130,11 @@ if ($datos_modulo->rowCount() == 1) {
               <?php
               if ($campos['estatus_habitacion'] === 'disponible') {
               ?>
-                <form action="#" id="formularioBusqueda">
+                <form id="formularioBusqueda">
                   <div class="form-group">
                     <div class="input-group input-group-md">
                       <input type="search" class="form-control form-control-md" placeholder="Ingresa nombre o cedula del huesped" name="inputsearchhuesped">
+                      <input type="text" name="fk_habitacion_search" id="fk_habiformularioBusquedatacion_search" value="<?= $campos['habitacion_id']; ?>">
                       <div class="input-group-append">
                         <button type="submit" class="btn btn-md btn-default">
                           <i class="fa fa-search"></i>
@@ -167,7 +168,7 @@ if ($datos_modulo->rowCount() == 1) {
 
                   <div class="form-group  col-6">
                     <label for="identificador_habitacion">Entrada</label>
-                    <input type="datetime-local" class="form-control " name="final_reg" id="final_reg" required>
+                    <input type="datetime-local" class="form-control " name="final_reg" id="final_reg" required value="<?= date("Y-m-d H:i") ?>">
                   </div>
 
                   <div class="form-group col-6 ">
