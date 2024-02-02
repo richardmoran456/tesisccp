@@ -52,4 +52,23 @@ class gestorHabitacionModelo extends mainModel
 
         return $sql;
     }
+
+
+
+
+    /*--------- Listar los ultimos huespedes ---------*/
+    protected static function obtener_ultimos_huespedes($id)
+    {
+        $sql = mainModel::conectar()->prepare("SELECT 
+        hh.fk_huesped,hh.fk_habitacion,hh.entrada,hh.salida,hh.created_at,h.nombre_completo,h.documento        
+        
+         FROM huesped_habitaciones as hh INNER JOIN huespedes as h ON h.huesped_id=hh.fk_huesped WHERE fk_habitacion=:ID
+        ORDER BY entrada DESC
+        LIMIT 10");
+        $sql->bindParam(":ID", $id);
+        $sql->execute();
+        // Fetcheamos los resultados como un array asociativo
+        $resultados = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $resultados; // Devolvemos el array de resultados
+    }
 }

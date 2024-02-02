@@ -32,8 +32,8 @@ class gestorHabitacionControlador extends gestorHabitacionModelo
 
                               <form id="prueba' . $con . '" autocomplete="off">
 
-                              <input type="text" name="fk_huesped_asignado" value="' . $fila['huesped_id'] . '">
-                              <input type="text" name="fk_habitacion" value="' . $fk_habitacion . '">
+                              <input type="hidden" name="fk_huesped_asignado" value="' . $fila['huesped_id'] . '">
+                              <input type="hidden" name="fk_habitacion" value="' . $fk_habitacion . '">
                             
                               <div class="row">
                                 <div class="form-group  col-6">
@@ -174,5 +174,13 @@ class gestorHabitacionControlador extends gestorHabitacionModelo
             ];
         }
         echo json_encode($alerta);
+    }
+
+
+
+    public function listar_ultimos_huespedes($id)
+    {
+        $datos = gestorHabitacionModelo::obtener_ultimos_huespedes($id);
+        return $datos;
     }
 }
