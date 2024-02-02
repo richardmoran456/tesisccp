@@ -77,8 +77,12 @@ if ($datos_modulo->rowCount() == 1) {
 
 
                                 if ($campos['estatus_tarea'] ===  'abierto') { ?>
-                                    <form class="FormularioAjax btn-group" action="<?php echo SERVERURL . 'ajax/tareajax.php'; ?>" method="POST" data-form="update" autocomplete="off">
+                                    <form class="FormularioAjax btn-group" action="<?php echo SERVERURL . 'ajax/tareaAjax.php'; ?>" method="POST" data-form="update" autocomplete="off">
                                         <input type="hidden" name="tarea_id_del" value="<?php echo mainModel::encryption($campos['tarea_id']) ?>">
+                                        <input type="hidden" name="titulo_tarea" value="<?php echo $campos['titulo_tarea'] ?>">
+                                        <input type="hidden" name="departamento_origen" value="<?php echo $campos['fk_departamento_origen'] ?>">
+                                        <input type="hidden" name="departamento_destino" value="<?php echo $campos['fk_departamento_destino'] ?>">
+
                                         <input type="hidden" name="tipo_cambio" value="cerrado">
                                         <button type="submit" class="btn btn-danger btn-sm">
                                             Cancelar Tarea
@@ -87,6 +91,9 @@ if ($datos_modulo->rowCount() == 1) {
                                     <form class="FormularioAjax btn-group" action="<?php echo SERVERURL . 'ajax/tareaAjax.php'; ?>" method="POST" data-form="update" autocomplete="off">
                                         <input type="hidden" name="tarea_id_del" value="<?php echo mainModel::encryption($campos['tarea_id']) ?>">
                                         <input type="hidden" name="tipo_cambio" value="completado">
+                                        <input type="hidden" name="titulo_tarea" value="<?php echo $campos['titulo_tarea'] ?>">
+                                        <input type="hidden" name="departamento_origen" value="<?php echo $campos['fk_departamento_origen'] ?>">
+                                        <input type="hidden" name="departamento_destino" value="<?php echo $campos['fk_departamento_destino'] ?>">
                                         <button type="submit" class="btn btn-success btn-sm">
                                             Completar Tarea
                                         </button>

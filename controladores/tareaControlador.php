@@ -209,6 +209,11 @@ class tareaControlador extends tareaModulo
 		$id = mainModel::limpiar_cadena($id);
 		$tipo_cambio = mainModel::limpiar_cadena($_POST['tipo_cambio']);
 
+
+		$titulo = mainModel::limpiar_cadena($_POST['titulo_tarea']);
+		$fk_departamento_origen = mainModel::limpiar_cadena($_POST['departamento_origen']);
+		$fk_departamento_destino = mainModel::limpiar_cadena($_POST['departamento_destino']);
+
 		/** Comprobar si tiene los permisos */
 
 
@@ -234,6 +239,28 @@ class tareaControlador extends tareaModulo
 				"Texto" => "Los datos han sido actualizados con exito",
 				"Tipo" => "success"
 			];
+
+
+			/**
+			 * crear una notificacion para el departamento origen y departamento de destino
+			 * --fk_departamento
+			 * --descripcion_notificacion
+			 * --url_notificacion
+			 */
+
+			$notificacion_origen = [
+				"fk_departamento" => $fk_departamento_origen,
+				"descripcion_notificacion" => "Se ha " . $tipo_cambio . " la tarea " . $titulo,
+				"url_notificacion" => "tarea/" . mainModel::encryption($id)
+			];
+			$registrar_notificacion_origen = tareaModulo::crear_notificacion_tarea($notificacion_origen);
+
+			$notificacion_destino = [
+				"fk_departamento" => $fk_departamento_destino,
+				"descripcion_notificacion" => "Se ha  " . $tipo_cambio . " la tarea de " . $titulo . " a tu departamento",
+				"url_notificacion" => "tarea/" . mainModel::encryption($id)
+			];
+			$registrar_notificacion_destino = tareaModulo::crear_notificacion_tarea($notificacion_destino);
 		} else {
 			$alerta = [
 				"Alerta" => "simple",
