@@ -8,7 +8,7 @@ class vistasModelo
     {
 
 
-        $listaBlanca = ["home", "usuarios", "usuario-create", "usuario-update", "solicitudes", "solicitud-create", "solicitud", "solicitud-update", "tareas", "tarea", "tarea-create", "huespedes", "huesped-create", "huesped-update", "pisos", "piso-create", "piso-update", "habitaciones", "habitacion-create", "habitacion-update", "notificaciones", "perfil", "departamentos", "departamento-create", "departamento-update", "puestos", "puesto-create", "puesto-update", "eventos", "evento-create",  "evento-info", "empleados", "empleado-create", "empleado-update", "alas", "ala-create", "ala-update", "equipos", "equipo-create", "equipo-update", "modulos", "modulo-update", "recepcion"];
+        $listaBlanca = ["home", "usuarios", "usuario-create", "usuario-update", "solicitudes", "solicitud-create", "solicitud", "solicitud-update", "tareas", "tarea", "tarea-create", "huespedes", "huesped-create", "huesped-update", "pisos", "piso-create", "piso-update", "habitaciones", "habitacion-create", "habitacion-update", "notificaciones", "perfil", "departamentos", "departamento-create", "departamento-update", "puestos", "puesto-create", "puesto-update", "eventos", "evento-create",  "evento-info", "empleados", "empleado-create", "empleado-update", "alas", "ala-create", "ala-update", "equipos", "equipo-create", "equipo-update", "modulos", "modulo-update", "recepcion", "recepcion-habitacion"];
 
 
         if (in_array($vistas, $listaBlanca)) {

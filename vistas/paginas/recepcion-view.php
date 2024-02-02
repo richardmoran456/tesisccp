@@ -36,13 +36,17 @@
           <div class="col-3 col-sm-6 col-md-6 col-lg-3">
             <?php
             $bg_hab = '';
+
             $icon_hab = '';
             if ($fila['estatus_habitacion'] === 'disponible') {
               $bg_hab = 'bg-info';
+              $icon_hab = 'fas fa-key';
             } else if ($fila['estatus_habitacion'] === 'ocupada') {
               $bg_hab = 'bg-success';
+              $icon_hab = 'fas fa-bed';
             } else if ($fila['estatus_habitacion'] === 'mantenimiento') {
               $bg_hab = 'bg-danger';
+              $icon_hab = 'fas fa-hand-sparkles ';
             }
 
             ?>
@@ -53,9 +57,9 @@
                 <p><?= $fila['tipo']; ?> - <?= $fila['ubicacion']; ?> - <i><?= $fila['estatus_habitacion']; ?></i></p>
               </div>
               <div class="icon">
-                <i class="fas fa-bed"></i>
+                <i class="<?= $icon_hab; ?>"></i>
               </div>
-              <a href="#" class="small-box-footer">
+              <a href="<?php echo SERVERURL . 'recepcion-habitacion/' . mainModel::encryption($fila['habitacion_id']); ?>" class="small-box-footer">
                 Más información <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
