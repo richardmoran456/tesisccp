@@ -213,3 +213,32 @@ if ($pagina[0] === 'eventos') { ?>
     });
   </script>
 <?php } ?>
+
+
+
+
+
+
+
+
+<!-- Gestor de habitaciones -->
+<script>
+  $('#formularioBusqueda').on('submit', function(e) {
+    e.preventDefault();
+    var formData = $(this).serialize();
+    var searchd = formData.split('=')[1];
+    if (searchd) {
+      $.ajax({
+        type: 'POST', // Se envia por metodo POST igual que el formulario
+        url: '<?php echo SERVERURL; ?>ajax/gestorHabitacionAjax.php', // Se envia a nuestro gestor
+        data: 'search=' + searchd, // Enviamos el id que sufrio el cambio o fue seleccionado en el select
+        success: function(html) {
+          $('#listaDinamicaHuespedes').html(html); // cuando recibimos los datos del controlador lo asignamos a la data del piso
+        }
+      });
+    } else {
+      $('#listaDinamicaHuespedes').html('');
+    }
+
+  });
+</script>
