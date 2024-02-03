@@ -58,6 +58,7 @@
                     <th>Departamento</th>
                     <th>Puesto</th>
                     <th>Nombre</th>
+                    <th>Foto</th>
                     <th>Creado</th>
                           <!-- Acciones solo estara para el departamento de RRHH -->
                     <th>Acciones</th>
@@ -82,6 +83,7 @@
                     $tabla .= "<td>$fila[departamento]</td>";
                     $tabla .= "<td>$fila[puesto]</td>";
                     $tabla .= "<td>$fila[nombre_completo]</td>";
+                    $tabla .= "<td>$fila[url_imagen]</td>";
                     setlocale(LC_TIME, "es_VE");
                     $fecha_formateada = date("d M, Y H:i A", strtotime($fila['created_at']));
                     $tabla .= "<td>$fecha_formateada</td>";

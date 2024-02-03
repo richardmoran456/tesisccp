@@ -81,4 +81,34 @@ class empleadoModelo extends mainModel
 
         return $sql;
     }
+
+    /*--------- Actualizar imagen---------*/
+    protected static function actualizar_empleado_imagen($datos)
+    {
+
+        $sql = mainModel::conectar()->prepare("UPDATE empleados SET url_imagen=:IMAGEN  WHERE empleado_id=:ID");
+
+
+        $sql->bindParam(":IMAGEN", $datos['imagen']);
+        $sql->bindParam(":ID", $datos['id']);
+
+        $sql->execute();
+
+        return $sql;
+    }
+
+    /*--------- Actualizar resumen---------*/
+    protected static function actualizar_empleado_resumen($datos)
+    {
+
+        $sql = mainModel::conectar()->prepare("UPDATE empleados SET url_resumen=:RESUMEN  WHERE empleado_id=:ID");
+
+
+        $sql->bindParam(":RESUMEN", $datos['resumen']);
+        $sql->bindParam(":ID", $datos['id']);
+
+        $sql->execute();
+
+        return $sql;
+    }
 }

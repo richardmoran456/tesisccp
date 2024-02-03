@@ -24,6 +24,16 @@ if (isset($_POST['nombre_empleado_reg']) ||  isset($_POST['empleado_id_del']) ||
     if (isset($_POST['empleado_id_up'])) {
         echo $instancia_controlador->actualizar_empleado_controlador();
     }
+
+    /*--------- cargar imagen o foto ---------*/
+    if (isset($_FILES['file'])) {
+        echo $instancia_controlador->actualizar_imagen();
+    }
+
+    /*--------- cargar imagen o foto ---------*/
+    if (isset($_FILES['file'])) {
+        echo $instancia_controlador->actualizar_resumen();
+    }
 } else {
     echo "aqui";
 }
