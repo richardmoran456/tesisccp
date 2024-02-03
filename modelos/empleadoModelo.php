@@ -89,7 +89,7 @@ class empleadoModelo extends mainModel
         $sql = mainModel::conectar()->prepare("UPDATE empleados SET url_imagen=:IMAGEN  WHERE empleado_id=:ID");
 
 
-        $sql->bindParam(":IMAGEN", $datos['imagen']);
+        $sql->bindParam(":IMAGEN", $datos['url_imagen']);
         $sql->bindParam(":ID", $datos['id']);
 
         $sql->execute();
@@ -104,7 +104,7 @@ class empleadoModelo extends mainModel
         $sql = mainModel::conectar()->prepare("UPDATE empleados SET url_resumen=:RESUMEN  WHERE empleado_id=:ID");
 
 
-        $sql->bindParam(":RESUMEN", $datos['resumen']);
+        $sql->bindParam(":RESUMEN", $datos['url_resumen']);
         $sql->bindParam(":ID", $datos['id']);
 
         $sql->execute();
