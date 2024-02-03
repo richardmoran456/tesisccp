@@ -71,4 +71,23 @@ class gestorHabitacionModelo extends mainModel
         $resultados = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $resultados; // Devolvemos el array de resultados
     }
+    /*--------- Registro de huesped y retornar id ---------*/
+
+    protected static function registro_huesped($datos)
+    {
+
+        $sql = mainModel::conectar()->prepare("INSERT INTO huespedes(nombre_completo,
+        documento,created_at) VALUES (:Nombre,:DNI,:Created_at)");
+        $createdAt = date('Y-m-d H:i:s');
+        $sql->bindParam(":Nombre", $datos['nombre_completo']);
+        $sql->bindParam(":DNI", $datos['documento']);
+        $sql->bindParam(":Created_at", $createdAt);
+        $sql->execute();
+
+        // Obtiene el ID del registro recién insertado
+        $resultado = mainModel::conectar()->query("SELECT MAX(huesped_id) as id FROM huespedes");
+        $id = $resultado->fetch()['id'];
+        // Retorna el ID
+        return $id;
+    }
 }

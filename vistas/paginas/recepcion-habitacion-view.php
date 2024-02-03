@@ -71,6 +71,8 @@ foreach ($lista_huespedes as $fila) {
 
                   <ol>
                     <li>Si existe el cliente crear la relacion huesped-habitacion <i class="fas fa-check"></i></li>
+                    <li>Si no existe el cliente mostrar formulario para el registro <i class="fas fa-check"></i></li>
+                    <li>Permitir el registro y asignacion del huesped <i class="fas fa-check"></i></li>
                   </ol>
 
                 </li>
@@ -153,69 +155,72 @@ foreach ($lista_huespedes as $fila) {
           </div>
         </div>
         <div class="col-6">
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Huesped</h3>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body p-4">
-              <?php
-              if ($campos['estatus_habitacion'] === 'disponible') {
-              ?>
-                <form id="formularioBusqueda">
-                  <div class="form-group">
-                    <div class="input-group input-group-md">
-                      <input type="search" class="form-control form-control-md" placeholder="Ingresa nombre o cedula del huesped" name="inputsearchhuesped">
-                      <input type="hidden" name="fk_habitacion_search" id="fk_habiformularioBusquedatacion_search" value="<?= $campos['habitacion_id']; ?>">
-                      <div class="input-group-append">
-                        <button type="submit" class="btn btn-md btn-default">
-                          <i class="fa fa-search"></i>
-                        </button>
+          <?php if ($campos['estatus_habitacion'] != 'mantenimiento') { ?>
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Huesped</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body p-4">
+                <?php
+                if ($campos['estatus_habitacion'] === 'disponible') {
+                ?>
+                  <form id="formularioBusqueda">
+                    <div class="form-group">
+                      <div class="input-group input-group-md">
+                        <input type="search" class="form-control form-control-md" placeholder="Ingresa nombre o cedula del huesped" name="inputsearchhuesped">
+                        <input type="hidden" name="fk_habitacion_search" id="fk_habiformularioBusquedatacion_search" value="<?= $campos['habitacion_id']; ?>">
+                        <div class="input-group-append">
+                          <button type="submit" class="btn btn-md btn-default">
+                            <i class="fa fa-search"></i>
+                          </button>
+                        </div>
                       </div>
                     </div>
+                  </form>
+
+
+                  <div class="list-group" id="listaDinamicaHuespedes">
+
                   </div>
-                </form>
+                <?php   } else {   ?>
 
 
-                <div class="list-group" id="listaDinamicaHuespedes">
+                  <div class="row">
 
-                </div>
-              <?php   } else {  ?>
+                    <div class="form-group  col-6">
+                      <label for="identificador_habitacion">Nombre huesped</label>
+                      <input type="text" class="form-control" id="identificador_habitacion" placeholder="José Gregorio Heredia Bracho" required="" value="<?= $huesped_activo['nombre_completo'] ?>" readonly>
+                    </div>
 
 
-                <div class="row">
 
-                  <div class="form-group  col-6">
-                    <label for="identificador_habitacion">Nombre huesped</label>
-                    <input type="text" class="form-control" id="identificador_habitacion" placeholder="José Gregorio Heredia Bracho" required="" value="<?= $huesped_activo['nombre_completo'] ?>" readonly>
+                    <div class="form-group  col-6">
+                      <label for="identificador_habitacion">Documento de identidad</label>
+                      <input type="text" class="form-control" id="identificador_habitacion" placeholder="V20890738" required="" value="<?= $huesped_activo['documento'] ?>" readonly>
+                    </div>
+
+
+                    <div class="form-group  col-6">
+                      <label for="identificador_habitacion">Entrada</label>
+                      <input type="datetime-local" class="form-control " name="final_reg" id="final_reg" required value="<?= $huesped_activo['entrada'] ?>" readonly>
+                    </div>
+
+                    <div class="form-group col-6 ">
+                      <label for="identificador_habitacion">Salida</label>
+                      <input type="datetime-local" class="form-control " name="final_reg" id="final_reg" value="<?= $huesped_activo['salida'] ?>" required readonly>
+                    </div>
+
+
+
                   </div>
+                <?php   }  ?>
 
-
-
-                  <div class="form-group  col-6">
-                    <label for="identificador_habitacion">Documento de identidad</label>
-                    <input type="text" class="form-control" id="identificador_habitacion" placeholder="V20890738" required="" value="<?= $huesped_activo['documento'] ?>" readonly>
-                  </div>
-
-
-                  <div class="form-group  col-6">
-                    <label for="identificador_habitacion">Entrada</label>
-                    <input type="datetime-local" class="form-control " name="final_reg" id="final_reg" required value="<?= $huesped_activo['entrada'] ?>" readonly>
-                  </div>
-
-                  <div class="form-group col-6 ">
-                    <label for="identificador_habitacion">Salida</label>
-                    <input type="datetime-local" class="form-control " name="final_reg" id="final_reg" value="<?= $huesped_activo['salida'] ?>" required readonly>
-                  </div>
-
-
-
-                </div>
-              <?php   }  ?>
-
+              </div>
+              <!-- /.card-body -->
             </div>
-            <!-- /.card-body -->
-          </div>
+          <?php } ?>
+
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Últimos huespedes</h3>

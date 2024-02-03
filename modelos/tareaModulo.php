@@ -54,8 +54,7 @@ class tareaModulo extends mainModel
         // Retorna el ID
         return $id;
 
-        // Retorna el ID
-        return $id;
+
 
 
         return $sql;
