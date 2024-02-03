@@ -71,6 +71,8 @@ foreach ($lista_huespedes as $fila) {
 
                   <ol>
                     <li>Si existe el cliente crear la relacion huesped-habitacion <i class="fas fa-check"></i></li>
+                    <li>Si no existe el cliente mostrar formulario para el registro <i class="fas fa-check"></i></li>
+                    <li>Permitir el registro y asignacion del huesped <i class="fas fa-check"></i></li>
                   </ol>
 
                 </li>
