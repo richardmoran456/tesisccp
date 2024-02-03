@@ -163,16 +163,19 @@ class empleadoControlador extends empleadoModelo
 	{
 		// File upload directory 
 		session_start(['name' => 'SPM']);
-		$targetDir = "../vistas/assets/images/users/";
+		$targetDir = "../vistas/assets/images/empleados/";
+		$id = mainModel::decryption($_POST['empleado_id_imagen']);
+		$id = mainModel::limpiar_cadena($id);
 
-		if (!empty($_FILES["file"]["name"])) {
+
+
+		if (!empty($_FILES["file_foto"]["name"])) {
 			// Get file info 
-			$fileName = basename($_FILES["file"]["name"]);
+			$fileName = basename($_FILES["file_foto"]["name"]);
 			$fileType = pathinfo($fileName, PATHINFO_EXTENSION);
-			$newFileName = "user-" . $_SESSION['id_spm'] . uniqid() . '.' . $fileType;
+			$newFileName = "empleado-" . $id . uniqid() . '.' . $fileType;
 
 			$targetFilePath = $targetDir . $newFileName;
-			// $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
 
 
 			// Allow certain file formats 
@@ -180,11 +183,11 @@ class empleadoControlador extends empleadoModelo
 			if (in_array($fileType, $allowTypes)) {
 
 				// Upload file to server 
-				if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
+				if (move_uploaded_file($_FILES["file_foto"]["tmp_name"], $targetFilePath)) {
 
 					$datos = [
-						"id" => $_SESSION['id_spm'],
-						"avatar" => $newFileName
+						"id" => $id,
+						"url_imagen" => $newFileName
 					];
 
 					if (empleadoModelo::actualizar_empleado_imagen($datos)) {
@@ -194,7 +197,6 @@ class empleadoControlador extends empleadoModelo
 							"Texto" => "El archivo " . $newFileName . " se ha cargado correctamente.",
 							"Tipo" => "success"
 						];
-						$_SESSION['avatar_default']  = SERVERURL . "vistas/assets/images/users/" . $newFileName;
 					} else {
 						$alerta = [
 							"Alerta" => "simple",

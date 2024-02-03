@@ -4,7 +4,7 @@ require_once "../config/APP.php";
 
 
 
-if (isset($_POST['nombre_empleado_reg']) ||  isset($_POST['empleado_id_del']) || isset($_POST['empleado_id_up'])) {
+if (isset($_POST['nombre_empleado_reg']) ||  isset($_POST['empleado_id_del']) || isset($_POST['empleado_id_up']) || isset($_FILES['file_foto'])) {
     /*--------- Instancia al controlador ---------*/
     require_once "../controladores/empleadoControlador.php";
     $instancia_controlador = new empleadoControlador();
@@ -26,12 +26,12 @@ if (isset($_POST['nombre_empleado_reg']) ||  isset($_POST['empleado_id_del']) ||
     }
 
     /*--------- cargar imagen o foto ---------*/
-    if (isset($_FILES['file'])) {
+    if (isset($_FILES['file_foto'])) {
         echo $instancia_controlador->actualizar_imagen();
     }
 
     /*--------- cargar imagen o foto ---------*/
-    if (isset($_FILES['file'])) {
+    if (isset($_FILES['file_resumen'])) {
         echo $instancia_controlador->actualizar_resumen();
     }
 } else {
