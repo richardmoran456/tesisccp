@@ -26,9 +26,13 @@ foreach ($lista_huespedes as $fila) {
   $tabla .= "<td>" . $fila['nombre_completo'] . " " . $fila['documento'] . "</td>";
   $fecha_formateada_entrada = date("d M, Y H:i A", strtotime($fila['entrada']));
   $tabla .= "<td>" . $fecha_formateada_entrada . "</td>";
-  $fecha_formateada_salida = date("d M, Y H:i A", strtotime($fila['entrada']));
+  $fecha_formateada_salida = date("d M, Y H:i A", strtotime($fila['salida']));
   $tabla .= "<td>" . $fecha_formateada_salida . "</td>";
   $tabla .= "</tr>";
+}
+
+if (count($lista_huespedes) === 0) {
+  $tabla .= "<tr><td colspan='3' class='text-center'>No hay datos</td></tr>";
 }
 // var_dump($huesped_activo);
 ?>
@@ -83,24 +87,24 @@ foreach ($lista_huespedes as $fila) {
                 <li>Ocultar formulario dinamico <i class="fas fa-check"></i></li>
                 <li>Obtener la lista del ultimo huesped de la habitacion <i class="fas fa-check"></i></li>
                 <li>Mostrar la informacion del huesped <i class="fas fa-check"></i></li>
-                <li>Mostrar boton que permita finalizar el hospedaje</li>
+                <li>Mostrar boton que permita finalizar el hospedaje <i class="fas fa-check"></i></li>
               </ol>
             </li>
 
             <li>Si el estatus es mantenimiento
               <ol>
-                <li>Mostrar boton para cambiar a disponible la habitacion</li>
+                <li>Mostrar boton para cambiar a disponible la habitacion <i class="fas fa-check"></i></li>
               </ol>
             </li>
           </ol>
           <hr>
           <ol>
-            <li>Al seleccionar mantenimiento se debe generar una tarea de limpieza general de esta habitacion dirigida al departamento de mantenimiento.</li>
+            <li>Al seleccionar mantenimiento se debe generar una tarea de limpieza general de esta habitacion dirigida al departamento de mantenimiento. <i class="fas fa-check"></i></li>
 
           </ol>
           <hr>
           <ol>
-            <li>Al seleccionar entregar llave finaliza la estadia del huesped, se actualiza el estatus a disponible.</li>
+            <li>Al seleccionar entregar llave finaliza la estadia del huesped, se actualiza el estatus a disponible. <i class="fas fa-check"></i></li>
           </ol>
         </div>
       </div>
@@ -137,14 +141,40 @@ foreach ($lista_huespedes as $fila) {
             </div>
             <!-- /.card-header -->
             <div class="card-body p-4">
-              <a class="btn btn-app">
-                <i class="fas fa-hand-sparkles"></i> Hacer mantenimiento
-              </a>
+              <?php if ($campos['estatus_habitacion'] === 'disponible') { ?>
+                <form class="FormularioAjax" action="<?php echo SERVERURL; ?>ajax/gestorHabitacionAjax.php" method="POST" autocomplete="off">
+                  <input type="hidden" name="habitacion_id_mantenimiento" value="<?= $campos['habitacion_id'] ?>">
+                  <input type="hidden" name="habitacion" value="<?= $campos['identificador_habitacion'] ?>">
+                  <input type="hidden" name="fk_mantenimiento" value="5">
+                  <input type="hidden" name="fk_recepcion" value="<?= $_SESSION['privilegio_spm']; ?>">
+                  <button class="btn btn-app"><i class="fas fa-hand-sparkles"></i> Hacer mantenimiento
+                  </button>
+
+                </form>
+              <?php } ?>
+
+              <?php if ($campos['estatus_habitacion'] === 'mantenimiento') { ?>
+
+                <form class="FormularioAjax" action="<?php echo SERVERURL; ?>ajax/gestorHabitacionAjax.php" method="POST" autocomplete="off">
+                  <input type="hidden" name="habitacion_to_disponible" value="<?= $campos['habitacion_id'] ?>">
+                  <input type="hidden" name="habitacion" value="<?= $campos['identificador_habitacion'] ?>">
+
+                  <button class="btn btn-app"><i class="fas fa-door-open"></i> Habilitar
+                  </button>
+
+                </form>
+              <?php } ?>
+
 
               <?php if ($campos['estatus_habitacion'] === 'ocupada') { ?>
-                <a class="btn btn-app">
-                  <i class="fas fa-key"></i> Entregar llave
-                </a>
+                <form class="FormularioAjax" action="<?php echo SERVERURL; ?>ajax/gestorHabitacionAjax.php" method="POST" autocomplete="off">
+                  <input type="hidden" name="habitacion_to_salir" value="<?= $campos['habitacion_id'] ?>">
+                  <input type="hidden" name="reserva" value="<?= $huesped_activo['huesped_hab_id']; ?>">
+                  <input type="hidden" name="habitacion" value="<?= $campos['identificador_habitacion'] ?>">
+                  <button class="btn btn-app"><i class="fas fa-key"></i> Entregar llave
+                  </button>
+
+                </form>
               <?php } ?>
 
 
