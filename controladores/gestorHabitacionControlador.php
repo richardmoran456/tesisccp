@@ -265,4 +265,164 @@ class gestorHabitacionControlador extends gestorHabitacionModelo
       echo json_encode($alerta);
     }
   }
+
+
+  /*--------- Controlador Crear mantenimiento ---------*/
+  public function crear_mantenimiento()
+  {
+    /** Recibir desde el formulario */
+    $habitacion_id_mantenimiento = mainModel::limpiar_cadena($_POST['habitacion_id_mantenimiento']);
+    $habitacion = mainModel::limpiar_cadena($_POST['habitacion']);
+    $fk_mantenimiento = mainModel::limpiar_cadena($_POST['fk_mantenimiento']);
+    $fk_recepcion = mainModel::limpiar_cadena($_POST['fk_recepcion']);
+    session_start(['name' => 'SPM']);
+    $titulo = "Limpieza habitacion " . $habitacion;
+    $data = [
+      "titulo" => $titulo,
+      "descripcion" => "Limpiar la habitación",
+      'estatus_tarea' => 'abierto',
+      'fk_creado' => $_SESSION['id_spm'],
+      'fk_departamento_origen' => $fk_recepcion, // El 2do corresponde a recepcion
+      'fk_departamento_destino' => $fk_mantenimiento
+    ];
+    $tarea_id = gestorHabitacionModelo::agregar_tarea_with_id($data);
+
+
+    $data_historial = [
+      'descripcion_tarea' =>  'Se ha creado la tarea',
+      'fk_usuario' => $_SESSION['id_spm'],
+      'fk_tarea' => $tarea_id
+    ];
+
+
+    if ($tarea_id > 0) {
+
+      // Registramos en el historial cuando se crea la solicitud
+      $registrar_historial = gestorHabitacionModelo::agregar_historial_tarea($data_historial);
+
+      $alerta = [
+        "Alerta" => "recargar",
+        "Titulo" => "Tarea registrada",
+        "Texto" => "Los datos de la tarea han sido registrados con exito",
+        "Tipo" => "success"
+      ];
+
+      /**
+       * crear una notificacion para el departamento origen y departamento de destino
+       * --fk_departamento
+       * --descripcion_notificacion
+       * --url_notificacion
+       */
+
+      $notificacion_origen = [
+        "fk_departamento" => $fk_recepcion,
+        "descripcion_notificacion" => "Se ha creado la tarea " . $titulo,
+        "url_notificacion" => "tarea/" . mainModel::encryption($tarea_id)
+      ];
+      $registrar_notificacion_origen = gestorHabitacionModelo::crear_notificacion_tarea($notificacion_origen);
+
+      $notificacion_destino = [
+        "fk_departamento" => $fk_mantenimiento,
+        "descripcion_notificacion" => "Se ha asignado la tarea de " . $titulo . " a tu departamento ",
+        "url_notificacion" => "tarea/" . mainModel::encryption($tarea_id)
+      ];
+      $registrar_notificacion_destino = gestorHabitacionModelo::crear_notificacion_tarea($notificacion_destino);
+
+
+      // Actualizar el estatus de la habitación
+
+      $datos_update = [
+        "habitacion_id" => $habitacion_id_mantenimiento,
+        "estatus_habitacion" => "mantenimiento"
+      ];
+
+      $actualizacion = gestorHabitacionModelo::actualizar_habitacion($datos_update);
+
+      /** Cambiar estatus de la habitacion  */
+    } else {
+      $alerta = [
+        "Alerta" => "simple",
+        "Titulo" => "Ocurrió un error inesperado",
+        "Texto" => "No hemos podido registrar la tarea",
+        "Tipo" => "error"
+      ];
+    }
+    echo json_encode($alerta);
+  }
+
+  public function quitar_mantenimiento()
+  {
+    $habitacion = mainModel::limpiar_cadena($_POST['habitacion_to_disponible']);
+    $identificador = mainModel::limpiar_cadena($_POST['habitacion']);
+
+    $datos_update = [
+      "habitacion_id" => $habitacion,
+      "estatus_habitacion" => "disponible"
+    ];
+
+
+
+    if (gestorHabitacionModelo::actualizar_habitacion($datos_update)) {
+      $alerta = [
+        "Alerta" => "recargar",
+        "Titulo" => "Habitación " . $identificador . " disponible",
+        "Texto" => "Se cambio el estatus de la habitacion " . $identificador . " correctamente.",
+        "Tipo" => "success"
+      ];
+    } else {
+      $alerta = [
+        "Alerta" => "simple",
+        "Titulo" => "Ocurrió un error inesperado",
+        "Texto" => "No hemos podido actualizar los datos, por favor intente nuevamente",
+        "Tipo" => "error"
+      ];
+    }
+    echo json_encode($alerta);
+  }
+
+
+  public function cancelar_hospedaje()
+  {
+    /** Recibimos el id de la habitacion y el id de la asignacion para sacar y colocar la fecha de salida de la misma,
+     * asi evitaremos que se sobrepongan fechas en los ultimos huespedes.
+     */
+    $habitacion = mainModel::limpiar_cadena($_POST['habitacion_to_salir']);
+    $reserva = mainModel::limpiar_cadena($_POST['reserva']);
+    $identificador = mainModel::limpiar_cadena($_POST['habitacion']);
+
+    $datos_update = [
+      "habitacion_id" => $habitacion,
+      "estatus_habitacion" => "disponible"
+    ];
+
+
+
+    if (gestorHabitacionModelo::actualizar_habitacion($datos_update)) {
+
+      /** Actualizar la fecha de salida de la asignación */
+      $datos_reserva = [
+        "id" => $reserva
+      ];
+
+
+      $fin = gestorHabitacionModelo::finalizar_asignacion($datos_reserva);
+
+
+
+      $alerta = [
+        "Alerta" => "recargar",
+        "Titulo" => "Habitación " . $identificador . " disponible",
+        "Texto" => "Se cambio el estatus de la habitacion " . $identificador . " correctamente.",
+        "Tipo" => "success"
+      ];
+    } else {
+      $alerta = [
+        "Alerta" => "simple",
+        "Titulo" => "Ocurrió un error inesperado",
+        "Texto" => "No hemos podido actualizar los datos, por favor intente nuevamente",
+        "Tipo" => "error"
+      ];
+    }
+    echo json_encode($alerta);
+  }
 }
