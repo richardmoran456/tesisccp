@@ -67,10 +67,19 @@ class equipoModelo extends mainModel
 
 
     /*--------- Listar ---------*/
-    protected static function listar_equipo()
+    protected static function listar_equipo($departamento)
     {
+        /** Si departamento es gerencia(mostrar todos) 
+         * caso contrario mostrar por el id del departamento sistemas (7), mantenimiento(5)
+         */
+        if ($departamento === 4) {
+            $sql = mainModel::conectar()->prepare("SELECT * FROM equipos ORDER BY equipo_id ASC");
+        } else {
+            $sql = mainModel::conectar()->prepare("SELECT * FROM equipos WHERE fk_departamento=:ID ORDER BY equipo_id ASC");
+            $sql->bindParam(":ID", $departamento);
+        }
 
-        $sql = mainModel::conectar()->prepare("SELECT * FROM equipos ORDER BY equipo_id ASC");
+
         $sql->execute();
 
         // Fetcheamos los resultados como un array asociativo

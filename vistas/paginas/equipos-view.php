@@ -41,7 +41,7 @@ if ($_SESSION['privilegio_spm'] === 5 or $_SESSION['privilegio_spm'] === 7 or $_
         <div class="col-12 mb-4">
 
           <!-- Boton Solo para el departamento de sistemas(7) y mantenimiento(5)  -->
-          <?php if ($_SESSION['privilegio_spm'] === 7 or $_SESSION['privilegio_spm'] === 7) {
+          <?php if ($_SESSION['privilegio_spm'] === 7 or $_SESSION['privilegio_spm'] === 5) {
 
           ?>
             <a href="<?php echo SERVERURL . "equipo-create" ?>" class="btn btn-default">Agregar equipo</a>
@@ -92,8 +92,14 @@ if ($_SESSION['privilegio_spm'] === 5 or $_SESSION['privilegio_spm'] === 7 or $_
                   require_once "./controladores/equipoControlador.php";
                   $ins_equipo = new equipoControlador();
                   $mainModel = new mainModel();
-
-                  $lista =  $ins_equipo->listar_equipo_controlador();
+                  /** Para cargar los equipos le enviaremos el id del departamento al que pertenece el usuario
+                   * 
+                   * si es gerencia (4) se le muestran todos los equipo
+                   * si es mantenimiento (5) solo sus equipo
+                   * si es sistemas (5) solo sus equips
+                   * El id esta en la variable sesion $_SESSION['privilegio_spm']
+                   */
+                  $lista =  $ins_equipo->listar_equipo_controlador($_SESSION['privilegio_spm']);
                   $tabla = "";
                   $contador = 0;
                   foreach ($lista as $fila) {

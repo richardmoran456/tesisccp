@@ -17,7 +17,7 @@
   </div>
   <!-- /.content-header -->
 
-      <!--Vista  para el departamento de RRHH y Gerencia -->
+  <!--Vista  para el departamento de RRHH y Gerencia -->
 
   <!-- Main content -->
   <div class="content">
@@ -25,7 +25,7 @@
       <div class="row">
         <div class="col-12 mb-4">
 
-                <!-- Boton solo estara para el departamento de RRHH -->
+          <!-- Boton solo estara para el departamento de RRHH -->
 
           <a href="<?php echo SERVERURL . "empleado-create" ?>" class="btn btn-default">Agregar empleado</a>
         </div>
@@ -60,7 +60,7 @@
                     <th>Nombre</th>
                     <th>Foto</th>
                     <th>Creado</th>
-                          <!-- Acciones solo estara para el departamento de RRHH -->
+                    <!-- Acciones solo estara para el departamento de RRHH -->
                     <th>Acciones</th>
                     <th></th>
 

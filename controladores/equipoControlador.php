@@ -68,9 +68,9 @@ class equipoControlador extends equipoModelo
 	/* Fin controlador */
 
 	/*--------- Controlador listar modelo ---------*/
-	public function listar_equipo_controlador()
+	public function listar_equipo_controlador($departamento)
 	{
-		$datos = equipoModelo::listar_equipo();
+		$datos = equipoModelo::listar_equipo($departamento);
 		return $datos;
 	}
 
