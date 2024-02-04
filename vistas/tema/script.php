@@ -21,8 +21,10 @@
 <!-- DataTables  & Plugins -->
 <script src="<?php echo SERVERURL; ?>vistas/assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php echo SERVERURL; ?>vistas/assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="<?php echo SERVERURL; ?>vistas/assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="<?php echo SERVERURL; ?>vistas/assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script
+  src="<?php echo SERVERURL; ?>vistas/assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script
+  src="<?php echo SERVERURL; ?>vistas/assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script src="<?php echo SERVERURL; ?>vistas/assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
 <script src="<?php echo SERVERURL; ?>vistas/assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
 <script src="<?php echo SERVERURL; ?>vistas/assets/plugins/jszip/jszip.min.js"></script>
@@ -34,8 +36,78 @@
 <!-- bs-custom-file-input -->
 <script src="<?php echo SERVERURL; ?>vistas/assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <script src="<?php echo SERVERURL; ?>vistas/assets/plugins/fullcalendar/main.js"></script>
-
 <script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      "responsive": true,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
+      "language": {
+        "decimal": "",
+        "emptyTable": "No hay datos disponibles en la tabla",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
+        "infoEmpty": "Mostrando 0 a 0 de 0 registros",
+        "infoFiltered": "(filtrado de _MAX_ registros totales)",
+        "infoPostFix": "",
+        "thousands": ",",
+        "lengthMenu": "Mostrar _MENU_ registros por página",
+        "loadingRecords": "Cargando...",
+        "processing": "Procesando...",
+        "search": "Buscar:",
+        "zeroRecords": "No se encontraron registros coincidentes",
+        "paginate": {
+          "first": "Primero",
+          "last": "Último",
+          "next": "Siguiente",
+          "previous": "Anterior"
+        },
+        "aria": {
+          "sortAscending": ": activar para ordenar la columna ascendente",
+          "sortDescending": ": activar para ordenar la columna descendente"
+        }
+      }
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+      "language": {
+        "decimal": "",
+        "emptyTable": "No hay datos disponibles en la tabla",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
+        "infoEmpty": "Mostrando 0 a 0 de 0 registros",
+        "infoFiltered": "(filtrado de _MAX_ registros totales)",
+        "infoPostFix": "",
+        "thousands": ",",
+        "lengthMenu": "Mostrar _MENU_ registros por página",
+        "loadingRecords": "Cargando...",
+        "processing": "Procesando...",
+        "search": "Buscar:",
+        "zeroRecords": "No se encontraron registros coincidentes",
+        "paginate": {
+          "first": "Primero",
+          "last": "Último",
+          "next": "Siguiente",
+          "previous": "Anterior"
+        },
+        "aria": {
+          "sortAscending": ": activar para ordenar la columna ascendente",
+          "sortDescending": ": activar para ordenar la columna descendente"
+        }
+      }
+    });
+  });
+</script>
+
+
+
+<!-- <script>
   $(function() {
     $("#example1").DataTable({
       "responsive": true,
@@ -58,15 +130,15 @@
 
 
   });
-</script>
+</script> -->
 
 
 
 <!-- Combobox -->
 <script>
-  $(document).ready(function() {
+  $(document).ready(function () {
     $('#fk_piso_reg').html('<option value="">Selecciona la ala primero</option>');
-    $('#fk_ala_reg').on('change', function() {
+    $('#fk_ala_reg').on('change', function () {
 
       // esto signinfica que va a detectar el cambio que ocurra en el atributo del DOM que tenga como ID fk_ala_reg
       var countryID = $(this).val();
@@ -77,7 +149,7 @@
           type: 'POST', // Se envia por metodo POST igual que el formulario
           url: '<?php echo SERVERURL; ?>ajax/alaAjax.php', // Se envia a nuestro gestor
           data: 'combo=' + countryID, // Enviamos el id que sufrio el cambio o fue seleccionado en el select
-          success: function(html) {
+          success: function (html) {
             $('#fk_piso_reg').html(html); // cuando recibimos los datos del controlador lo asignamos a la data del piso
           }
         });
@@ -87,7 +159,7 @@
     });
 
 
-    $('.notificacionccp').click(function() {
+    $('.notificacionccp').click(function () {
       var notificacionSeleccionada = $(this).attr('id');
       var urls = $(this).attr('data-urls');
       // Enviar el ID a través de AJAX o a otra función
@@ -98,7 +170,7 @@
           type: "POST",
           url: '<?php echo SERVERURL; ?>ajax/notificacionAjax.php',
           data: 'notificacion_id=' + notificacionSeleccionada,
-          success: function(res) {
+          success: function (res) {
 
             if (res) {
               console.log("actualizados");
@@ -118,7 +190,7 @@
 
 
 <script>
-  $(function() {
+  $(function () {
     bsCustomFileInput.init();
   });
 </script>
@@ -158,7 +230,7 @@ if ($pagina[0] === 'eventos') { ?>
 
 
 
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       var calendarEl = document.getElementById('calendar');
 
       var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -173,7 +245,7 @@ if ($pagina[0] === 'eventos') { ?>
         selectable: true,
 
         events: events,
-        eventClick: function(info) {
+        eventClick: function (info) {
 
           Swal.fire({
             title: info.event.title,
@@ -191,7 +263,7 @@ if ($pagina[0] === 'eventos') { ?>
             }
           });
         },
-        select: function() {
+        select: function () {
           Swal.fire({
             title: "Estas seguro?",
             text: "Quieres crear un nuevo evento?",
@@ -223,7 +295,7 @@ if ($pagina[0] === 'eventos') { ?>
 
 <!-- Gestor de habitaciones -->
 <script>
-  $('#formularioBusqueda').on('submit', function(e) {
+  $('#formularioBusqueda').on('submit', function (e) {
     $('#listaDinamicaHuespedes').html('');
     e.preventDefault();
     var formData = $(this).serialize();
@@ -238,7 +310,7 @@ if ($pagina[0] === 'eventos') { ?>
           'search': searchd,
           'fk_habitacion': fk_habitacion_search,
         },
-        success: function(html) {
+        success: function (html) {
           $('#listaDinamicaHuespedes').append(html); // cuando recibimos los datos del controlador lo asignamos a la data del piso
         }
       });

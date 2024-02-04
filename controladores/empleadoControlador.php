@@ -156,4 +156,168 @@ class empleadoControlador extends empleadoModelo
 		}
 		echo json_encode($alerta);
 	}
+
+	/*--------- Controlador cargar imagen  ---------*/
+
+	public function  actualizar_imagen()
+	{
+		// File upload directory 
+		session_start(['name' => 'SPM']);
+		$targetDir = "../vistas/assets/images/empleados/";
+		$id = mainModel::decryption($_POST['empleado_id_imagen']);
+		$id = mainModel::limpiar_cadena($id);
+
+
+
+		if (!empty($_FILES["file_foto"]["name"])) {
+			// Get file info 
+			$fileName = basename($_FILES["file_foto"]["name"]);
+			$fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+			$newFileName = "empleado-" . $id . uniqid() . '.' . $fileType;
+
+			$targetFilePath = $targetDir . $newFileName;
+
+
+			// Allow certain file formats 
+			$allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+			if (in_array($fileType, $allowTypes)) {
+
+				// Upload file to server 
+				if (move_uploaded_file($_FILES["file_foto"]["tmp_name"], $targetFilePath)) {
+
+					$datos = [
+						"id" => $id,
+						"url_imagen" => $newFileName
+					];
+
+					if (empleadoModelo::actualizar_empleado_imagen($datos)) {
+						$alerta = [
+							"Alerta" => "recargar",
+							"Titulo" => "Datos actualizados",
+							"Texto" => "El archivo " . $newFileName . " se ha cargado correctamente.",
+							"Tipo" => "success"
+						];
+					} else {
+						$alerta = [
+							"Alerta" => "simple",
+							"Titulo" => "Ocurrió un error inesperado",
+							"Texto" => "Error al cargar el archivo, por favor intente nuevamente",
+							"Tipo" => "error"
+						];
+					}
+					echo json_encode($alerta);
+				} else {
+					$alerta = [
+						"Alerta" => "simple",
+						"Titulo" => "Error",
+						"Texto" => "Lo sentimos, se ha producido un error al cargar el archivo.",
+						"Tipo" => "error"
+					];
+				}
+			} else {
+
+				$alerta = [
+					"Alerta" => "simple",
+					"Titulo" => "Lo sentimos.",
+					"Texto" => "Solo permitimos cargar archivos JPG, JPEG, PNG, Y GIF ",
+					"Tipo" => "error"
+				];
+				echo json_encode($alerta);
+			}
+		} else {
+			$alerta = [
+				"Alerta" => "simple",
+				"Titulo" => "Por favor",
+				"Texto" => "Selecciona al menos un archivo",
+				"Tipo" => "error"
+			];
+			echo json_encode($alerta);
+		}
+
+
+
+		// Display status message 
+
+	}
+
+	/*--------- Controlador cargar CV ---------*/
+
+	public function  actualizar_resumen()
+	{
+		// File upload directory 
+		session_start(['name' => 'SPM']);
+		$targetDir = "../vistas/assets/images/users/";
+
+		if (!empty($_FILES["file"]["name"])) {
+			// Get file info 
+			$fileName = basename($_FILES["file"]["name"]);
+			$fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+			$newFileName = "user-" . $_SESSION['id_spm'] . uniqid() . '.' . $fileType;
+
+			$targetFilePath = $targetDir . $newFileName;
+			// $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+
+
+			// Allow certain file formats 
+			$allowTypes = array('pdf', 'docx');
+			if (in_array($fileType, $allowTypes)) {
+
+				// Upload file to server 
+				if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
+
+					$datos = [
+						"id" => $_SESSION['id_spm'],
+						"avatar" => $newFileName
+					];
+
+					if (empleadoModelo::actualizar_empleado_resumen($datos)) {
+						$alerta = [
+							"Alerta" => "recargar",
+							"Titulo" => "Datos actualizados",
+							"Texto" => "El archivo " . $newFileName . " se ha cargado correctamente.",
+							"Tipo" => "success"
+						];
+						$_SESSION['avatar_default']  = SERVERURL . "vistas/assets/images/users/" . $newFileName;
+					} else {
+						$alerta = [
+							"Alerta" => "simple",
+							"Titulo" => "Ocurrió un error inesperado",
+							"Texto" => "Error al cargar el archivo, por favor intente nuevamente",
+							"Tipo" => "error"
+						];
+					}
+					echo json_encode($alerta);
+				} else {
+					$alerta = [
+						"Alerta" => "simple",
+						"Titulo" => "Error",
+						"Texto" => "Lo sentimos, se ha producido un error al cargar el archivo.",
+						"Tipo" => "error"
+					];
+				}
+			} else {
+
+				$alerta = [
+					"Alerta" => "simple",
+					"Titulo" => "Lo sentimos.",
+					"Texto" => "Solo permitimos cargar archivos JPG, JPEG, PNG, Y GIF ",
+					"Tipo" => "error"
+				];
+				echo json_encode($alerta);
+			}
+		} else {
+			$alerta = [
+				"Alerta" => "simple",
+				"Titulo" => "Por favor",
+				"Texto" => "Selecciona al menos un archivo",
+				"Tipo" => "error"
+			];
+			echo json_encode($alerta);
+		}
+
+
+
+		// Display status message 
+
+	}
 }

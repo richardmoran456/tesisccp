@@ -41,7 +41,9 @@ if ($datos_modulo->rowCount() == 1) {
                             <h5 class="card-title">Formulario de Actualización Empleado</h5>
 
                             <p class="card-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid nihil praesentium quod pariatur accusamus temporibus, illum blanditiis id dignissimos commodi ullam perspiciatis! Voluptatum sunt provident vel ratione nesciunt? Dolorum, inventore?
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid nihil praesentium quod
+                                pariatur accusamus temporibus, illum blanditiis id dignissimos commodi ullam
+                                perspiciatis! Voluptatum sunt provident vel ratione nesciunt? Dolorum, inventore?
                             </p>
 
 
@@ -65,7 +67,7 @@ if ($datos_modulo->rowCount() == 1) {
                                         <?php
                                         require_once "./controladores/puestoControlador.php";
                                         $ins_controlador = new puestoControlador();
-                                        $lista =  $ins_controlador->datos_puesto_combo_controlador();
+                                        $lista = $ins_controlador->datos_puesto_combo_controlador();
                                         $opc = "";
                                         $puesto_id_bd = $campos['fk_puesto'];
                                         foreach ($lista as $fila) {
@@ -81,6 +83,9 @@ if ($datos_modulo->rowCount() == 1) {
 
 
 
+
+
+
                                 <button type="submit" class="btn btn-primary">Actualizar empleado</button>
                             </form>
 
@@ -92,9 +97,88 @@ if ($datos_modulo->rowCount() == 1) {
                     </div><!-- /.card -->
                 </div>
 
+                <!-- /.card para las fotos y el CV -->
+
+                <div class="col-md-6">
+
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <div class="text-center mb-3">
+                                <?php
+                                /** Mostrar la foto del empleado solo si existe, caso contrario mostrar otra default */
+                                $imagen_default = SERVERURL . "vistas/assets/images/user-profile-icon.jpg";
+
+                                /** Si la ruta que viene de la bd tiene  SIN DATO mostramos la default. */
+                                if ($campos['url_imagen'] === "SIN DATO") {
+                                    $imagen_empleado = $imagen_default;
+                                } else {
+                                    /** La ruta no viene vacia, entonces se carga la ruta */
+                                    $imagen_empleado = SERVERURL . "vistas/assets/images/empleados/" . $campos['url_imagen'];
+                                }
+
+
+
+                                ?>
+                                <img class="profile-user-img  img-circle  " src="<?= $imagen_empleado; ?>" alt="FOTO EMPLEADO">
+                            </div>
+
+                            <h3 class="card-title text-center">Cambiar Foto de empleado</h3>
+                        </div>
+                        <div class="card-body">
+                            <form class="FormularioAjax " action="<?php echo SERVERURL; ?>ajax/empleadoAjax.php" method="POST" data-form="update" autocomplete="off" enctype="multipart/form-data">
+
+                                <input type="hidden" name="empleado_id_imagen" value="<?php echo $pagina[1]; ?>">
+
+                                <div class="custom-file mb-2">
+                                    <input type="file" class="custom-file-input" id="customFile" name="file_foto">
+                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                </div>
+                                <input type="submit" class="btn btn-block bg-gradient-primary btn-sm" value="Cargar FOTO">
+
+                            </form>
+
+                        </div>
+                    </div>
+
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Subir Resumen</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form class="FormularioAjax " action="<?php echo SERVERURL; ?>ajax/empleadoAjax.php" method="POST" data-form="update" autocomplete="off" enctype="multipart/form-data">
+
+                                <div class="custom-file mb-2">
+                                    <input type="file" class="custom-file-input" id="customFile" name="file_resumen">
+                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                </div>
+                                <input type="submit" class="btn btn-block bg-gradient-info btn-sm" value="Cargar Archivo">
+
+                            </form>
+
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+
+
+
             </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
+    <!-- /.col -->
+
+
+
+
 </div>
