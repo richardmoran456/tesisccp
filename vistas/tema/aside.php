@@ -166,22 +166,34 @@
           </ul>
         </li>
 
-        <li class="nav-item">
-          <a href="#" class="nav-link <?php echo ($_SESSION['nav_principal'] === 'gestion-sm') ? 'active' : ''; ?>">
-            <p>
-              Gestión de Sistemas Y Mantenimiento
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="<?php echo SERVERURL . "equipos" ?>" class="nav-link <?php echo ($_SESSION['page_active'] === 'equipos') ? 'active' : ''; ?>">
-                <p>Equipos</p>
-              </a>
-            </li>
 
-          </ul>
-        </li>
+
+
+
+        <?php
+        if ($_SESSION['privilegio_spm'] === 5 or $_SESSION['privilegio_spm'] === 7 or $_SESSION['privilegio_spm'] === 4) {
+
+
+        ?>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link <?php echo ($_SESSION['nav_principal'] === 'gestion-sm') ? 'active' : ''; ?>">
+              <p>
+                Gestión de Sistemas Y Mantenimiento
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo SERVERURL . "equipos" ?>" class="nav-link <?php echo ($_SESSION['page_active'] === 'equipos') ? 'active' : ''; ?>">
+                  <p>Equipos</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
+        <?php } ?>
 
 
       </ul>

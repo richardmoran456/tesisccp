@@ -1,3 +1,20 @@
+<?php
+
+/** redireccionar al inicio si no es gerencia, sistemas o mantenimiento */
+if ($_SESSION['privilegio_spm'] === 5 or $_SESSION['privilegio_spm'] === 7 or $_SESSION['privilegio_spm'] === 4) {
+  // echo "acceso permitido";
+} else {
+  echo '
+  <script>
+  window.location.replace("' . SERVERURL . 'home");
+  </script>
+  ';
+}
+?>
+
+
+
+
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <div class="content-header">
@@ -15,17 +32,22 @@
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
-  
+
   <!-- /.content-header -->
   <!-- Main content -->
-  <div class="content"> 
+  <div class="content">
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 mb-4">
 
-          <!-- Boton Solo para el departamento de sistemas y mantenimiento -->
+          <!-- Boton Solo para el departamento de sistemas(7) y mantenimiento(5)  -->
+          <?php if ($_SESSION['privilegio_spm'] === 7 or $_SESSION['privilegio_spm'] === 7) {
 
-          <a href="<?php echo SERVERURL . "equipo-create" ?>" class="btn btn-default">Agregar equipo</a>
+          ?>
+            <a href="<?php echo SERVERURL . "equipo-create" ?>" class="btn btn-default">Agregar equipo</a>
+          <?php } ?>
+
+
         </div>
       </div>
       <div class="row">
