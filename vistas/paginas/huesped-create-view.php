@@ -8,7 +8,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "home" ?>">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "home" ?>">Inicio</a></li>
                         <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "huespedes" ?>">Huespedes</a></li>
                         <li class="breadcrumb-item active">Regristrar huesped</li>
                     </ol>
@@ -27,10 +27,10 @@
 
                     <div class="card card-primary card-outline">
                         <div class="card-body">
-                            <h5 class="card-title">Formulario de creación Empleado</h5>
+                            <h5 class="card-title">Formulario para el registro de huespedes</h5>
 
                             <p class="card-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid nihil praesentium quod pariatur accusamus temporibus, illum blanditiis id dignissimos commodi ullam perspiciatis! Voluptatum sunt provident vel ratione nesciunt? Dolorum, inventore?
+                                Apartado para el registro de los huespedes, por favor indique los datos solicitados a continuacion
                             </p>
 
 
@@ -43,13 +43,13 @@
 
                                 <div class="form-group">
                                     <label for="documento_huesped_reg">Documento de identidad</label>
-                                    <input type="text" class="form-control" id="documento_huesped_reg" placeholder="Ingresa su número de identidad nacional" maxlength="35" required="" name="documento_huesped_reg">
+                                    <input type="text" class="form-control" id="documento_huesped_reg" placeholder="Ingresa el número de identidad nacional" maxlength="35" required="" name="documento_huesped_reg">
                                 </div>
 
 
 
 
-                                <button type="submit" class="btn btn-primary">Registrar huespedes</button>
+                                <button type="submit" class="btn btn-primary">Registrar huesped</button>
                             </form>
 
                             <div class="mt-4">

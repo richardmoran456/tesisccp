@@ -8,7 +8,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "home" ?>">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "home" ?>">Inicio</a></li>
                         <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "habitaciones" ?>">Habitaciones</a>
                         </li>
                         <li class="breadcrumb-item active">Crear Habitacion</li>
@@ -31,9 +31,10 @@
                             <h5 class="card-title">Formulario de registro de habitaciones</h5>
 
                             <p class="card-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid nihil praesentium quod
-                                pariatur accusamus temporibus, illum blanditiis id dignissimos commodi ullam
-                                perspiciatis! Voluptatum sunt provident vel ratione nesciunt? Dolorum, inventore?
+                            Indique el identificador del Piso, ejemplo P1N05
+                                P1 - Indica que se encuentra en el Piso numero 1.
+                                N  - Indica el Ala en la cual se encuentra.
+                                05 - Indica el numero de la habitacion.
                             </p>
 
 

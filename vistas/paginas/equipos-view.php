@@ -1,7 +1,7 @@
 <?php
 
 /** redireccionar al inicio si no es gerencia, sistemas o mantenimiento */
-if ($_SESSION['privilegio_spm'] === 5 or $_SESSION['privilegio_spm'] === 7 or $_SESSION['privilegio_spm'] === 4) {
+if ($_SESSION['privilegio_spm'] === 5 or $_SESSION['privilegio_spm'] === 7 or $_SESSION['privilegio_spm'] === 4 or $_SESSION['privilegio_spm'] === 6) {
   // echo "acceso permitido";
 } else {
   echo '
@@ -25,7 +25,7 @@ if ($_SESSION['privilegio_spm'] === 5 or $_SESSION['privilegio_spm'] === 7 or $_
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "home" ?>">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "home" ?>">Inicio</a></li>
             <li class="breadcrumb-item active">Equipos</li>
           </ol>
         </div><!-- /.col -->

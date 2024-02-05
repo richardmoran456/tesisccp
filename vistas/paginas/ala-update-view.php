@@ -19,7 +19,7 @@ if ($datos_modulo->rowCount() == 1) {
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "home" ?>">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "home" ?>">Inicio</a></li>
                         <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "alas" ?>">Alas</a></li>
                         <li class="breadcrumb-item active">Actualizar ala</li>
                     </ol>
@@ -41,7 +41,6 @@ if ($datos_modulo->rowCount() == 1) {
                             <h5 class="card-title">Formulario de actualización</h5>
 
                             <p class="card-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi inventore laborum magni modi perferendis officiis minima perspiciatis culpa pariatur similique commodi facere quis voluptates, consectetur ratione nihil? Asperiores, illum ex!
                             </p>
 
 

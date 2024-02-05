@@ -19,7 +19,7 @@ if ($datos_modulo->rowCount() == 1) {
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "home" ?>">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "home" ?>">Inicio</a></li>
                         <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "tareas" ?>">Tareas</a></li>
                         <li class="breadcrumb-item active">Tarea</li>
                     </ol>

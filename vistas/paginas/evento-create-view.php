@@ -8,7 +8,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "home" ?>">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "home" ?>">Inicio</a></li>
                         <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "eventos" ?>">Eventos</a></li>
                         <li class="breadcrumb-item active">Crear evento</li>
                     </ol>
@@ -30,14 +30,14 @@
                             <h5 class="card-title mb-4">Formulario de creación de evento</h5>
 
                             <p class="card-text mb-4">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid nihil praesentium quod pariatur accusamus temporibus, illum blanditiis id dignissimos commodi ullam perspiciatis! Voluptatum sunt provident vel ratione nesciunt? Dolorum, inventore?
+                                Por favor introduzca los datos del evento
                             </p>
 
 
                             <form class="FormularioAjax" action="<?php echo SERVERURL; ?>ajax/eventoAjax.php" method="POST" data-form="save" autocomplete="off">
 
                                 <div class="form-group ">
-                                    <label for="titulo_reg">Nombre completo </label>
+                                    <label for="titulo_reg">Nombre del Eventro </label>
                                     <input type="text" class="form-control" id="titulo_reg" placeholder="Ingresa el titulo del evento" required="" name="titulo_reg">
                                 </div>
 
