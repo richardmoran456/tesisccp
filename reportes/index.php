@@ -7,7 +7,7 @@ $id = (isset($_GET['id'])) ? $_GET['id'] : 0;
 /** Instanciar el controlador empleado */
 require_once "../controladores/empleadoControlador.php";
 $ins_controlador = new empleadoControlador();
-$empleado = $ins_controlador->datos_empleado_controlador("Unico", $id);
+$empleado = $ins_controlador->datos_empleado_pdf_controlador($id);
 
 if ($empleado->rowCount() == 1) {
     $empleado = $empleado->fetch();
@@ -57,7 +57,7 @@ if ($empleado->rowCount() == 1) {
     $fpdf->Ln(10);
 
     //  primer parrafo de la carta
-    $texto = "Por medio de la presente, el equipo de Operadora Casa Grande C.A, hace " . mb_convert_encoding('recomendación', 'ISO-8859-1', 'UTF-8') . " al ciudadano " . mb_convert_encoding('"' . $empleado['nombre_completo'] . '"', 'ISO-8859-1', 'UTF-8') . " titular de la cedula de identidad " . mb_convert_encoding('"' . $empleado['documento'] . '"', 'ISO-8859-1', 'UTF-8') . ", perteneciente al gran equipo del Gran Hotel CCP Suites,  quien a lo largo de su " . mb_convert_encoding('estadía', 'ISO-8859-1', 'UTF-8') . " en nuestro equipo, mostro valores dignos de destacar, ocupando el puesto de  " . mb_convert_encoding('"Puesto"', 'ISO-8859-1', 'UTF-8') . " en el departamento de " . mb_convert_encoding('"Departamento"', 'ISO-8859-1', 'UTF-8') . ", mostrando una un comportamiento y actitud intachable, " . mb_convert_encoding('además', 'ISO-8859-1', 'UTF-8') . " de una gran responsabilidad y compromiso con su trabajo y su equipo.";
+    $texto = "Por medio de la presente, el equipo de Operadora Casa Grande C.A, hace " . mb_convert_encoding('recomendación', 'ISO-8859-1', 'UTF-8') . " al ciudadano " . mb_convert_encoding('"' . $empleado['nombre_completo'] . '"', 'ISO-8859-1', 'UTF-8') . " titular de la cedula de identidad " . mb_convert_encoding('"' . $empleado['documento'] . '"', 'ISO-8859-1', 'UTF-8') . ", perteneciente al gran equipo del Gran Hotel CCP Suites,  quien a lo largo de su " . mb_convert_encoding('estadía', 'ISO-8859-1', 'UTF-8') . " en nuestro equipo, mostro valores dignos de destacar, ocupando el puesto de  " . mb_convert_encoding('"' . $empleado['puesto'] . '"', 'ISO-8859-1', 'UTF-8') . " en el departamento de " . mb_convert_encoding('"' . $empleado['departamento'] . '"', 'ISO-8859-1', 'UTF-8') . ", mostrando una un comportamiento y actitud intachable, " . mb_convert_encoding('además', 'ISO-8859-1', 'UTF-8') . " de una gran responsabilidad y compromiso con su trabajo y su equipo.";
     $fpdf->MultiCell(0, 10, $texto, 0, 'J');
     $fpdf->Ln(10);
 

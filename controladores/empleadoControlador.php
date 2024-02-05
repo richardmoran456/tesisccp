@@ -123,6 +123,16 @@ class empleadoControlador extends empleadoModelo
 		return empleadoModelo::datos_empleado($tipo, $id);
 	}
 
+	public function datos_empleado_pdf_controlador($id)
+	{
+
+
+		$id = mainModel::decryption($id);
+		$id = mainModel::limpiar_cadena($id);
+
+		return empleadoModelo::datos_empleado_pdf($id);
+	}
+
 	/*--------- Controlador actualizar  ---------*/
 	public function actualizar_empleado_controlador()
 	{

@@ -49,6 +49,14 @@ class empleadoModelo extends mainModel
         return $sql;
     }
 
+    protected static function datos_empleado_pdf($id)
+    {
+        $sql = mainModel::conectar()->prepare("SELECT e.created_at, e.empleado_id, e.nombre_completo, e.documento, p.nombre AS puesto, d.nombre AS departamento FROM empleados AS e INNER JOIN puestos AS p ON p.puesto_id = e.fk_puesto INNER JOIN departamentos AS d ON d.departamento_id = p.fk_departamento WHERE empleado_id=:ID");
+        $sql->bindParam(":ID", $id);
+        $sql->execute();
+        return $sql;
+    }
+
 
     /*--------- Listar ---------*/
     protected static function listar_empleado()
