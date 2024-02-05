@@ -90,7 +90,7 @@
                       <a href="' . SERVERURL . 'empleado-update/' . $mainModel::encryption($fila['empleado_id']) . '/">
                         <i class="fas fa-sync-alt"></i>
                       <a/>
-                      <a href="../../reportes/">
+                      <a href="' . SERVERURL . 'reportes/index.php?id=' . $mainModel::encryption($fila['empleado_id']) . '" target="_blank">
                       <i class="fas fa-address-card"></i>
                       <a/>
                     </td>';
