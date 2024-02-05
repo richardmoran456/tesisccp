@@ -78,49 +78,13 @@ if ($datos_modulo->rowCount() == 1) {
           <div class="card">
             <div class="card-header p-2">
               <ul class="nav nav-pills">
-                <li class="nav-item"><a class="nav-link active" href="#timeline" data-toggle="tab">Actividad</a></li>
-                <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Configurar perfil</a></li>
+                
+                <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Ver Datos del perfil</a></li>
               </ul>
             </div><!-- /.card-header -->
             <div class="card-body">
               <div class="tab-content">
 
-                <!-- /.tab-pane -->
-                <div class="tab-pane active" id="timeline">
-                  <!-- The timeline -->
-                  <div class="timeline timeline-inverse">
-                    <!-- timeline time label -->
-                    <div class="time-label">
-                      <span class="bg-danger">
-                        10 Feb. 2014
-                      </span>
-                    </div>
-                    <!-- /.timeline-label -->
-                    <!-- timeline item -->
-                    <div>
-                      <i class="fas fa-envelope bg-primary"></i>
-
-                      <div class="timeline-item">
-                        <span class="time"><i class="far fa-clock"></i> 12:05</span>
-
-                        <h3 class="timeline-header"><a href="#">Modulo</a> que hizo</h3>
-
-                        <div class="timeline-body">
-                          Describir la actividad realizada.
-                        </div>
-                        <!-- <div class="timeline-footer">
-                          <a href="#" class="btn btn-primary btn-sm">Read more</a>
-                          <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                        </div> -->
-                      </div>
-                    </div>
-                    <!-- END timeline item -->
-
-
-
-
-                  </div>
-                </div>
                 <!-- /.tab-pane -->
 
                 <div class="tab-pane" id="settings">
@@ -143,7 +107,7 @@ if ($datos_modulo->rowCount() == 1) {
 
                     <div class="form-group row">
                       <div class="offset-sm-2 col-sm-10">
-                        <button type="submit" class="btn btn-danger">Actualizar</button>
+                        <!-- <button type="submit" class="btn btn-danger">Actualizar</button> -->
                       </div>
                     </div>
                   </form>

@@ -30,7 +30,6 @@
                             <h5 class="card-title">Formulario de creación Puesto</h5>
 
                             <p class="card-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid nihil praesentium quod pariatur accusamus temporibus, illum blanditiis id dignissimos commodi ullam perspiciatis! Voluptatum sunt provident vel ratione nesciunt? Dolorum, inventore?
                             </p>
 
 

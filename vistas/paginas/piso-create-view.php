@@ -8,7 +8,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "home" ?>">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "home" ?>">Inicio</a></li>
                         <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "pisos" ?>">Pisos</a></li>
                         <li class="breadcrumb-item active">Crear piso</li>
                     </ol>
@@ -31,7 +31,7 @@
                             <h5 class="card-title">Formulario de creación de pisos</h5>
 
                             <p class="card-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid nihil praesentium quod pariatur accusamus temporibus, illum blanditiis id dignissimos commodi ullam perspiciatis! Voluptatum sunt provident vel ratione nesciunt? Dolorum, inventore?
+                                Formulario para la creacion de un piso, Recuerde que debe seleccionar el aña en la que se encuentra.
                             </p>
 
 

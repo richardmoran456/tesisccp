@@ -19,7 +19,7 @@ if ($datos_modulo->rowCount() == 1) {
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "home" ?>">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "home" ?>">Inicio</a></li>
                         <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "habitaciones" ?>">habitaciones</a></li>
                         <li class="breadcrumb-item active">Actualizar habitacion</li>
                     </ol>
@@ -38,10 +38,13 @@ if ($datos_modulo->rowCount() == 1) {
 
                     <div class="card card-primary card-outline">
                         <div class="card-body">
-                            <h5 class="card-title">Formulario de actualización</h5>
+                            <h5 class="card-title">Formulario de actualización de habitacion</h5>
 
                             <p class="card-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi inventore laborum magni modi perferendis officiis minima perspiciatis culpa pariatur similique commodi facere quis voluptates, consectetur ratione nihil? Asperiores, illum ex!
+                                Indique el identificador del Piso, ejemplo P1N05
+                                P1 - Indica que se encuentra en el Piso numero 1.
+                                N  - Indica el Ala en la cual se encuentra.
+                                05 - Indica el numero de la habitacion.
                             </p>
 
 

@@ -8,8 +8,8 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "home" ?>">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "usuarios" ?>">Usuariosssss</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "home" ?>">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "usuarios" ?>">Usuarios</a></li>
                         <li class="breadcrumb-item active">Crear Usuario</li>
                     </ol>
                 </div><!-- /.col -->
@@ -30,7 +30,7 @@
                             <h5 class="card-title">Formulario de creación usuario</h5>
 
                             <p class="card-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid nihil praesentium quod pariatur accusamus temporibus, illum blanditiis id dignissimos commodi ullam perspiciatis! Voluptatum sunt provident vel ratione nesciunt? Dolorum, inventore?
+                                Apartado destinado a la creacion de usuarios que seran admitidos en el sistema
                             </p>
 
 
@@ -43,11 +43,11 @@
 
                                 <div class="form-group">
                                     <label for="username_usuario_reg">Username </label>
-                                    <input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}" class="form-control" id="username_usuario_reg" placeholder="Ingresa el nombre" maxlength="35" required="" name="username_usuario_reg">
+                                    <input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}" class="form-control" id="username_usuario_reg" placeholder="Ingresa el nombre de usuario" maxlength="35" required="" name="username_usuario_reg">
                                 </div>
                                 <div class="form-group">
                                     <label for="password_usuario_reg">Contrase&ntilde;a</label>
-                                    <input type="text" pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100" class="form-control" id="password_usuario_reg" placeholder="Ingresa el nombre" maxlength="35" required="" name="password_usuario_reg">
+                                    <input type="text" pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100" class="form-control" id="password_usuario_reg" placeholder="Ingrese la contraseña" maxlength="35" required="" name="password_usuario_reg">
                                 </div>
                                 <div class="form-group">
                                     <label for="fk_departamento_reg">Departamento </label>

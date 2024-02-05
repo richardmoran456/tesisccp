@@ -20,7 +20,7 @@ if ($datos_modulo->rowCount() == 1) {
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "home" ?>">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "home" ?>">Inicio</a></li>
                         <li class="breadcrumb-item"><a href="<?php echo SERVERURL . "eventos" ?>">Eventos</a></li>
                         <li class="breadcrumb-item active">Editar evento</li>
                     </ol>
@@ -42,7 +42,6 @@ if ($datos_modulo->rowCount() == 1) {
                             <h5 class="card-title mb-4">Formulario de edición de evento</h5>
 
                             <p class="card-text mb-4">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid nihil praesentium quod pariatur accusamus temporibus, illum blanditiis id dignissimos commodi ullam perspiciatis! Voluptatum sunt provident vel ratione nesciunt? Dolorum, inventore?
                             </p>
 
 
@@ -50,7 +49,7 @@ if ($datos_modulo->rowCount() == 1) {
                                 <input type="hidden" name="evento_id_up" value="<?php echo $pagina[1]; ?>">
 
                                 <div class="form-group ">
-                                    <label for="titulo_up">Nombre completo </label>
+                                    <label for="titulo_up">Nombre del evento </label>
                                     <input type="text" class="form-control" id="titulo_up" placeholder="Ingresa el titulo del evento" required="" name="titulo_up" value="<?php echo $campos['titulo_evento']; ?>">
                                 </div>
 
