@@ -90,6 +90,9 @@
                       <a href="' . SERVERURL . 'empleado-update/' . $mainModel::encryption($fila['empleado_id']) . '/">
                         <i class="fas fa-sync-alt"></i>
                       <a/>
+                      <a href="../../reportes/">
+                      <i class="fas fa-address-card"></i>
+                      <a/>
                     </td>';
 
                     $tabla .= '
@@ -101,6 +104,7 @@
                           <i class="far fa-trash-alt"></i>
                         </button>
                       </form>
+
                     </td>
                     ';
 
