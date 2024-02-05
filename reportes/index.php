@@ -62,7 +62,7 @@ if ($empleado->rowCount() == 1) {
     $fpdf->Ln(10);
 
 
-    $texto = "Por tal motivo Yo Maria Milagros Lunar, jefa del departamento de recursos humanos, en la empresa, Operadora Casa Grande, hago constar mediante la presente el gran trabajo realizado por el ciudadano " . mb_convert_encoding('"Nombre del empleado"', 'ISO-8859-1', 'UTF-8') . ", ya que conozco sus virtudes y nos encontramos totalmente seguros de que, tal y como lo hizo con nosotros, " . mb_convert_encoding('hará', 'ISO-8859-1', 'UTF-8') . " un gran trabajo en sus instalaciones.";
+    $texto = "Por tal motivo Yo Maria Milagros Lunar, jefa del departamento de recursos humanos, en la empresa, Operadora Casa Grande, hago constar mediante la presente el gran trabajo realizado por el ciudadano " . mb_convert_encoding('"' . $empleado['nombre_completo'] . '"', 'ISO-8859-1', 'UTF-8') . ", ya que conozco sus virtudes y nos encontramos totalmente seguros de que, tal y como lo hizo con nosotros, " . mb_convert_encoding('hará', 'ISO-8859-1', 'UTF-8') . " un gran trabajo en sus instalaciones.";
     $fpdf->MultiCell(0, 10, $texto, 0, 'J');
     $fpdf->Ln(10);
 
