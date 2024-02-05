@@ -217,7 +217,7 @@
           <a href="#"
             class="nav-link <?php echo ($_SESSION['nav_principal'] === 'gestion-almacen') ? 'active' : ''; ?>">
             <p>
-              Gestión de Almacen
+              Gestión de Solicitudes
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
@@ -246,7 +246,7 @@
         <li class="nav-item">
           <a href="#" class="nav-link <?php echo ($_SESSION['nav_principal'] === 'gestion-sm') ? 'active' : ''; ?>">
             <p>
-              Gestión de Sistemas Y Mantenimiento
+              Gestión de Equipos
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
