@@ -76,8 +76,15 @@
                   require_once "./controladores/tareaControlador.php";
                   $ins_controlador = new tareaControlador();
                   $mainModel = new mainModel();
-
-                  $lista =  $ins_controlador->listar_tarea_controlador();
+                  /** Para cargar los equipos le enviaremos el id del departamento al que pertenece el usuario
+                   * 
+                   * si es gerencia (4) se le muestran todos los equipo
+                   * si es mantenimiento (5) solo sus equipo
+                   * si es sistemas (5) solo sus equips
+                   * El id esta en la variable sesion $_SESSION['privilegio_spm']
+                   */
+                  $lista =  $ins_controlador->listar_tarea_controlador($_SESSION['privilegio_spm']);
+                  // $lista =  $ins_controlador->listar_tarea_controlador();
                   $tabla = "";
                   $contador = 0;
                   foreach ($lista as $fila) {

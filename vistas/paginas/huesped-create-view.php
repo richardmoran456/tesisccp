@@ -43,7 +43,7 @@
 
                                 <div class="form-group">
                                     <label for="documento_huesped_reg">Documento de identidad</label>
-                                    <input type="text" class="form-control" id="documento_huesped_reg" placeholder="Ingresa el número de identidad nacional" maxlength="35" required="" name="documento_huesped_reg">
+                                    <input type="number" class="form-control" id="documento_huesped_reg" placeholder="Ingresa el número de identidad nacional" maxlength="35" required="" name="documento_huesped_reg">
                                 </div>
 
 

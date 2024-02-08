@@ -75,7 +75,8 @@
                                     $ins_controlador = new solicitudControlador();
                                     $mainModel = new mainModel();
 
-                                    $lista =  $ins_controlador->listar_solicitud_controlador();
+                                    $lista =  $ins_controlador->listar_solicitud_controlador($_SESSION['privilegio_spm']);
+                                    // $lista =  $ins_controlador->listar_solicitud_controlador();
                                     $tabla = "";
                                     $contador = 0;
                                     foreach ($lista as $fila) {
