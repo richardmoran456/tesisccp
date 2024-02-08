@@ -45,7 +45,7 @@
                                     <textarea id="descripción_solicitud_reg" class="form-control" rows="4" name="descripción_solicitud_reg"></textarea>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Registrar puesto</button>
+                                <button type="submit" class="btn btn-primary">Registrar Solicitud</button>
                             </form>
 
                             <div class="mt-4">

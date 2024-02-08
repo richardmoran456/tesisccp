@@ -62,7 +62,7 @@ if (count($lista_huespedes) === 0) {
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
-          <ol>
+          <!-- <ol>
             <li>Obtener información de la habitacion con el ID <i class="fas fa-check"></i></li>
             <li>Obtener la informacion de los ultimos huespedes <i class="fas fa-check"></i></li>
             <li>Mostrar una tabla con los ultimos huespedes <i class="fas fa-check"></i></li>
@@ -96,7 +96,7 @@ if (count($lista_huespedes) === 0) {
                 <li>Mostrar boton para cambiar a disponible la habitacion <i class="fas fa-check"></i></li>
               </ol>
             </li>
-          </ol>
+          </ol> -->
           <hr>
           <ol>
             <li>Al seleccionar mantenimiento se debe generar una tarea de limpieza general de esta habitacion dirigida al departamento de mantenimiento. <i class="fas fa-check"></i></li>
