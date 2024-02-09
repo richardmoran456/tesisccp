@@ -39,13 +39,13 @@
 
             $icon_hab = '';
             if ($fila['estatus_habitacion'] === 'disponible') {
-              $bg_hab = 'bg-info';
+              $bg_hab = 'bg-success';
               $icon_hab = 'fas fa-key';
             } else if ($fila['estatus_habitacion'] === 'ocupada') {
-              $bg_hab = 'bg-success';
+              $bg_hab = 'bg-danger';
               $icon_hab = 'fas fa-bed';
             } else if ($fila['estatus_habitacion'] === 'mantenimiento') {
-              $bg_hab = 'bg-danger';
+              $bg_hab = 'bg-info';
               $icon_hab = 'fas fa-hand-sparkles ';
             }
 

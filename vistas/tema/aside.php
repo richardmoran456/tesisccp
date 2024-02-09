@@ -67,7 +67,7 @@
             <a href="#"
               class="nav-link <?php echo ($_SESSION['nav_principal'] === 'gestion-gerencia') ? 'active' : ''; ?>">
               <p>
-                Gestión de Gerencia
+                Gestionar Usuarios
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -79,11 +79,11 @@
                 </a>
               </li>
 
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="<?php echo SERVERURL . "modulos" ?>" class="nav-link">
                   <p>Modulos BASE</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
 
@@ -142,12 +142,12 @@
             </li>
 
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="<?php echo SERVERURL . "tareas" ?>"
                 class="nav-link <?php echo ($_SESSION['page_active'] === 'tareas') ? 'active' : ''; ?>">
                 <p>Tareas</p>
               </a>
-            </li>
+            </li> -->
 
           </ul>
         </li>
