@@ -128,9 +128,9 @@ class solicitudControlador extends solicitudModulo
 	}
 
 	/*--------- Controlador listar modelo ---------*/
-	public function listar_solicitud_controlador()
+	public function listar_solicitud_controlador($departamento)
 	{
-		$datos = solicitudModulo::listar_solicitud();
+		$datos = solicitudModulo::listar_solicitud($departamento);
 		return $datos;
 	}
 

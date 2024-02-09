@@ -67,7 +67,7 @@ $ins_controlador = new estadisticasControlador();
           <!-- /.info-box -->
         </div>
 
-        <div class="col-12 col-sm-6 col-md-3">
+        <!-- <div class="col-12 col-sm-6 col-md-3">
           <div class="info-box">
             <span class="info-box-icon bg-info elevation-1"><i class="fas fa-bed"></i></span>
 
@@ -77,29 +77,29 @@ $ins_controlador = new estadisticasControlador();
                 15
               </span>
             </div>
-            <!-- /.info-box-content -->
-          </div>
+             /.info-box-content -->
+          <!-- </div> -->
           <!-- /.info-box -->
-        </div>
+        <!-- </div> -->
         <!-- /.col -->
-        <div class="col-12 col-sm-6 col-md-3">
+        <!-- <div class="col-12 col-sm-6 col-md-3">
           <div class="info-box mb-3">
             <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-bed"></i></span>
 
             <div class="info-box-content">
               <span class="info-box-text">Ocupadas</span>
               <span class="info-box-number">10</span>
-            </div>
+            </div> -->
             <!-- /.info-box-content -->
-          </div>
+          <!-- </div> -->
           <!-- /.info-box -->
-        </div>
+        <!-- </div>  -->
         <!-- /.col -->
 
         <!-- fix for small devices only -->
         <div class="clearfix hidden-md-up"></div>
 
-        <div class="col-12 col-sm-6 col-md-3">
+        <!-- <div class="col-12 col-sm-6 col-md-3">
           <div class="info-box mb-3">
             <span class="info-box-icon bg-success elevation-1"><i class="fas fa-calendar"></i></span>
 
@@ -107,10 +107,10 @@ $ins_controlador = new estadisticasControlador();
               <span class="info-box-text">Eventos al mes</span>
               <span class="info-box-number">5</span>
             </div>
-            <!-- /.info-box-content -->
-          </div>
+             /.info-box-content -->
+          <!-- </div> -->
           <!-- /.info-box -->
-        </div>
+        <!-- </div> -->
         <!-- /.col -->
 
         <!-- /.col -->

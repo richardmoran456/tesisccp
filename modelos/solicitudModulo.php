@@ -1,4 +1,3 @@
-
 <?php
 
 require_once "mainModel.php";
@@ -119,23 +118,48 @@ class solicitudModulo extends mainModel
         $sql->execute();
         return $sql;
     }
+    /*--------- Listar  POR DEPARTAMENTO---------*/
 
-
-    /*--------- Listar ---------*/
-    protected static function listar_solicitud()
+    protected static function listar_solicitud($departamento)
     {
+        /** Si departamento es gerencia, administración o recursos humanos (mostrar todos) 
+         * caso contrario mostrar por el id del departamento origen
+         */
+        if ($departamento === 4 or $departamento === 6 or $departamento === 8) {
+            // Aquí no cambiamos nada, solo el nombre de la variable $sql
+            $sql_solicitud = mainModel::conectar()->prepare("SELECT s.estatus_solicitud, s.created_at, s.solicitud_id, s.titulo_solicitud, s.fk_creado, s.fk_departamento_origen, u.nombre_completo AS creador, d.nombre AS nombre_departamento FROM solicitudes AS s INNER JOIN departamentos AS d ON s.fk_departamento_origen = d.departamento_id INNER JOIN usuarios AS u ON u.usuario_id = s.fk_creado ORDER BY solicitud_id ASC");
+        } else {
+            // Aquí añadimos la condición WHERE y el parámetro :ID
+            $sql_solicitud = mainModel::conectar()->prepare("SELECT s.estatus_solicitud, s.created_at, s.solicitud_id, s.titulo_solicitud, s.fk_creado, s.fk_departamento_origen, u.nombre_completo AS creador, d.nombre AS nombre_departamento FROM solicitudes AS s INNER JOIN departamentos AS d ON s.fk_departamento_origen = d.departamento_id INNER JOIN usuarios AS u ON u.usuario_id = s.fk_creado WHERE s.fk_departamento_origen=:ID ORDER BY solicitud_id ASC");
+            // Aquí asignamos el valor del departamento al parámetro :ID
+            $sql_solicitud->bindParam(":ID", $departamento);
+        }
 
-        $sql = mainModel::conectar()->prepare("SELECT s.estatus_solicitud, s.created_at, s.solicitud_id, s.titulo_solicitud, s.fk_creado, s.fk_departamento_origen, u.nombre_completo AS creador, d.nombre AS nombre_departamento FROM solicitudes AS s INNER JOIN departamentos AS d ON s.fk_departamento_origen = d.departamento_id INNER JOIN usuarios AS u ON u.usuario_id = s.fk_creado ORDER BY solicitud_id ASC");
-
-        // $sql = mainModel::conectar()->prepare("SELECT puestos.puesto_id,puestos.nombre,puestos.created_at,departamentos.departamento_id,departamentos.nombre as departamento
-        //  FROM puestos INNER JOIN departamentos ON puestos.fk_departamento = departamentos.departamento_id ORDER BY puesto_id ASC");
-        $sql->execute();
+        // El resto del código se mantiene igual
+        $sql_solicitud->execute();
 
         // Fetcheamos los resultados como un array asociativo
-        $resultados = $sql->fetchAll(PDO::FETCH_ASSOC);
+        $resultados = $sql_solicitud->fetchAll(PDO::FETCH_ASSOC);
 
         return $resultados; // Devolvemos el array de resultados
     }
+
+
+    /*--------- Listar  ACAAA---------*/
+    // protected static function listar_solicitud()
+    // {
+
+    //     $sql = mainModel::conectar()->prepare("SELECT s.estatus_solicitud, s.created_at, s.solicitud_id, s.titulo_solicitud, s.fk_creado, s.fk_departamento_origen, u.nombre_completo AS creador, d.nombre AS nombre_departamento FROM solicitudes AS s INNER JOIN departamentos AS d ON s.fk_departamento_origen = d.departamento_id INNER JOIN usuarios AS u ON u.usuario_id = s.fk_creado ORDER BY solicitud_id ASC");
+
+    //     // $sql = mainModel::conectar()->prepare("SELECT puestos.puesto_id,puestos.nombre,puestos.created_at,departamentos.departamento_id,departamentos.nombre as departamento
+    //     //  FROM puestos INNER JOIN departamentos ON puestos.fk_departamento = departamentos.departamento_id ORDER BY puesto_id ASC");
+    //     $sql->execute();
+
+    //     // Fetcheamos los resultados como un array asociativo
+    //     $resultados = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+    //     return $resultados; // Devolvemos el array de resultados
+    // }
 
     /*--------- Cancelar solicitud ---------*/
     protected static function cancelar_solicitud($datos)

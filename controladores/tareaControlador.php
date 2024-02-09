@@ -111,6 +111,17 @@ class tareaControlador extends tareaModulo
 	}
 	/* Fin controlador */
 
+	/*--------- Controlador listar modelo ---------*/
+	public function listar_tarea_controlador($departamento)
+	{
+		$datos = tareaModulo::listar_tarea($departamento);
+		return $datos;
+	}
+
+
+
+
+
 	public function agregar_historial_controlador()
 	{
 
@@ -178,11 +189,11 @@ class tareaControlador extends tareaModulo
 	}
 
 	/*--------- Controlador listar modelo ---------*/
-	public function listar_tarea_controlador()
-	{
-		$datos = tareaModulo::listar_tarea();
-		return $datos;
-	}
+	// public function listar_tarea_controlador()
+	// {
+	// 	$datos = tareaModulo::listar_tarea();
+	// 	return $datos;
+	// }
 
 	/*--------- Controlador datos  ---------*/
 	public function datos_tarea_controlador($tipo, $id)

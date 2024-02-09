@@ -122,22 +122,75 @@ class tareaModulo extends mainModel
         return $sql;
     }
 
+    // /*--------- Listar ---------*/
+    // protected static function listar_tarea($departamento)
+    // {
+    //     /** Si departamento es gerencia(mostrar todos) 
+    //      * caso contrario mostrar por el id del departamento sistemas (7), mantenimiento(5)
+    //      */
+    //     if ($departamento === 4 or $departamento === 6) {
+    //         $sql = mainModel::conectar()->prepare("SELECT * FROM tareas ORDER BY tarea_id ASC");
+    //     } else {
+    //         $sql = mainModel::conectar()->prepare("SELECT * FROM tareas WHERE fk_departamento_destino=:ID ORDER BY tarea_id ASC");
+    //         $sql->bindParam(":ID", $departamento);
+    //     }
+
+
+    //     $sql->execute();
+
+    //     // Fetcheamos los resultados como un array asociativo
+    //     $resultados = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+    //     return $resultados; // Devolvemos el array de resultados
+    // }
+
+
+    protected static function listar_tarea($departamento)
+{
+    /** Si departamento es gerencia(mostrar todos) 
+     * caso contrario mostrar por el id del departamento sistemas (7), mantenimiento(5)
+     */
+    if ($departamento === 4 or $departamento === 6 or $departamento === 2) {
+        // Aquí cambiamos el * por los campos que queremos obtener, y hacemos los JOIN correspondientes
+        $sql = mainModel::conectar()->prepare("SELECT t.estatus_tarea, t.created_at, t.tarea_id, t.titulo_tarea, t.fk_creado, t.fk_departamento_destino, u.nombre_completo AS creador, d.nombre AS nombre_departamento FROM tareas AS t INNER JOIN departamentos AS d ON t.fk_departamento_destino = d.departamento_id INNER JOIN usuarios AS u ON u.usuario_id = t.fk_creado ORDER BY tarea_id ASC");
+    } else {
+        // Aquí hacemos lo mismo, pero añadimos la condición WHERE para filtrar por el departamento
+        $sql = mainModel::conectar()->prepare("SELECT t.estatus_tarea, t.created_at, t.tarea_id, t.titulo_tarea, t.fk_creado, t.fk_departamento_destino, u.nombre_completo AS creador, d.nombre AS nombre_departamento FROM tareas AS t INNER JOIN departamentos AS d ON t.fk_departamento_destino = d.departamento_id INNER JOIN usuarios AS u ON u.usuario_id = t.fk_creado WHERE t.fk_departamento_destino=:ID ORDER BY tarea_id ASC");
+        $sql->bindParam(":ID", $departamento);
+    }
+
+
+    $sql->execute();
+
+    // Fetcheamos los resultados como un array asociativo
+    $resultados = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+    return $resultados; // Devolvemos el array de resultados
+}
+
+
+
+
+
+
+
+
 
     /*--------- Listar ---------*/
-    protected static function listar_tarea()
-    {
+    // protected static function listar_tarea()
+    // {
 
-        $sql = mainModel::conectar()->prepare("SELECT t.estatus_tarea, t.created_at, t.tarea_id, t.titulo_tarea, t.fk_creado, t.fk_departamento_destino, u.nombre_completo AS creador, d.nombre AS nombre_departamento FROM tareas AS t INNER JOIN departamentos AS d ON t.fk_departamento_destino = d.departamento_id INNER JOIN usuarios AS u ON u.usuario_id = t.fk_creado ORDER BY tarea_id ASC");
+    //     $sql = mainModel::conectar()->prepare("SELECT t.estatus_tarea, t.created_at, t.tarea_id, t.titulo_tarea, t.fk_creado, t.fk_departamento_destino, u.nombre_completo AS creador, d.nombre AS nombre_departamento FROM tareas AS t INNER JOIN departamentos AS d ON t.fk_departamento_destino = d.departamento_id INNER JOIN usuarios AS u ON u.usuario_id = t.fk_creado ORDER BY tarea_id ASC");
 
-        // $sql = mainModel::conectar()->prepare("SELECT puestos.puesto_id,puestos.nombre,puestos.created_at,departamentos.departamento_id,departamentos.nombre as departamento
-        //  FROM puestos INNER JOIN departamentos ON puestos.fk_departamento = departamentos.departamento_id ORDER BY puesto_id ASC");
-        $sql->execute();
+    //     // $sql = mainModel::conectar()->prepare("SELECT puestos.puesto_id,puestos.nombre,puestos.created_at,departamentos.departamento_id,departamentos.nombre as departamento
+    //     //  FROM puestos INNER JOIN departamentos ON puestos.fk_departamento = departamentos.departamento_id ORDER BY puesto_id ASC");
+    //     $sql->execute();
 
-        // Fetcheamos los resultados como un array asociativo
-        $resultados = $sql->fetchAll(PDO::FETCH_ASSOC);
+    //     // Fetcheamos los resultados como un array asociativo
+    //     $resultados = $sql->fetchAll(PDO::FETCH_ASSOC);
 
-        return $resultados; // Devolvemos el array de resultados
-    }
+    //     return $resultados; // Devolvemos el array de resultados
+    // }
 
     /*--------- Cancelar tarea ---------*/
     protected static function cancelar_tarea($datos)

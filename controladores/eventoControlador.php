@@ -54,6 +54,7 @@ class eventoControlador extends eventoModelo
 
         echo json_encode($alerta);
     }
+    
 
     /*--------- Mostrar evento ---------*/
     public function datos_evento_controlador($tipo, $id)
